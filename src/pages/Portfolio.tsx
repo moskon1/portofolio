@@ -30,7 +30,7 @@ const projects = [
     link: "https://spinsaga.fun"
   },
   {
-    title: "Jah Order",
+    title: "Jah Order Sound System",
     category: "Web Application",
     logoText: "JAH ORDER",
     description: "A production web app focused on a clean ordering flow and straightforward user experience.",
@@ -41,7 +41,7 @@ const projects = [
   {
     title: "ProArt Studio",
     category: "Portfolio Website",
-    logoText: "PROART Studio",
+    logoText: "PROART STUDIO",
     description: "A modern presentation website designed to highlight services and projects with a polished look.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     outcome: "Shipped a responsive and performant website with clear content hierarchy.",

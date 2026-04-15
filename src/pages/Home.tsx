@@ -27,6 +27,21 @@ const portfolioPreview = [
     title: "SpinSaga",
     category: "Solana Gamified Utility",
     image: "https://spinsaga.fun/icon-512.png",
+  },
+  {
+    title: "Jah Order",
+    category: "Web Application",
+    logoText: "JAH ORDER",
+  },
+  {
+    title: "ProArt Chi",
+    category: "Portfolio Website",
+    logoText: "PROART CHI",
+  },
+  {
+    title: "Royal Dice",
+    category: "Gaming Website",
+    logoText: "ROYAL DICE",
   }
 ];
 
@@ -205,11 +220,17 @@ export default function Home() {
                 className="group relative rounded-3xl overflow-hidden aspect-[4/5] glass border border-white/5"
               >
                 <div className="absolute inset-0 flex items-center justify-center p-16">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-24 h-24 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
-                  />
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-24 h-24 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
+                    />
+                  ) : (
+                    <span className="text-slate-200 text-xl md:text-2xl font-black tracking-wider text-center group-hover:scale-110 transition-transform duration-500">
+                      {project.logoText || project.title}
+                    </span>
+                  )}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent p-8 flex flex-col justify-end">
                   <p className="text-brand font-mono text-xs uppercase tracking-widest mb-2">{project.category}</p>

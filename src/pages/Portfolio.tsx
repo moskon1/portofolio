@@ -39,9 +39,9 @@ const projects = [
     link: "https://jah-order.vercel.app/"
   },
   {
-    title: "ProArt Chi",
+    title: "ProArt Studio",
     category: "Portfolio Website",
-    logoText: "PROART CHI",
+    logoText: "PROART Studio",
     description: "A modern presentation website designed to highlight services and projects with a polished look.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     outcome: "Shipped a responsive and performant website with clear content hierarchy.",

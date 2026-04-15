@@ -28,6 +28,33 @@ const projects = [
     tech: ["Rust", "Anchor", "Unity WebGL", "React"],
     outcome: "Successfully integrated with 50+ top-tier Solana NFT collections, driving significant user retention.",
     link: "https://spinsaga.fun"
+  },
+  {
+    title: "Jah Order",
+    category: "Web Application",
+    logoText: "JAH ORDER",
+    description: "A production web app focused on a clean ordering flow and straightforward user experience.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    outcome: "Delivered a fast and reliable experience optimized for everyday usage.",
+    link: "https://jah-order.vercel.app/"
+  },
+  {
+    title: "ProArt Chi",
+    category: "Portfolio Website",
+    logoText: "PROART CHI",
+    description: "A modern presentation website designed to highlight services and projects with a polished look.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    outcome: "Shipped a responsive and performant website with clear content hierarchy.",
+    link: "https://proart-chi.vercel.app/"
+  },
+  {
+    title: "Royal Dice",
+    category: "Gaming Website",
+    logoText: "ROYAL DICE",
+    description: "An interactive website with a game-oriented visual style and conversion-focused layout.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    outcome: "Launched a stable and engaging web presence with smooth navigation.",
+    link: "https://royal-dice.vercel.app/"
   }
 ];
 
@@ -70,12 +97,18 @@ export default function Portfolio() {
                 className="glass rounded-3xl overflow-hidden hover:border-brand/50 transition-all group"
               >
                 <div className="aspect-video overflow-hidden relative bg-slate-900/50 flex items-center justify-center p-12">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-20 h-20 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
-                    referrerPolicy="no-referrer"
-                  />
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-20 h-20 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <span className="text-slate-200 text-xl md:text-2xl font-black tracking-wider group-hover:scale-110 transition-transform duration-500">
+                      {project.logoText || project.title}
+                    </span>
+                  )}
                   <div className="absolute top-4 left-4 bg-slate-950/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-brand uppercase tracking-wider border border-white/10">
                     {project.category}
                   </div>

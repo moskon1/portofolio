@@ -16,7 +16,7 @@ const portfolioPreview = [
   {
     title: "4Chad",
     category: "Solana Launchpad",
-    image: "https://4chad.xyz/4chad.png",
+    image: "https://4chad.xyz/4chad.webp",
   },
   {
     title: "ChadBet",

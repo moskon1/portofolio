@@ -5,7 +5,7 @@ const projects = [
   {
     title: "4Chad",
     category: "Solana Launchpad & Trading",
-    image: "https://4chad.xyz/4chad.png",
+    image: "https://4chad.xyz/4chad.webp",
     description: "A decentralized launchpad and trading platform for trending SOL tokens. Discover, buy, and trade with sub-second finality using Jupiter's liquidity aggregation.",
     tech: ["Next.js", "Rust", "Anchor", "Supabase", "Jupiter SDK"],
     outcome: "Successfully launched 100+ tokens with a seamless trading experience and high community engagement.",

@@ -258,7 +258,7 @@ export default function Home() {
               Get In Touch
             </Link>
             <a
-              href="mailto:hello@moskon1.dev"
+              href="mailto:catalin.taras@gmail.com"
               className="inline-flex items-center justify-center bg-white/10 text-white px-10 py-4 rounded-xl font-bold text-xl hover:bg-white/20 transition-all border border-white/20"
             >
               <Mail className="mr-2 h-5 w-5" />

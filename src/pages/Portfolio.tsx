@@ -14,7 +14,7 @@ const projects = [
     {
     title: "ProArt Studio",
     category: "Recording Studio Website",
-    image: "https://proartstudio.ro/logo.webp",
+    image: "https://proartstudio.ro/about-800.webp",
     description: "A modern presentation website designed to highlight services and projects with a polished look.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     outcome: "Shipped a responsive and performant website with clear content hierarchy.",
@@ -23,7 +23,7 @@ const projects = [
     {
     title: "Fusemon",
     category: "Solana Trading Card Game",
-    image: "https://www.fusemon.fun/assets/logo-B4c934aD.png",
+    image: "/fusemon-preview.png",
     description: "A competitive blockchain trading card game with collectible cards, booster packs, marketplace trading, spectator betting, and live PvP battles powered by Solana.",
     tech: ["React", "TypeScript", "Solana", "Web3"],
     outcome: "Built a connected game economy spanning card collection, deck building, marketplace activity, and competitive token-powered battles.",
@@ -32,7 +32,7 @@ const projects = [
   {
     title: "4Chad",
     category: "Solana Launchpad & Trading",
-    image: "https://4chad.xyz/4chad.webp",
+    image: "/4chad-preview.png",
     description: "A decentralized launchpad and trading platform for trending SOL tokens. Discover, buy, and trade with sub-second finality using Jupiter's liquidity aggregation.",
     tech: ["Next.js", "Rust", "Anchor", "Supabase", "Jupiter SDK"],
     outcome: "Successfully launched 100+ tokens with a seamless trading experience and high community engagement.",
@@ -42,7 +42,7 @@ const projects = [
   {
     title: "SpinSaga",
     category: "Solana Gamified Utility",
-    image: "https://spinsaga.fun/icon-512.png",
+    image: "/spinsaga-preview.png",
     description: "An immersive gamified experience on Solana that provides utility to NFT collections through on-chain RNG and rewards.",
     tech: ["Rust", "Anchor", "Unity WebGL", "React"],
     outcome: "Successfully integrated with 50+ top-tier Solana NFT collections, driving significant user retention.",
@@ -51,7 +51,7 @@ const projects = [
   {
     title: "Jah Order Sound System",
     category: "Web Application",
-    image: "https://jah-order.vercel.app/story.jpg",
+    image: "https://jah-order.vercel.app/book.jpg",
     description: "A production web app focused on a clean ordering flow and straightforward user experience.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     outcome: "Delivered a fast and reliable experience optimized for everyday usage.",
@@ -112,7 +112,7 @@ export default function Portfolio() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`${project.title === 'ProArt Studio' ? 'w-[38%] h-[38%] object-contain translate-y-3' : ['4Chad', 'SpinSaga'].includes(project.title) ? 'w-[58%] h-[58%] object-contain translate-y-3' : ['Fusemon', 'Jah Order Sound System'].includes(project.title) ? 'w-[68%] h-[68%] object-contain translate-y-2' : 'w-full h-full object-cover'} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                       referrerPolicy="no-referrer"
                     />
                   ) : (

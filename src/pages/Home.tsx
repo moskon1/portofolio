@@ -22,30 +22,30 @@ const portfolioPreview = [
     {
     title: "ProArt Chi",
     category: "Recording Studio Website",
-    image: "https://proartstudio.ro/logo.webp",
+    image: "https://proartstudio.ro/about-800.webp",
     
   },
     {
     title: "Fusemon",
     category: "Solana Trading Card Game",
-    image: "https://www.fusemon.fun/assets/logo-B4c934aD.png",
+    image: "/fusemon-preview.png",
     link: "https://www.fusemon.fun/",
   },
   {
     title: "4Chad",
     category: "Solana Launchpad",
-    image: "https://4chad.xyz/4chad.webp",
+    image: "/4chad-preview.png",
   },
 
   {
     title: "SpinSaga",
     category: "Solana Gamified Utility",
-    image: "https://spinsaga.fun/icon-512.png",
+    image: "/spinsaga-preview.png",
   },
   {
     title: "Jah Order",
     category: "Soundsystem Website",
-    image: "https://jah-order.vercel.app/story.jpg",
+    image: "https://jah-order.vercel.app/book.jpg",
   },
   // {
   //   title: "Royal Dice",
@@ -195,7 +195,7 @@ export default function Home() {
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className={`${project.title === 'ProArt Chi' ? 'w-[38%] h-[38%] object-contain' : ['4Chad', 'SpinSaga'].includes(project.title) ? 'w-[58%] h-[58%] object-contain' : ['Fusemon', 'Jah Order'].includes(project.title) ? 'w-[68%] h-[68%] object-contain' : 'w-full h-full object-cover'} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                     />
                   ) : (
                     <span className="text-slate-200 text-xl md:text-2xl tracking-wider font-black text-center group-hover:scale-110 transition-transform duration-500">

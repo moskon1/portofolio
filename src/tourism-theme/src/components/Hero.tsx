@@ -10,6 +10,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { TemplateSettings, Room, PropertyCategory } from '../types';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface HeroProps {
   settings: TemplateSettings;
@@ -25,6 +26,8 @@ export const Hero: React.FC<HeroProps> = ({
   onSelectCategory,
 }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
   // Quick reservation bar state
   const today = new Date();
@@ -73,37 +76,32 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span>
-              {isRO ? 'Resort la Mare • Plajă & SPA Termal' : 'Seaside Resort • Beachfront & Thermal Spa'}
+              {t('Resort la Mare • Plajă & SPA Termal', 'Seaside Resort • Beachfront & Thermal Spa', 'Küstenresort • Strandlage & Thermal-Spa', 'Kystresort • Strand og termisk spa')}
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white tracking-tight leading-[1.15]">
-            {isRO ? (
-              <>Eleganță la Malul Mării & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">Refugiu de Lux</span></>
-            ) : (
-              <>Beachfront Luxury & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">Thermal Wellness</span></>
-            )}
+            {t('Eleganță la Malul Mării & ', 'Beachfront Luxury & ', 'Luxus am Meer & ', 'Luksus ved stranden & ')}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">{t('Refugiu de Lux', 'Thermal Wellness', 'Thermal-Wellness', 'termisk velvære')}</span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-light">
-            {isRO 
-              ? 'Descoperă cazările moderne cu vedere panoramică la Marea Neagră, bucătărie gourmet, SPA termal cu apă sărată și rezervări directe instant pe WhatsApp.'
-              : 'Discover modern suites with 180° Black Sea views, fine dining, saltwater hydrotherapy spa, and instant WhatsApp reservations.'}
+            {t('Descoperă cazările moderne cu vedere panoramică la Marea Neagră, bucătărie gourmet, SPA termal cu apă sărată și rezervări directe instant pe WhatsApp.', 'Discover modern suites with 180° Black Sea views, fine dining, saltwater hydrotherapy spa, and instant WhatsApp reservations.', 'Entdecken Sie moderne Suiten mit Panoramablick, gehobener Küche, Thermal-Spa und direkter Reservierung über WhatsApp.', 'Oppdag moderne suiter med panoramautsikt, gourmetmat, termisk spa og direkte bestilling via WhatsApp.')}
           </p>
 
           {/* Key Feature Highlights */}
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              {isRO ? 'Răspuns Rapid pe WhatsApp (<5 min)' : 'Fast WhatsApp Confirmation (<5 min)'}
+              {t('Răspuns rapid pe WhatsApp (<5 min)', 'Fast WhatsApp Confirmation (<5 min)', 'Schnelle WhatsApp-Antwort (<5 Min.)', 'Raskt WhatsApp-svar (<5 min)')}
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              {isRO ? 'Rezervare Directă Fără Comision' : 'Direct Booking - Zero Fees'}
+              {t('Rezervare directă fără comision', 'Direct Booking - Zero Fees', 'Direktbuchung ohne Provision', 'Direktebestilling uten provisjon')}
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              {isRO ? 'Plajă Privată & Șezlonguri' : 'Private Beach & Sunbeds'}
+              {t('Plajă privată & șezlonguri', 'Private Beach & Sunbeds', 'Privatstrand & Liegen', 'Privat strand og solsenger')}
             </span>
           </div>
         </div>
@@ -117,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Room Type Selector */}
             <div className="md:col-span-3 space-y-1">
               <label className="text-[11px] font-semibold text-slate-300 uppercase tracking-wider block">
-                {isRO ? 'Alege Tipul de Cameră' : 'Select Room Type'}
+                {t('Alege tipul de cameră', 'Select Room Type', 'Zimmertyp wählen', 'Velg romtype')}
               </label>
               <select
                 value={selectedRoomId}
@@ -125,7 +123,7 @@ export const Hero: React.FC<HeroProps> = ({
                 className="w-full bg-slate-800 text-white text-xs font-medium rounded-xl p-3 border border-slate-700 focus:outline-none focus:border-amber-400 cursor-pointer"
               >
                 <option value="">
-                  {isRO ? '--- Toate cele 3 Tipuri de Camere ---' : '--- All 3 Room Types ---'}
+                  {t('--- Toate tipurile de camere ---', '--- All Room Types ---', '--- Alle Zimmertypen ---', '--- Alle romtyper ---')}
                 </option>
                 {rooms.map((room) => (
                   <option key={room.id} value={room.id}>
@@ -167,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="md:col-span-2 space-y-1">
               <label className="text-[11px] font-semibold text-slate-300 uppercase tracking-wider block flex items-center gap-1">
                 <Users className="w-3 h-3 text-amber-400" />
-                {isRO ? 'Oaspeți' : 'Guests'}
+                {t('Oaspeți', 'Guests', 'Gäste', 'Gjester')}
               </label>
               <div className="grid grid-cols-2 gap-1.5">
                 <select
@@ -203,7 +201,7 @@ export const Hero: React.FC<HeroProps> = ({
               >
                 <MessageSquare className="w-4 h-4 fill-white shrink-0 group-hover:scale-110 transition-transform" />
                 <span className="truncate">
-                  {isRO ? 'Verifică Preț pe WhatsApp' : 'Check Price on WhatsApp'}
+                  {t('Verifică prețul pe WhatsApp', 'Check Price on WhatsApp', 'Preis über WhatsApp prüfen', 'Sjekk pris på WhatsApp')}
                 </span>
                 <ChevronRight className="w-4 h-4 text-emerald-200" />
               </button>

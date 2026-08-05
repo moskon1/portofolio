@@ -54,8 +54,13 @@ Mulțumesc!`;
 Thank you!`;
   }
 
-  const currencySymbol = settings.currency === 'RON' ? 'RON' : settings.currency === 'USD' ? '$' : '€';
-  const priceFormatted = settings.currency === 'RON' ? `${totalEstimate.ron} RON` : `${currencySymbol}${totalEstimate.eur}`;
+  const priceFormatted = settings.currency === 'RON'
+    ? `${totalEstimate.ron} RON`
+    : settings.currency === 'NOK'
+      ? `${Math.round(totalEstimate.eur * 12)} NOK`
+      : settings.currency === 'USD'
+        ? `$${totalEstimate.eur}`
+        : `€${totalEstimate.eur}`;
 
   const addOnsText = selectedAddOns.length > 0
     ? selectedAddOns.map(a => `   • ${a.name}`).join('\n')

@@ -3,6 +3,7 @@ import { Maximize2, X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import { TemplateSettings } from '../types';
 
 import heroResortImg from '../assets/images/hero_resort_ocean_1785928560085.jpg';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface GallerySectionProps {
   settings: TemplateSettings;
@@ -10,46 +11,48 @@ interface GallerySectionProps {
 
 export const GallerySection: React.FC<GallerySectionProps> = ({ settings }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
   const galleryItems = [
     {
       id: '1',
-      title: isRO ? 'Vedere Panoramică Marea Neagră & Faleză' : 'Panoramic Black Sea & Oceanfront View',
+      title: t('Vedere panoramică la mare', 'Panoramic Sea View', 'Panorama-Meerblick', 'Panoramautsikt over havet'),
       image: heroResortImg,
     },
     {
       id: '2',
-      title: isRO ? 'Piscina Exterioară Încălzită & Șezlonguri Premium' : 'Heated Outdoor Pool & Premium Sunbeds',
+      title: t('Piscină exterioară încălzită', 'Heated Outdoor Pool', 'Beheizter Außenpool', 'Oppvarmet utendørsbasseng'),
       image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80",
     },
     {
       id: '3',
-      title: isRO ? 'Panoramic Grand Ocean Suite - Dormitor de Lux' : 'Panoramic Grand Ocean Suite Bedroom',
+      title: t('Dormitorul suitei panoramice', 'Panoramic Suite Bedroom', 'Schlafzimmer der Panorama-Suite', 'Soverom i panoramasuiten'),
       image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
     },
     {
       id: '4',
-      title: isRO ? 'Centrul SPA Termal cu Apă Sărată Techirghiol' : 'Saltwater Thermal Spa & Hydrotherapy',
+      title: t('SPA termal cu apă sărată', 'Saltwater Thermal Spa', 'Thermal-Spa mit Salzwasser', 'Termisk saltvannsspa'),
       image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
     },
     {
       id: '5',
-      title: isRO ? 'Restaurant Gourmet cu Specific Pescăresc' : 'Seafood Gourmet Oceanfront Restaurant',
+      title: t('Restaurant gourmet', 'Gourmet Restaurant', 'Gourmetrestaurant', 'Gourmetrestaurant'),
       image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
     },
     {
       id: '6',
-      title: isRO ? 'Baie din Marmură cu Jacuzzi / Cădiță Hydro' : 'Luxury Marble Bathroom with Jacuzzi Bath',
+      title: t('Baie din marmură cu jacuzzi', 'Marble Bathroom with Jacuzzi', 'Marmorbad mit Whirlpool', 'Marmorbad med boblebad'),
       image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80",
     },
     {
       id: '7',
-      title: isRO ? 'Plaja Privată Eforie Nord - Șezlonguri & Umbrele' : 'Private Sandy Beach & Sunset Loungers',
+      title: t('Plajă privată cu șezlonguri', 'Private Beach & Sunbeds', 'Privatstrand mit Liegen', 'Privat strand med solsenger'),
       image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
     },
     {
       id: '8',
-      title: isRO ? 'Deluxe Beachfront Room & Balcon Privat' : 'Deluxe Beachfront Double Room & Balcony',
+      title: t('Cameră deluxe cu balcon', 'Deluxe Room with Balcony', 'Deluxe-Zimmer mit Balkon', 'Deluxe-rom med balkong'),
       image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
     }
   ];
@@ -75,13 +78,13 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ settings }) => {
         <div className="text-center space-y-2">
           <span className="text-slate-500 font-semibold text-xs uppercase tracking-[0.3em] flex items-center justify-center gap-2">
             <Camera className="w-3.5 h-3.5 text-emerald-600" />
-            <span>{isRO ? 'Galerie Foto High-Resolution' : 'High Resolution Photo Gallery'}</span>
+            <span>{t('Galerie foto', 'Photo Gallery', 'Fotogalerie', 'Bildegalleri')}</span>
           </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
-            {isRO ? 'Atmosferă & Design de Excepție' : 'Captivating Resort Experience'}
+            {t('Atmosferă & design de excepție', 'A Captivating Resort Experience', 'Ein faszinierendes Resort-Erlebnis', 'En fengslende resortopplevelse')}
           </h2>
           <p className="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto">
-            {isRO ? 'Explorează imaginile resortului. Glisează prin carusel sau apasă pe imagine pentru ecran complet.' : 'Browse resort photos. Slide through the carousel or tap for full-screen mode.'}
+            {t('Explorează imaginile resortului. Glisează sau apasă pentru ecran complet.', 'Browse resort photos. Swipe or tap for full-screen mode.', 'Entdecken Sie die Resortfotos. Wischen oder tippen Sie für die Vollbildansicht.', 'Utforsk resortbildene. Sveip eller trykk for fullskjerm.')}
           </p>
         </div>
 
@@ -208,4 +211,3 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ settings }) => {
     </section>
   );
 };
-

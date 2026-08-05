@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Contact', href: '/contact' },
-];
+import LanguageSelector from './LanguageSelector';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { locale } = useLocale();
+  const navLinks = [
+    { name: localize(locale, { ro: 'Acasă', en: 'Home', de: 'Startseite', no: 'Hjem' }), href: '/' },
+    { name: localize(locale, { ro: 'Servicii', en: 'Services', de: 'Leistungen', no: 'Tjenester' }), href: '/services' },
+    { name: localize(locale, { ro: 'Portofoliu', en: 'Portfolio', de: 'Portfolio', no: 'Portefølje' }), href: '/portfolio' },
+    { name: localize(locale, { ro: 'Contact', en: 'Contact', de: 'Kontakt', no: 'Kontakt' }), href: '/contact' },
+  ];
+  const getStarted = localize(locale, { ro: 'Începe un proiect', en: 'Get Started', de: 'Projekt starten', no: 'Start et prosjekt' });
 
   return (
     <nav className="fixed top-0 w-full bg-slate-950/80 backdrop-blur-md z-50 border-b border-white/5">
@@ -39,11 +42,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <LanguageSelector compact />
             <Link
               to="/contact"
               className="bg-brand text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-brand-dark transition-all shadow-lg shadow-brand/20"
             >
-              Get Started
+              {getStarted}
             </Link>
           </div>
 
@@ -76,12 +80,13 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <div className="px-3 py-2"><LanguageSelector /></div>
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
               className="block w-full text-center bg-brand text-white px-3 py-3 rounded-md text-base font-semibold mt-4"
             >
-              Get Started
+              {getStarted}
             </Link>
           </div>
         </div>

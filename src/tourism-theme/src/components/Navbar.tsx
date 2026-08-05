@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { TemplateSettings } from '../types';
 import { openDirectWhatsAppChat } from '../utils/whatsapp';
+import { localeOptions, localize, useLocale } from '@/src/lib/i18n';
 
 interface NavbarProps {
   settings: TemplateSettings;
@@ -25,15 +26,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectCategory,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { locale, setLocale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
   const isRO = settings.language === 'ro';
 
   const navLinks = [
-    { id: 'accommodations', label: isRO ? 'Camere' : 'Rooms', href: '#accommodations' },
-    { id: 'amenities', label: isRO ? 'Servicii' : 'Services', href: '#amenities' },
-    { id: 'gallery', label: isRO ? 'Galerie' : 'Gallery', href: '#gallery' },
-    { id: 'location', label: isRO ? 'Locație' : 'Location', href: '#location' },
-    { id: 'reviews', label: isRO ? 'Recenzii' : 'Reviews', href: '#reviews' },
+    { id: 'accommodations', label: t('Camere', 'Rooms', 'Zimmer', 'Rom'), href: '#accommodations' },
+    { id: 'amenities', label: t('Servicii', 'Services', 'Ausstattung', 'Fasiliteter'), href: '#amenities' },
+    { id: 'gallery', label: t('Galerie', 'Gallery', 'Galerie', 'Galleri'), href: '#gallery' },
+    { id: 'location', label: t('Locație', 'Location', 'Lage', 'Beliggenhet'), href: '#location' },
+    { id: 'reviews', label: t('Recenzii', 'Reviews', 'Bewertungen', 'Anmeldelser'), href: '#reviews' },
   ];
 
   const handleNavClick = (link: typeof navLinks[0]) => {
@@ -81,6 +84,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Action Buttons Right */}
         <div className="hidden lg:flex items-center gap-3">
+          <select
+            value={locale}
+            onChange={(event) => setLocale(event.target.value as typeof locale)}
+            aria-label="Select language"
+            className="bg-slate-800 text-slate-200 text-xs font-semibold rounded-xl px-3 py-2.5 border border-slate-700 focus:outline-none focus:border-amber-400 cursor-pointer"
+          >
+            {localeOptions.map((option) => <option key={option.value} value={option.value}>{option.short}</option>)}
+          </select>
           {/* Quick Phone Call Link */}
           <a
             href={`tel:${settings.displayPhone}`}
@@ -96,22 +107,30 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
             <MessageSquare className="w-4 h-4 text-emerald-100 fill-emerald-100" />
-            <span>{isRO ? 'Rezervă pe WhatsApp' : 'Book on WhatsApp'}</span>
+            <span>{t('Rezervă pe WhatsApp', 'Book on WhatsApp', 'Über WhatsApp buchen', 'Bestill på WhatsApp')}</span>
           </button>
         </div>
 
         <div className="lg:hidden flex items-center gap-2 shrink-0">
+          <select
+            value={locale}
+            onChange={(event) => setLocale(event.target.value as typeof locale)}
+            aria-label="Select language"
+            className="h-10 bg-slate-800 text-slate-200 text-xs font-bold rounded-xl px-2 border border-slate-700 outline-none"
+          >
+            {localeOptions.map((option) => <option key={option.value} value={option.value}>{option.short}</option>)}
+          </select>
           <button
             onClick={onOpenQuickBooking}
             className="w-10 h-10 flex items-center justify-center rounded-xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 active:scale-95 transition"
-            aria-label={isRO ? 'Rezervare pe WhatsApp' : 'Book on WhatsApp'}
+            aria-label={t('Rezervare pe WhatsApp', 'Book on WhatsApp', 'Über WhatsApp buchen', 'Bestill på WhatsApp')}
           >
             <MessageSquare className="w-4 h-4 fill-white" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="w-10 h-10 flex items-center justify-center text-slate-200 rounded-xl bg-slate-800 border border-slate-700 active:scale-95 transition"
-            aria-label={isRO ? 'Deschide meniul' : 'Toggle navigation menu'}
+            aria-label={t('Deschide meniul', 'Toggle navigation menu', 'Navigationsmenü öffnen', 'Åpne navigasjonsmenyen')}
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -140,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center justify-center gap-2 bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs px-3 py-3 rounded-xl"
             >
               <Phone className="w-4 h-4 text-amber-400" />
-              <span>{isRO ? 'Sună' : 'Call'}</span>
+              <span>{t('Sună', 'Call', 'Anrufen', 'Ring')}</span>
             </a>
             <button
               onClick={() => {
@@ -150,7 +169,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white font-semibold text-xs py-3 rounded-xl shadow-lg shadow-emerald-600/30"
             >
               <MessageSquare className="w-4 h-4 fill-white" />
-              <span>{isRO ? 'Rezervare Rapidă WhatsApp' : 'Quick WhatsApp Booking'}</span>
+              <span>{t('Rezervare rapidă', 'Quick WhatsApp Booking', 'Schnellbuchung', 'Hurtigbestilling')}</span>
             </button>
 
           </div>

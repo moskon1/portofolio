@@ -1,8 +1,8 @@
 export type PropertyCategory = 'all' | 'hotel' | 'villa' | 'spa_suite' | 'family_apartment';
 
-export type Currency = 'EUR' | 'RON' | 'USD';
+export type Currency = 'EUR' | 'RON' | 'USD' | 'NOK';
 
-export type Language = 'en' | 'ro';
+export type Language = 'en' | 'ro' | 'de' | 'no';
 
 export interface RoomAmenity {
   id: string;

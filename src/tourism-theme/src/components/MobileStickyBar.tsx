@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, MessageSquare, BedDouble } from 'lucide-react';
 import { TemplateSettings } from '../types';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface MobileStickyBarProps {
   settings: TemplateSettings;
@@ -12,6 +13,8 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({
   onOpenQuickBooking,
 }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
   const scrollToRooms = () => {
     const el = document.getElementById('accommodations');
@@ -30,7 +33,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({
         >
           <Phone className="w-4 h-4 text-slate-700 mb-0.5" />
           <span className="text-[10px] font-semibold tracking-wide uppercase">
-            {isRO ? 'Sună acum' : 'Call Hotel'}
+            {t('Sună acum', 'Call Hotel', 'Hotel anrufen', 'Ring hotellet')}
           </span>
         </a>
 
@@ -41,7 +44,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({
         >
           <BedDouble className="w-4 h-4 text-slate-700 mb-0.5" />
           <span className="text-[10px] font-semibold tracking-wide uppercase">
-            {isRO ? 'Camere' : 'Rooms'}
+            {t('Camere', 'Rooms', 'Zimmer', 'Rom')}
           </span>
         </button>
 

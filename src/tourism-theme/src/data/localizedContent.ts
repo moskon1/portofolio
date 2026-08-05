@@ -1,0 +1,33 @@
+import type { Locale } from '@/src/lib/i18n';
+import { MOCK_ATTRACTIONS, MOCK_REVIEWS, MOCK_ROOMS } from './mockData';
+
+const roomCopy: Record<string, Record<Locale, { title: string; tagline: string; description: string; longDescription: string }>> = {
+  'steaua-panoramic-suite': {
+    ro: { title: 'Suită Grand Ocean Panoramică', tagline: 'Vedere directă de 180° la Marea Neagră, balcon privat și cadă cu hidromasaj din marmură.', description: 'Bucură-te de luxul litoralului, cu uși vitrate până în podea și terasă privată cu briza mării.', longDescription: 'Suita oferă un lounge spațios, baie din marmură cu hidromasaj, acces la centrul SPA și climatizare automată.' },
+    en: { title: 'Panoramic Grand Ocean Suite', tagline: 'Direct 180° Black Sea views with a private glass balcony and marble whirlpool bath.', description: 'Experience coastal luxury with floor-to-ceiling glass doors opening onto a private sea-view terrace.', longDescription: 'The suite features a spacious lounge, marble whirlpool bathroom, complimentary thermal SPA access, and automated climate control.' },
+    de: { title: 'Panorama Grand Ocean Suite', tagline: 'Direkter 180°-Meerblick, privater Glasbalkon und Marmor-Whirlpool.', description: 'Erleben Sie Luxus an der Küste mit raumhohen Glastüren und privater Terrasse mit Meerblick.', longDescription: 'Die Suite bietet einen großzügigen Wohnbereich, ein Marmorbad mit Whirlpool, Thermal-Spa-Zugang und automatische Klimaregelung.' },
+    no: { title: 'Panoramic Grand Ocean Suite', tagline: 'Direkte 180° havutsikt, privat glassbalkong og boblebad i marmor.', description: 'Opplev luksus ved kysten med gulv-til-tak-vinduer og privat terrasse med havutsikt.', longDescription: 'Suiten har romslig lounge, marmorbad med boblebad, tilgang til termisk spa og automatisk klimakontroll.' },
+  },
+  'steaua-deluxe-beach-room': {
+    ro: { title: 'Cameră Dublă Deluxe la Plajă', tagline: 'Cameră modernă cu balcon privat și vedere spre plajă și mare.', description: 'Cazare elegantă pentru cupluri, cu acces rapid la plajă și toate facilitățile resortului.', longDescription: 'Mobilier din lemn natural, lenjerie premium, duș tip ploaie, balcon privat și acces zilnic la piscină.' },
+    en: { title: 'Deluxe Beachfront Double Room', tagline: 'Elegant modern room with a private balcony overlooking the beach and sea.', description: 'Refined beachfront accommodation for couples seeking relaxation and direct beach access.', longDescription: 'Natural wood furniture, premium linen, rain shower, private balcony, and daily pool access.' },
+    de: { title: 'Deluxe-Doppelzimmer am Strand', tagline: 'Elegantes Zimmer mit privatem Balkon und Blick auf Strand und Meer.', description: 'Stilvolle Unterkunft für Paare mit direktem Zugang zum Strand.', longDescription: 'Naturholzmöbel, hochwertige Bettwäsche, Regendusche, privater Balkon und täglicher Poolzugang.' },
+    no: { title: 'Deluxe dobbeltrom ved stranden', tagline: 'Elegant rom med privat balkong og utsikt over stranden og havet.', description: 'Stilfull overnatting for par med direkte tilgang til stranden.', longDescription: 'Møbler i naturtre, førsteklasses sengetøy, regndusj, privat balkong og daglig tilgang til bassenget.' },
+  },
+  'steaua-family-beach-apartment': {
+    ro: { title: 'Duplex Grand pentru Familie', tagline: 'Apartament spațios cu două dormitoare, chicinetă și acces la parcul acvatic.', description: 'Alegerea ideală pentru familii, cu dormitoare separate și spațiu generos de zi.', longDescription: 'Include chicinetă completă, două băi, mașină de spălat și șezlonguri rezervate pe plajă.' },
+    en: { title: 'Grand Family Sea-Front Duplex', tagline: 'Spacious two-bedroom residence with kitchenette and kids waterpark access.', description: 'The ideal family getaway with separate bedrooms and generous living space.', longDescription: 'Includes a full kitchenette, two bathrooms, washing machine, and reserved beach loungers.' },
+    de: { title: 'Grand Familien-Duplex am Meer', tagline: 'Geräumige Unterkunft mit zwei Schlafzimmern, Küchenzeile und Wasserpark-Zugang.', description: 'Der ideale Familienurlaub mit getrennten Schlafzimmern und großzügigem Wohnbereich.', longDescription: 'Mit kompletter Küchenzeile, zwei Bädern, Waschmaschine und reservierten Strandliegen.' },
+    no: { title: 'Grand familiedupleks ved sjøen', tagline: 'Romslig bolig med to soverom, kjøkkenkrok og tilgang til vannpark.', description: 'Ideell for familier, med separate soverom og god plass i oppholdsrommet.', longDescription: 'Inkluderer komplett kjøkkenkrok, to bad, vaskemaskin og reserverte solsenger.' },
+  },
+};
+
+const reviewComments: Record<string, Record<Locale, string>> = {
+  'rev-1': { ro: 'Condiții excelente, o priveliște superbă și o rezervare foarte rapidă prin WhatsApp. SPA-ul cu apă sărată a fost minunat!', en: 'Excellent conditions, a beautiful view, and a very fast WhatsApp booking. The saltwater SPA was wonderful!', de: 'Ausgezeichnete Ausstattung, wunderschöne Aussicht und eine sehr schnelle Buchung über WhatsApp. Das Salzwasser-Spa war wunderbar!', no: 'Flotte forhold, vakker utsikt og svært rask bestilling via WhatsApp. Saltvannsspaet var fantastisk!' },
+  'rev-2': { ro: 'Accesul direct la plajă, centrul SPA și restaurantul au fost excelente. Comunicarea prin WhatsApp a fost rapidă și profesionistă.', en: 'The direct beach access, SPA, and restaurant were excellent. WhatsApp communication was fast and professional.', de: 'Der direkte Strandzugang, das Spa und das Restaurant waren ausgezeichnet. Die Kommunikation über WhatsApp war schnell und professionell.', no: 'Direkte tilgang til stranden, spaet og restauranten var utmerket. Kommunikasjonen på WhatsApp var rask og profesjonell.' },
+  'rev-3': { ro: 'Ideal pentru familii cu copii! Plaja este foarte aproape, iar personalul a fost extrem de amabil. Vom reveni cu drag.', en: 'Perfect for families with children! The beach is very close and the staff were extremely helpful. We would gladly return.', de: 'Perfekt für Familien mit Kindern! Der Strand ist ganz in der Nähe und das Personal war äußerst hilfsbereit. Wir kommen gerne wieder.', no: 'Perfekt for familier med barn! Stranden ligger svært nær, og personalet var utrolig hjelpsomt. Vi kommer gjerne tilbake.' },
+};
+
+export const getLocalizedRooms = (locale: Locale) => MOCK_ROOMS.map((room) => ({ ...room, ...roomCopy[room.id][locale] }));
+export const getLocalizedReviews = (locale: Locale) => MOCK_REVIEWS.map((review) => ({ ...review, comment: reviewComments[review.id][locale] }));
+export const getLocalizedAttractions = (locale: Locale) => MOCK_ATTRACTIONS.map((attraction) => ({ ...attraction }));

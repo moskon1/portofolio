@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
 const whatsappLabel = import.meta.env.VITE_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
 
 export default function Footer() {
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
   return (
     <footer className="bg-slate-950 text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
@@ -16,28 +19,28 @@ export default function Footer() {
               <span className="text-2xl font-bold text-white tracking-tight">Node<span className="text-brand">Stack</span></span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              A digital engineering agency building high-performance products, scalable backends, and Web3 systems.
+              {t('O agenție digitală care construiește produse performante, sisteme backend scalabile și soluții Web3.', 'A digital engineering agency building high-performance products, scalable backends, and Web3 systems.', 'Eine Digitalagentur für leistungsstarke Produkte, skalierbare Backends und Web3-Systeme.', 'Et digitalbyrå som bygger høytytende produkter, skalerbare backender og Web3-systemer.')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-white font-semibold mb-6">{t('Linkuri rapide', 'Quick Links', 'Schnellzugriff', 'Hurtiglenker')}</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services" className="hover:text-brand transition-colors">Services</Link></li>
-              <li><Link to="/portfolio" className="hover:text-brand transition-colors">Portfolio</Link></li>
-              <li><Link to="/contact" className="hover:text-brand transition-colors">Contact</Link></li>
+              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</Link></li>
+              <li><Link to="/portfolio" className="hover:text-brand transition-colors">{t('Portofoliu', 'Portfolio', 'Portfolio', 'Portefølje')}</Link></li>
+              <li><Link to="/contact" className="hover:text-brand transition-colors">{t('Contact', 'Contact', 'Kontakt', 'Kontakt')}</Link></li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-6">Services</h3>
+            <h3 className="text-white font-semibold mb-6">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services" className="hover:text-brand transition-colors">Web Development</Link></li>
-              <li><Link to="/services" className="hover:text-brand transition-colors">Mobile Apps</Link></li>
-              <li><Link to="/services" className="hover:text-brand transition-colors">UI/UX Design</Link></li>
-              <li><Link to="/services" className="hover:text-brand transition-colors">Maintenance</Link></li>
+              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Dezvoltare web', 'Web Development', 'Webentwicklung', 'Webutvikling')}</Link></li>
+              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Aplicații mobile', 'Mobile Apps', 'Mobile Apps', 'Mobilapper')}</Link></li>
+              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Design UI/UX', 'UI/UX Design', 'UI/UX-Design', 'UI/UX-design')}</Link></li>
+              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Mentenanță', 'Maintenance', 'Wartung', 'Vedlikehold')}</Link></li>
             </ul>
           </div>
 
@@ -57,11 +60,11 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-xs">
-            © {new Date().getFullYear()} NodeStack. All rights reserved.
+            © {new Date().getFullYear()} NodeStack. {t('Toate drepturile rezervate.', 'All rights reserved.', 'Alle Rechte vorbehalten.', 'Alle rettigheter forbeholdt.')}
           </p>
           <div className="flex space-x-6 text-xs">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">{t('Politica de confidențialitate', 'Privacy Policy', 'Datenschutz', 'Personvern')}</a>
+            <a href="#" className="hover:text-white transition-colors">{t('Termeni și condiții', 'Terms of Service', 'Nutzungsbedingungen', 'Vilkår')}</a>
           </div>
         </div>
       </div>

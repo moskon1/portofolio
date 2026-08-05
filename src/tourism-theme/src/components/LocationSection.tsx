@@ -1,7 +1,8 @@
 import React from 'react';
 import { MapPin, Navigation, Compass, ExternalLink, MessageSquare, Car } from 'lucide-react';
 import { TemplateSettings } from '../types';
-import { MOCK_ATTRACTIONS } from '../data/mockData';
+import { getLocalizedAttractions } from '../data/localizedContent';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface LocationSectionProps {
   settings: TemplateSettings;
@@ -10,6 +11,27 @@ interface LocationSectionProps {
 
 export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOpenQuickBooking }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
+  const attractionNames = locale === 'en'
+    ? ['Beach & Seafront Promenade', 'Techirghiol Lake & Mineral Baths', 'Water Park & Marina', 'Constanța Marina & Casino']
+    : locale === 'de'
+    ? ['Strand & Promenade', 'Techirghiol-See & Mineralbad', 'Wasserpark & Hafen', 'Yachthafen & Casino Constanța']
+    : locale === 'no'
+      ? ['Strand og promenade', 'Techirghiol-sjøen og mineralbad', 'Vannpark og havn', 'Marina og Constanța Casino']
+      : null;
+  const attractionDescriptions = locale === 'en'
+    ? ['Golden sandy beach and promenade with restaurants and cafés.', 'Renowned salt lake with therapeutic mineral treatments.', 'Family-friendly water park and local seafood restaurants.', 'Historic promenade, marina, and waterfront restaurants.']
+    : locale === 'de'
+    ? ['Goldener Sandstrand und Promenade mit Restaurants.', 'Berühmter Salzsee mit therapeutischen Mineralanwendungen.', 'Familienfreundlicher Wasserpark und lokale Fischrestaurants.', 'Historische Promenade, Yachthafen und Restaurants am Meer.']
+    : locale === 'no'
+      ? ['Gylden sandstrand og promenade med restauranter.', 'Berømt saltsjø med terapeutiske mineralbehandlinger.', 'Familievennlig vannpark og lokale fiskerestauranter.', 'Historisk promenade, marina og restauranter ved sjøen.']
+      : null;
+  const attractions = getLocalizedAttractions(locale).map((item, index) => ({
+    ...item,
+    title: attractionNames?.[index] || item.title,
+    description: attractionDescriptions?.[index] || item.description,
+  }));
 
   const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(settings.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
@@ -21,10 +43,10 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#EAE2D8] pb-6">
           <div>
             <span className="text-slate-500 font-semibold text-xs uppercase tracking-[0.3em] block mb-1">
-              {isRO ? 'Locație Premium & Acces' : 'Prime Location & Accessibility'}
+              {t('Locație premium & acces', 'Prime Location & Accessibility', 'Beste Lage & Erreichbarkeit', 'Førsteklasses beliggenhet')}
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
-              {isRO ? 'Unde Ne Găsești' : 'Where To Find Us'}
+              {t('Unde ne găsești', 'Where To Find Us', 'So finden Sie uns', 'Her finner du oss')}
             </h2>
           </div>
           <p className="text-slate-600 text-xs sm:text-sm max-w-md">
@@ -55,7 +77,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
                 rel="noreferrer"
                 className="flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full hover:bg-emerald-100 font-bold transition shrink-0"
               >
-                <span>{isRO ? 'Deschide în Google Maps' : 'Open Google Maps'}</span>
+                <span>{t('Deschide în Google Maps', 'Open Google Maps', 'In Google Maps öffnen', 'Åpne i Google Maps')}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -94,11 +116,11 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
           <div className="lg:col-span-5 space-y-4">
             <h3 className="font-serif text-lg font-bold text-[#1A1A1A] flex items-center gap-2 border-b border-[#EAE2D8] pb-3">
               <Compass className="w-5 h-5 text-emerald-600" />
-              <span>{isRO ? 'Atracții & Distanțe Cheie' : 'Nearby Points of Interest'}</span>
+              <span>{t('Atracții în apropiere', 'Nearby Points of Interest', 'Sehenswürdigkeiten in der Nähe', 'Severdigheter i nærheten')}</span>
             </h3>
 
             <div className="space-y-3">
-              {MOCK_ATTRACTIONS.map((att) => (
+              {attractions.map((att) => (
                 <div
                   key={att.id}
                   className="p-3.5 bg-white rounded-xl border border-[#EAE2D8] hover:border-emerald-300 transition flex items-center gap-3.5 shadow-xs"

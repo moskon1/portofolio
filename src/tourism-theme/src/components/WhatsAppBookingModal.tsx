@@ -168,8 +168,13 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const currencySymbol = settings.currency === 'RON' ? 'RON' : settings.currency === 'USD' ? '$' : '€';
-  const displayTotal = settings.currency === 'RON' ? `${total.ron} RON` : `${currencySymbol}${total.eur}`;
+  const displayTotal = settings.currency === 'RON'
+    ? `${total.ron} RON`
+    : settings.currency === 'NOK'
+      ? `${Math.round(total.eur * 12)} NOK`
+      : settings.currency === 'USD'
+        ? `$${total.eur}`
+        : `€${total.eur}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
@@ -233,7 +238,7 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
                       </span>
                       <h4 className="text-xs font-bold text-white truncate">{room.title}</h4>
                       <p className="text-[11px] text-slate-400 mt-0.5">
-                        {settings.currency === 'RON' ? `${room.priceRON} RON` : `€${room.priceEUR}`} / {isRO ? 'noapte' : 'night'}
+                        {settings.currency === 'RON' ? `${room.priceRON} RON` : settings.currency === 'NOK' ? `${Math.round(room.priceEUR * 12)} NOK` : `€${room.priceEUR}`} / {isRO ? 'noapte' : 'night'}
                       </p>
                     </div>
                   </button>
@@ -315,7 +320,7 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {BOOKING_ADDONS.map((addOn) => {
                 const isSelected = selectedAddOnIds.includes(addOn.id);
-                const priceText = settings.currency === 'RON' ? `+${addOn.priceRON} RON` : `+€${addOn.priceEUR}`;
+                const priceText = settings.currency === 'RON' ? `+${addOn.priceRON} RON` : settings.currency === 'NOK' ? `+${Math.round(addOn.priceEUR * 12)} NOK` : `+€${addOn.priceEUR}`;
                 return (
                   <button
                     key={addOn.id}

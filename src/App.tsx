@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import { I18nProvider, useLocale } from './lib/i18n';
 
 const TourismDemo = lazy(() => import('./tourism-theme/src/App'));
 
@@ -44,6 +45,7 @@ const seoByPath: Record<string, { title: string; description: string; image?: st
 
 function SeoManager() {
   const { pathname } = useLocation();
+  const { locale } = useLocale();
 
   useEffect(() => {
     const seo = seoByPath[pathname] || seoByPath['/'];
@@ -55,18 +57,18 @@ function SeoManager() {
     };
 
     document.title = seo.title;
-    document.documentElement.lang = seo.lang || 'en';
+    document.documentElement.lang = locale === 'no' ? 'nb' : locale;
     document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
     setMeta('meta[name="description"]', 'content', seo.description);
     setMeta('meta[property="og:title"]', 'content', seo.title);
     setMeta('meta[property="og:description"]', 'content', seo.description);
     setMeta('meta[property="og:url"]', 'content', canonicalUrl);
     setMeta('meta[property="og:image"]', 'content', imageUrl);
-    setMeta('meta[property="og:locale"]', 'content', seo.lang === 'ro' ? 'ro_RO' : 'en_US');
+    setMeta('meta[property="og:locale"]', 'content', { ro: 'ro_RO', en: 'en_US', de: 'de_DE', no: 'nb_NO' }[locale]);
     setMeta('meta[name="twitter:title"]', 'content', seo.title);
     setMeta('meta[name="twitter:description"]', 'content', seo.description);
     setMeta('meta[name="twitter:image"]', 'content', imageUrl);
-  }, [pathname]);
+  }, [locale, pathname]);
 
   return null;
 }
@@ -106,8 +108,10 @@ function AppShell() {
 
 export default function App() {
   return (
-    <Router>
-      <AppShell />
-    </Router>
+    <I18nProvider>
+      <Router>
+        <AppShell />
+      </Router>
+    </I18nProvider>
   );
 }

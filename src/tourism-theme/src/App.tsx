@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Room, PropertyCategory } from './types';
-import { MOCK_ROOMS } from './data/mockData';
+import { getLocalizedRooms } from './data/localizedContent';
 import { CLIENT_SETTINGS } from './data/clientConfig';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -15,9 +15,16 @@ import { ReviewsSection } from './components/ReviewsSection';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { Footer } from './components/Footer';
 import { BadgePercent, Clock3, Headphones, ShieldCheck } from 'lucide-react';
+import { useLocale } from '@/src/lib/i18n';
 
 export default function App() {
-  const settings = CLIENT_SETTINGS;
+  const { locale } = useLocale();
+  const settings = {
+    ...CLIENT_SETTINGS,
+    language: locale,
+    currency: locale === 'ro' ? 'RON' as const : locale === 'no' ? 'NOK' as const : 'EUR' as const,
+  };
+  const rooms = useMemo(() => getLocalizedRooms(locale), [locale]);
   const [selectedCategory, setSelectedCategory] = useState<PropertyCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -37,7 +44,7 @@ export default function App() {
 
   // Filter properties logic
   const filteredRooms = useMemo(() => {
-    return MOCK_ROOMS.filter((room) => {
+    return rooms.filter((room) => {
       // Category Filter
       let matchesCategory = true;
       if (selectedCategory === 'hotel') {
@@ -64,7 +71,7 @@ export default function App() {
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [rooms, selectedCategory, searchQuery]);
 
   const handleOpenBookingWithParams = (params: {
     roomId?: string;
@@ -104,7 +111,7 @@ export default function App() {
       {/* Main Hero Showcase */}
       <Hero
         settings={settings}
-        rooms={MOCK_ROOMS}
+        rooms={rooms}
         onOpenBookingWithParams={handleOpenBookingWithParams}
         onSelectCategory={setSelectedCategory}
       />
@@ -224,7 +231,7 @@ export default function App() {
         isOpen={bookingModal.isOpen}
         onClose={() => setBookingModal({ isOpen: false })}
         settings={settings}
-        rooms={MOCK_ROOMS}
+        rooms={rooms}
         initialRoomId={bookingModal.roomId}
         initialCheckIn={bookingModal.checkIn}
         initialCheckOut={bookingModal.checkOut}

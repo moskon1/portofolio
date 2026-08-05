@@ -15,6 +15,7 @@ import {
   Waves
 } from 'lucide-react';
 import { Room, TemplateSettings } from '../types';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface PropertyCardProps {
   room: Room;
@@ -30,6 +31,8 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
   onOpenWhatsAppBooking,
 }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
   const images = room.images && room.images.length > 0 ? room.images : [room.heroImage];
@@ -44,8 +47,13 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
     setCurrentImgIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  const currencySymbol = settings.currency === 'RON' ? 'RON' : settings.currency === 'USD' ? '$' : '€';
-  const displayPrice = settings.currency === 'RON' ? `${room.priceRON} RON` : `${currencySymbol}${room.priceEUR}`;
+  const displayPrice = settings.currency === 'RON'
+    ? `${room.priceRON} RON`
+    : settings.currency === 'NOK'
+      ? `${Math.round(room.priceEUR * 12)} NOK`
+      : settings.currency === 'USD'
+        ? `$${room.priceEUR}`
+        : `€${room.priceEUR}`;
 
   const isVilla = room.propertyType === 'villa';
 
@@ -111,7 +119,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
           {room.isPopular && (
             <span className="flex items-center gap-1 text-[10px] font-bold uppercase px-2 py-1 rounded-full bg-rose-600 text-white shadow-md">
               <Sparkles className="w-3 h-3" />
-              <span>{isRO ? 'Recomandat' : 'Popular'}</span>
+              <span>{t('Recomandat', 'Popular', 'Beliebt', 'Populært')}</span>
             </span>
           )}
         </div>
@@ -153,7 +161,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
         <div className="grid grid-cols-3 gap-2 py-2 px-3 bg-slate-950/60 rounded-xl border border-slate-800/80 text-[11px] text-slate-300">
           <div className="flex items-center gap-1.5 truncate">
             <Users className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="truncate">{room.capacityAdults} {isRO ? 'Adulți' : 'Adults'}</span>
+            <span className="truncate">{room.capacityAdults} {t('Adulți', 'Adults', 'Erwachsene', 'Voksne')}</span>
           </div>
           <div className="flex items-center gap-1.5 truncate">
             <Maximize2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -182,13 +190,13 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
           {/* Price */}
           <div>
             <span className="text-[10px] text-slate-400 uppercase tracking-wider font-medium block">
-              {isRO ? 'De la' : 'Starting from'}
+              {t('De la', 'Starting from', 'Ab', 'Fra')}
             </span>
             <div className="flex items-baseline gap-1">
               <span className="text-xl font-serif font-extrabold text-amber-400">
                 {displayPrice}
               </span>
-              <span className="text-[11px] text-slate-400">/ {isRO ? 'noapte' : 'night'}</span>
+              <span className="text-[11px] text-slate-400">/ {t('noapte', 'night', 'Nacht', 'natt')}</span>
             </div>
           </div>
 
@@ -199,7 +207,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
               className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-semibold border border-slate-700 transition"
               title="View room photos & floorplan"
             >
-              {isRO ? 'Tur & Info' : 'Details'}
+              {t('Tur & detalii', 'Details', 'Details', 'Detaljer')}
             </button>
 
             <button
@@ -207,7 +215,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-lg shadow-emerald-600/30 transition hover:scale-[1.03] active:scale-[0.97]"
             >
               <MessageSquare className="w-3.5 h-3.5 fill-white" />
-              <span>{isRO ? 'Rezervă WhatsApp' : 'Book WA'}</span>
+              <span>{t('Rezervă', 'Book', 'Buchen', 'Bestill')}</span>
             </button>
           </div>
         </div>

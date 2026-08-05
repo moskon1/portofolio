@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ExternalLink, Github } from 'lucide-react';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 const projects = [
     {
@@ -70,6 +71,24 @@ const projects = [
 ];
 
 export default function Portfolio() {
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
+  const descriptions = [
+    t('Demo personalizabil pentru hoteluri și vile, cu camere, galerii, recenzii și rezervări directe pe WhatsApp.', projects[0].description, 'Anpassbare Hotel- und Villenwebsite mit Zimmern, Galerien, Bewertungen und direkter WhatsApp-Buchung.', 'Tilpassbar nettside for hoteller og villaer med rom, galleri, anmeldelser og direkte WhatsApp-bestilling.'),
+    t('Website modern pentru prezentarea serviciilor și proiectelor unui studio de înregistrări.', projects[1].description, 'Moderne Präsentationswebsite für die Leistungen und Projekte eines Tonstudios.', 'Moderne presentasjonsnettside for tjenestene og prosjektene til et lydstudio.'),
+    t('Joc competitiv de cărți pe Solana, cu pachete, marketplace și lupte PvP.', projects[2].description, 'Kompetitives Solana-Sammelkartenspiel mit Boostern, Marktplatz und PvP-Kämpfen.', 'Konkurransebasert samlekortspill på Solana med kortpakker, markedsplass og PvP-kamper.'),
+    t('Platformă descentralizată de lansare și tranzacționare a tokenurilor Solana.', projects[3].description, 'Dezentrale Plattform zum Starten und Handeln von Solana-Token.', 'Desentralisert plattform for lansering og handel av Solana-tokens.'),
+    t('Experiență gamificată pe Solana care oferă utilitate colecțiilor NFT.', projects[4].description, 'Gamifiziertes Solana-Erlebnis mit Nutzen für NFT-Sammlungen.', 'Spillbasert Solana-opplevelse som gir nytte til NFT-samlinger.'),
+    t('Aplicație web de producție cu un flux simplu și o experiență intuitivă.', projects[5].description, 'Produktionsreife Webanwendung mit klarem Ablauf und intuitiver Bedienung.', 'Produksjonsklar webapplikasjon med enkel flyt og intuitiv brukeropplevelse.'),
+  ];
+  const outcomes = [
+    t('Un demo reutilizabil, pregătit pentru personalizarea fiecărui client.', projects[0].outcome, 'Eine wiederverwendbare, kundenspezifisch anpassbare Demo.', 'En gjenbrukbar demo som kan tilpasses hver kunde.'),
+    t('Website responsive și rapid, cu o ierarhie clară a conținutului.', projects[1].outcome, 'Responsive, schnelle Website mit klarer Inhaltshierarchie.', 'Responsiv og rask nettside med tydelig innholdshierarki.'),
+    t('Economie de joc conectată pentru colecționare, tranzacționare și competiție.', projects[2].outcome, 'Vernetzte Spielökonomie für Sammeln, Handel und Wettbewerb.', 'Sammenkoblet spilløkonomi for samling, handel og konkurranse.'),
+    t('Experiență rapidă de lansare și tranzacționare pentru comunitatea Solana.', projects[3].outcome, 'Schnelles Launch- und Handelserlebnis für die Solana-Community.', 'Rask lanserings- og handelsopplevelse for Solana-miljøet.'),
+    t('Integrare cu numeroase colecții NFT și retenție crescută.', projects[4].outcome, 'Integration zahlreicher NFT-Sammlungen mit hoher Nutzerbindung.', 'Integrasjon med mange NFT-samlinger og høy brukerbevaring.'),
+    t('Experiență stabilă, rapidă și optimizată pentru utilizarea zilnică.', projects[5].outcome, 'Stabiles, schnelles Erlebnis für den täglichen Einsatz.', 'Stabil og rask opplevelse optimalisert for daglig bruk.'),
+  ];
   return (
     <div className="pt-20 bg-slate-950">
       {/* Header */}
@@ -81,7 +100,7 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl lg:text-7xl font-bold text-white mb-6"
           >
-            Case <span className="text-gradient">Studies</span>
+            {t('Studii de', 'Case', 'Fall', 'Kunde')} <span className="text-gradient">{t('Caz', 'Studies', 'studien', 'prosjekter')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +108,7 @@ export default function Portfolio() {
             transition={{ delay: 0.1 }}
             className="text-xl text-slate-400 max-w-3xl"
           >
-            A selection of technical projects where I've engineered high-performance solutions and scalable architectures.
+            {t('O selecție de proiecte în care am construit soluții performante și arhitecturi scalabile.', "A selection of technical projects where we've engineered high-performance solutions and scalable architectures.", 'Eine Auswahl technischer Projekte mit leistungsstarken Lösungen und skalierbaren Architekturen.', 'Et utvalg tekniske prosjekter med høytytende løsninger og skalerbar arkitektur.')}
           </motion.p>
         </div>
       </section>
@@ -127,11 +146,11 @@ export default function Portfolio() {
                 <div className="p-8 lg:p-10">
                   <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
                   <p className="text-slate-400 mb-6 leading-relaxed">
-                    {project.description}
+                    {descriptions[idx]}
                   </p>
                   
                   <div className="mb-8">
-                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Stack</h3>
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">{t('Tehnologii', 'Stack', 'Technologien', 'Teknologi')}</h3>
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((t, i) => (
                         <span key={i} className="bg-white/5 text-slate-300 px-3 py-1 rounded-md text-xs font-mono">
@@ -142,9 +161,9 @@ export default function Portfolio() {
                   </div>
 
                   <div className="bg-brand/10 p-6 rounded-2xl border border-brand/20 mb-8">
-                    <h3 className="text-xs font-bold text-brand uppercase tracking-widest mb-2">Impact</h3>
+                    <h3 className="text-xs font-bold text-brand uppercase tracking-widest mb-2">{t('Impact', 'Impact', 'Ergebnis', 'Resultat')}</h3>
                     <p className="text-slate-300 text-sm italic">
-                      {project.outcome}
+                      {outcomes[idx]}
                     </p>
                   </div>
 
@@ -156,11 +175,11 @@ export default function Portfolio() {
                       className="flex items-center space-x-2 text-brand font-bold hover:text-brand-dark transition-colors"
                     >
                       <ExternalLink className="h-5 w-5" />
-                      <span>Live Demo</span>
+                      <span>{t('Demo live', 'Live Demo', 'Live-Demo', 'Live-demo')}</span>
                     </a>
                     <button className="flex items-center space-x-2 text-slate-500 font-bold hover:text-slate-300 transition-colors">
                       <Github className="h-5 w-5" />
-                      <span>Case Study</span>
+                      <span>{t('Studiu de caz', 'Case Study', 'Fallstudie', 'Kundehistorie')}</span>
                     </button>
                   </div>
                 </div>

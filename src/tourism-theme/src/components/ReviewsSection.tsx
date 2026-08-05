@@ -1,7 +1,8 @@
 import React from 'react';
 import { Star, Quote, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { TemplateSettings } from '../types';
-import { MOCK_REVIEWS } from '../data/mockData';
+import { getLocalizedReviews } from '../data/localizedContent';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface ReviewsSectionProps {
   settings: TemplateSettings;
@@ -10,6 +11,9 @@ interface ReviewsSectionProps {
 
 export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpenQuickBooking }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
+  const reviews = getLocalizedReviews(locale);
 
   return (
     <section id="reviews" className="py-16 bg-[#FBF9F6] text-[#1A1A1A] border-t border-[#EAE2D8]">
@@ -19,10 +23,10 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-[#EAE2D8] pb-6">
           <div className="space-y-2">
             <span className="text-slate-500 font-semibold text-xs uppercase tracking-[0.3em] block">
-              {isRO ? 'Aprecieri de la Oaspeți' : 'Verified Guest Reviews'}
+              {t('Aprecieri de la oaspeți', 'Verified Guest Reviews', 'Verifizierte Gästebewertungen', 'Verifiserte gjesteanmeldelser')}
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
-              {isRO ? 'Ce Spun Oaspeții Noștri' : 'Unforgettable Moments & Stays'}
+              {t('Ce spun oaspeții noștri', 'What Our Guests Say', 'Was unsere Gäste sagen', 'Hva gjestene våre sier')}
             </h2>
           </div>
 
@@ -30,7 +34,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
           <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-[#EAE2D8] shadow-xs">
             <div className="text-center">
               <span className="text-3xl font-serif font-bold text-[#1A1A1A] block leading-none">4.95</span>
-              <span className="text-[10px] text-slate-500 font-medium">{isRO ? 'din 5 stele' : 'out of 5'}</span>
+              <span className="text-[10px] text-slate-500 font-medium">{t('din 5 stele', 'out of 5', 'von 5 Sternen', 'av 5 stjerner')}</span>
             </div>
             <div className="border-l border-[#EAE2D8] pl-3 space-y-1">
               <div className="flex text-amber-400">
@@ -39,7 +43,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
                 ))}
               </div>
               <span className="text-xs text-slate-700 font-medium block">
-                {isRO ? 'Peste 300+ recenzii verificate' : '300+ Verified Guest Testimonials'}
+                {t('Peste 300 de recenzii verificate', '300+ Verified Guest Reviews', 'Über 300 verifizierte Bewertungen', 'Over 300 verifiserte anmeldelser')}
               </span>
             </div>
           </div>
@@ -47,7 +51,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
 
         {/* Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {MOCK_REVIEWS.map((rev) => (
+          {reviews.map((rev) => (
             <div
               key={rev.id}
               className="bg-white rounded-2xl border border-[#EAE2D8] p-6 flex flex-col justify-between space-y-4 shadow-xs hover:shadow-xl transition"

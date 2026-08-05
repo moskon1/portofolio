@@ -7,6 +7,7 @@ import {
   Waves
 } from 'lucide-react';
 import { PropertyCategory, TemplateSettings } from '../types';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface PropertyFilterProps {
   selectedCategory: PropertyCategory;
@@ -26,12 +27,14 @@ export const PropertyFilter: React.FC<PropertyFilterProps> = ({
   totalResultsCount,
 }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
   const categories: { id: PropertyCategory; label: string; icon: React.ReactNode }[] = [
-    { id: 'all', label: isRO ? 'Toate Camerele (3)' : 'All 3 Room Types', icon: <Sparkles className="w-3.5 h-3.5" /> },
-    { id: 'spa_suite', label: isRO ? 'Suite Panoramice SPA' : 'Panoramic SPA Suites', icon: <Waves className="w-3.5 h-3.5" /> },
-    { id: 'hotel', label: isRO ? 'Camere Deluxe Plajă' : 'Deluxe Beachfront Rooms', icon: <Building2 className="w-3.5 h-3.5" /> },
-    { id: 'family_apartment', label: isRO ? 'Apartamente Familie' : 'Family Duplexes', icon: <Users className="w-3.5 h-3.5" /> },
+    { id: 'all', label: t('Toate camerele', 'All Rooms', 'Alle Zimmer', 'Alle rom'), icon: <Sparkles className="w-3.5 h-3.5" /> },
+    { id: 'spa_suite', label: t('Suite SPA panoramice', 'Panoramic SPA Suites', 'Panorama-Spa-Suiten', 'Panorama spa-suiter'), icon: <Waves className="w-3.5 h-3.5" /> },
+    { id: 'hotel', label: t('Camere deluxe la plajă', 'Deluxe Beachfront Rooms', 'Deluxe-Zimmer am Strand', 'Deluxe-rom ved stranden'), icon: <Building2 className="w-3.5 h-3.5" /> },
+    { id: 'family_apartment', label: t('Apartamente de familie', 'Family Duplexes', 'Familienapartments', 'Familieleiligheter'), icon: <Users className="w-3.5 h-3.5" /> },
   ];
 
   return (
@@ -40,16 +43,14 @@ export const PropertyFilter: React.FC<PropertyFilterProps> = ({
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#EAE2D8] pb-4">
         <div>
           <span className="text-emerald-700 font-semibold text-xs tracking-[0.25em] uppercase block mb-1">
-            {isRO ? 'Cazare Exclusivistă' : 'Exclusive Accommodation'}
+            {t('Cazare exclusivistă', 'Exclusive Accommodation', 'Exklusive Unterkunft', 'Eksklusiv overnatting')}
           </span>
           <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
-            {isRO ? 'Camere, Suite & Apartamente de Lux' : 'Luxury Hotel Suites & Family Duplexes'}
+            {t('Camere, suite & apartamente de lux', 'Luxury Hotel Suites & Family Duplexes', 'Luxuszimmer, Suiten & Familienapartments', 'Luksusrom, suiter og familieleiligheter')}
           </h2>
         </div>
         <p className="text-slate-600 text-xs sm:text-sm max-w-md">
-          {isRO 
-            ? 'Selectează tipul de cameră dorit și trimite solicitarea direct pe WhatsApp pentru confirmare instantă.'
-            : 'Explore our 3 room types and send instant booking inquiries directly to our host team.'}
+          {t('Selectează tipul de cameră dorit și trimite solicitarea direct pe WhatsApp pentru confirmare rapidă.', 'Explore our room types and send booking inquiries directly to our host team.', 'Entdecken Sie unsere Zimmer und senden Sie Ihre Buchungsanfrage direkt an unser Gastgeberteam.', 'Utforsk romtypene våre og send bestillingsforespørselen direkte til vertskapet.')}
         </p>
       </div>
 
@@ -81,7 +82,7 @@ export const PropertyFilter: React.FC<PropertyFilterProps> = ({
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder={isRO ? 'Caută după jacuzzi, vedere, balcon...' : 'Search by jacuzzi, view, balcony...'}
+            placeholder={t('Caută după jacuzzi, vedere, balcon...', 'Search by jacuzzi, view, balcony...', 'Nach Whirlpool, Aussicht, Balkon suchen...', 'Søk etter jacuzzi, utsikt, balkong...')}
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full bg-white text-slate-900 text-xs rounded-xl pl-9 pr-3 py-2.5 border border-[#EAE2D8] focus:outline-none focus:border-emerald-600"
@@ -91,4 +92,3 @@ export const PropertyFilter: React.FC<PropertyFilterProps> = ({
     </div>
   );
 };
-

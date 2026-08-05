@@ -44,8 +44,7 @@ export const RoomDetailModal: React.FC<RoomDetailModalProps> = ({
 
   const images = room.images && room.images.length > 0 ? room.images : [room.heroImage];
 
-  const currencySymbol = settings.currency === 'RON' ? 'RON' : settings.currency === 'USD' ? '$' : '€';
-  const displayPrice = settings.currency === 'RON' ? `${room.priceRON} RON` : `${currencySymbol}${room.priceEUR}`;
+  const displayPrice = settings.currency === 'RON' ? `${room.priceRON} RON` : settings.currency === 'NOK' ? `${Math.round(room.priceEUR * 12)} NOK` : settings.currency === 'USD' ? `$${room.priceEUR}` : `€${room.priceEUR}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/85 backdrop-blur-md overflow-y-auto">

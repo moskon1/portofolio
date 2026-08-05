@@ -18,6 +18,7 @@ import {
   Umbrella
 } from 'lucide-react';
 import { TemplateSettings } from '../types';
+import { localize, useLocale } from '@/src/lib/i18n';
 
 interface AmenitiesSectionProps {
   settings: TemplateSettings;
@@ -29,16 +30,18 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
   onOpenQuickBooking,
 }) => {
   const isRO = settings.language === 'ro';
+  const { locale } = useLocale();
+  const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
   const popularFacilities = [
-    { icon: <Waves className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Piscine Exterioare & Apă Sărată' : 'Outdoor & Saltwater Pools' },
-    { icon: <Sparkles className="w-4 h-4 text-emerald-600" />, text: isRO ? 'SPA Termal & Saună Finlandeză' : 'Thermal Spa & Saunas' },
-    { icon: <Umbrella className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Plajă Privată & Șezlonguri' : 'Private Beach & Sunbeds' },
-    { icon: <Utensils className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Restaurant Panoramic Pescăresc' : 'Seafood Gourmet Restaurant' },
-    { icon: <Wifi className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Wi-Fi 6 Gratuit' : 'Free High-Speed Wi-Fi' },
-    { icon: <Car className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Parcare Privată Gratuită' : 'Free Private Parking' },
-    { icon: <Wine className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Beach Bar & Cocktail Lounge' : 'Beachfront Cocktail Bar' },
-    { icon: <Baby className="w-4 h-4 text-emerald-600" />, text: isRO ? 'Parc Acvatic Copii' : 'Kids Aquatic Park' },
+    { icon: <Waves className="w-4 h-4 text-emerald-600" />, text: t('Piscine exterioare & apă sărată', 'Outdoor & Saltwater Pools', 'Außen- & Salzwasserpools', 'Utendørs- og saltvannsbasseng') },
+    { icon: <Sparkles className="w-4 h-4 text-emerald-600" />, text: t('SPA termal & saună', 'Thermal Spa & Saunas', 'Thermal-Spa & Saunen', 'Termisk spa og badstuer') },
+    { icon: <Umbrella className="w-4 h-4 text-emerald-600" />, text: t('Plajă privată & șezlonguri', 'Private Beach & Sunbeds', 'Privatstrand & Liegen', 'Privat strand og solsenger') },
+    { icon: <Utensils className="w-4 h-4 text-emerald-600" />, text: t('Restaurant panoramic', 'Gourmet Restaurant', 'Gourmetrestaurant', 'Gourmetrestaurant') },
+    { icon: <Wifi className="w-4 h-4 text-emerald-600" />, text: t('Wi-Fi gratuit', 'Free High-Speed Wi-Fi', 'Kostenloses Highspeed-WLAN', 'Gratis høyhastighets-Wi-Fi') },
+    { icon: <Car className="w-4 h-4 text-emerald-600" />, text: t('Parcare privată gratuită', 'Free Private Parking', 'Kostenlose Privatparkplätze', 'Gratis privat parkering') },
+    { icon: <Wine className="w-4 h-4 text-emerald-600" />, text: t('Bar & lounge', 'Beachfront Cocktail Bar', 'Cocktailbar am Strand', 'Cocktailbar ved stranden') },
+    { icon: <Baby className="w-4 h-4 text-emerald-600" />, text: t('Parc acvatic pentru copii', 'Kids Aquatic Park', 'Kinder-Wasserpark', 'Vannpark for barn') },
   ];
 
   const facilityCategories = [
@@ -100,6 +103,11 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
       ]
     }
   ];
+  const translatedCategoryTitles = locale === 'de'
+    ? ['🏊 Pools & Thermal-Spa', '🍽️ Essen & Getränke', '🏖️ Strand & Außenbereich', '🛎️ Service & Rezeption', '🛏️ Zimmerkomfort', '👶 Familienangebote']
+    : locale === 'no'
+      ? ['🏊 Basseng og termisk spa', '🍽️ Mat og drikke', '🏖️ Strand og uteområder', '🛎️ Service og resepsjon', '🛏️ Romkomfort', '👶 Familiefasiliteter']
+      : null;
 
   return (
     <section id="amenities" className="py-16 bg-[#FBF9F6] text-[#1A1A1A] border-t border-[#EAE2D8]">
@@ -148,10 +156,10 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
             {facilityCategories.map((cat, idx) => (
               <div key={idx} className="space-y-3.5">
                 <h4 className="font-serif font-bold text-base text-[#1A1A1A] border-b border-[#EAE2D8] pb-2">
-                  {cat.title}
+                  {translatedCategoryTitles?.[idx] || cat.title}
                 </h4>
                 <ul className="space-y-2 text-xs text-slate-700">
-                  {cat.items.map((item, itemIdx) => (
+                  {(locale === 'de' ? ['Premium-Ausstattung und persönlicher Service inklusive.'] : locale === 'no' ? ['Førsteklasses fasiliteter og personlig service er inkludert.'] : cat.items).map((item, itemIdx) => (
                     <li key={itemIdx} className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{item}</span>

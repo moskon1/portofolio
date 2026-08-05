@@ -30,13 +30,13 @@ const projects = [
     link: "https://4chad.xyz"
   },
   {
-    title: "ChadBet",
-    category: "Solana iGaming",
-    image: "https://chadbet.xyz/icon-512.png",
-    description: "A high-performance decentralized betting platform on Solana. Provably fair gaming with instant payouts and zero-latency interactions powered by custom RPCs.",
-    tech: ["Rust", "Anchor", "WebSockets", "React", "Solana Web3.js"],
-    outcome: "Processed over 1M SOL in volume with sub-second transaction finality and 99.9% uptime.",
-    link: "https://chadbet.xyz/"
+    title: "Fusemon",
+    category: "Solana Trading Card Game",
+    image: "https://www.fusemon.fun/assets/logo-B4c934aD.png",
+    description: "A competitive blockchain trading card game with collectible cards, booster packs, marketplace trading, spectator betting, and live PvP battles powered by Solana.",
+    tech: ["React", "TypeScript", "Solana", "Web3"],
+    outcome: "Built a connected game economy spanning card collection, deck building, marketplace activity, and competitive token-powered battles.",
+    link: "https://www.fusemon.fun/"
   },
   {
     title: "SpinSaga",
@@ -111,7 +111,7 @@ export default function Portfolio() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`${project.title === 'ProArt Studio' ? 'w-[38%] h-[38%] object-contain translate-y-3' : ['4Chad', 'SpinSaga'].includes(project.title) ? 'w-[58%] h-[58%] object-contain translate-y-3' : ['ChadBet', 'Jah Order Sound System'].includes(project.title) ? 'w-[68%] h-[68%] object-contain translate-y-2' : 'w-full h-full object-cover'} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
+                      className={`${project.title === 'ProArt Studio' ? 'w-[38%] h-[38%] object-contain translate-y-3' : ['4Chad', 'SpinSaga'].includes(project.title) ? 'w-[58%] h-[58%] object-contain translate-y-3' : ['Fusemon', 'Jah Order Sound System'].includes(project.title) ? 'w-[68%] h-[68%] object-contain translate-y-2' : 'w-full h-full object-cover'} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
                       referrerPolicy="no-referrer"
                     />
                   ) : (

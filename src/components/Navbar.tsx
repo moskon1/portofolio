@@ -28,7 +28,6 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="NodeStack" className="h-10 w-10 object-contain" />
               <span className="text-2xl font-bold text-white tracking-tight">Node<span className="text-brand">Stack</span></span>
             </Link>
           </div>

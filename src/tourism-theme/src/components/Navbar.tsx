@@ -3,10 +3,7 @@ import {
   Phone, 
   MessageSquare, 
   Menu, 
-  X, 
-  Sparkles, 
-  Building,
-  Home
+  X
 } from 'lucide-react';
 import { TemplateSettings } from '../types';
 import { openDirectWhatsAppChat } from '../utils/whatsapp';
@@ -58,9 +55,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
         {/* Brand / Logo */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/10">
-            <Building className="w-4 h-4" />
-          </div>
           <div className="min-w-0">
             <span className="font-serif text-base sm:text-xl font-bold tracking-tight text-white block truncate">
               {settings.propertyName}
@@ -112,14 +106,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="lg:hidden flex items-center gap-2 shrink-0">
-          <select
-            value={locale}
-            onChange={(event) => setLocale(event.target.value as typeof locale)}
-            aria-label="Select language"
-            className="h-10 bg-slate-800 text-slate-200 text-xs font-bold rounded-xl px-2 border border-slate-700 outline-none"
-          >
-            {localeOptions.map((option) => <option key={option.value} value={option.value}>{option.short}</option>)}
-          </select>
           <button
             onClick={onOpenQuickBooking}
             className="w-10 h-10 flex items-center justify-center rounded-xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 active:scale-95 transition"
@@ -141,6 +127,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-slate-900/98 backdrop-blur-xl border-t border-slate-800 px-3 sm:px-6 pt-3 pb-5 space-y-4 shadow-2xl animate-in slide-in-from-top duration-200">
+          <div className="flex items-center justify-between gap-4 rounded-xl bg-slate-800/60 border border-slate-700/70 px-4 py-3">
+            <label htmlFor="hospitality-mobile-language" className="text-sm font-semibold text-slate-300">{t('Limbă', 'Language', 'Sprache', 'Språk')}</label>
+            <select
+              id="hospitality-mobile-language"
+              value={locale}
+              onChange={(event) => setLocale(event.target.value as typeof locale)}
+              aria-label="Select language"
+              className="bg-slate-900 text-slate-200 text-xs font-bold rounded-lg px-3 py-2 border border-slate-700 outline-none focus:border-amber-400"
+            >
+              {localeOptions.map((option) => <option key={option.value} value={option.value}>{option.short}</option>)}
+            </select>
+          </div>
           <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <button

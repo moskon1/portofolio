@@ -7,9 +7,7 @@ import {
   ShieldCheck, 
   Instagram, 
   Facebook, 
-  ArrowUp,
-  Building2,
-  Home
+  ArrowUp
 } from 'lucide-react';
 import { TemplateSettings } from '../types';
 import { localize, useLocale } from '@/src/lib/i18n';

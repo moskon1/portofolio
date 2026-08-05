@@ -117,7 +117,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
           </span>
 
           {room.isPopular && (
-            <span className="flex items-center gap-1 text-[10px] font-bold uppercase px-2 py-1 rounded-full bg-rose-600 text-white shadow-md">
+            <span className="hidden sm:flex items-center gap-1 text-[10px] font-bold uppercase px-2 py-1 rounded-full bg-rose-600 text-white shadow-md">
               <Sparkles className="w-3 h-3" />
               <span>{t('Recomandat', 'Popular', 'Beliebt', 'Populært')}</span>
             </span>

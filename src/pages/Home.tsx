@@ -1,18 +1,34 @@
 import { motion } from 'motion/react';
-import { ArrowLeft, ArrowRight, ChevronDown, Cpu, Code2, Layout, MessageCircle, ShieldCheck } from 'lucide-react';
-import { useRef } from 'react';
+import { ArrowLeft, ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { cn } from '@/src/lib/utils';
 import { localize, useLocale } from '@/src/lib/i18n';
 import { ServiceShowcaseVisual } from './ServiceDetail';
 
-const techStack = [
-  { name: 'Rust', icon: <Cpu className="h-6 w-6" />, color: 'text-orange-500' },
-  { name: 'Anchor', icon: <ShieldCheck className="h-6 w-6" />, color: 'text-brand' },
-  { name: 'React', icon: <Code2 className="h-6 w-6" />, color: 'text-blue-400' },
-  { name: 'TypeScript', icon: <Cpu className="h-6 w-6" />, color: 'text-blue-500' },
-  { name: 'Solidity', icon: <ShieldCheck className="h-6 w-6" />, color: 'text-slate-300' },
-  { name: 'Next.js', icon: <Layout className="h-6 w-6" />, color: 'text-white' },
+const techStack: { name: string; logo: string; invert?: boolean }[] = [
+  { name: 'React', logo: 'https://cdn.simpleicons.org/react/61DAFB' },
+  { name: 'TypeScript', logo: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF' },
+  { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/5FA04E' },
+  { name: 'Python', logo: 'https://cdn.simpleicons.org/python/3776AB' },
+  { name: 'OpenAI / AI', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg', invert: true },
+  { name: 'REST APIs', logo: 'https://cdn.simpleicons.org/swagger/85EA2D' },
+  { name: 'FastAPI', logo: 'https://cdn.simpleicons.org/fastapi/009688' },
+  { name: 'Express.js', logo: 'https://cdn.simpleicons.org/express/FFFFFF' },
+  { name: 'Postman', logo: 'https://cdn.simpleicons.org/postman/FF6C37' },
+  { name: 'PostgreSQL', logo: 'https://cdn.simpleicons.org/postgresql/4169E1' },
+  { name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
+  { name: 'Docker', logo: 'https://cdn.simpleicons.org/docker/2496ED' },
+  { name: 'Linux', logo: 'https://cdn.simpleicons.org/linux/FCC624' },
+  { name: 'Cloudflare', logo: 'https://cdn.simpleicons.org/cloudflare/F38020' },
+  { name: 'Tailwind CSS', logo: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'Git', logo: 'https://cdn.simpleicons.org/git/F05032' },
+  { name: 'Rust', logo: 'https://cdn.simpleicons.org/rust/FFFFFF' },
+  { name: 'Solana', logo: 'https://cdn.simpleicons.org/solana/9945FF' },
+  { name: 'Ethereum / EVM', logo: 'https://cdn.simpleicons.org/ethereum/8C8C8C' },
+  { name: 'Solidity', logo: 'https://cdn.simpleicons.org/solidity/FFFFFF' },
+  { name: 'Polygon', logo: 'https://cdn.simpleicons.org/polygon/8247E5' },
+  { name: 'Vite', logo: 'https://cdn.simpleicons.org/vite/646CFF' },
 ];
 
 const portfolioPreview = [
@@ -62,8 +78,32 @@ export default function Home() {
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
   const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
+  const stackCarousel = useRef<HTMLDivElement>(null);
   const servicesCarousel = useRef<HTMLDivElement>(null);
+  const moveStack = (direction: -1 | 1) => {
+    const carousel = stackCarousel.current;
+    if (!carousel) return;
+    carousel.scrollLeft += direction * carousel.clientWidth * 0.9;
+  };
   const moveServices = (direction: -1 | 1) => servicesCarousel.current?.scrollBy({ left: direction * servicesCarousel.current.clientWidth * 0.82, behavior: 'smooth' });
+
+  useEffect(() => {
+    const carousel = stackCarousel.current;
+    if (!carousel) return;
+    const getSetWidth = () => {
+      const firstItem = carousel.children[0] as HTMLElement | undefined;
+      const repeatedItem = carousel.children[techStack.length] as HTMLElement | undefined;
+      return firstItem && repeatedItem ? repeatedItem.offsetLeft - firstItem.offsetLeft : carousel.scrollWidth / 3;
+    };
+    carousel.scrollLeft = getSetWidth();
+    const timer = window.setInterval(() => {
+      const setWidth = getSetWidth();
+      carousel.scrollLeft += 1;
+      if (carousel.scrollLeft >= setWidth * 2) carousel.scrollLeft -= setWidth;
+      if (carousel.scrollLeft <= 0) carousel.scrollLeft += setWidth;
+    }, 30);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <div className="pt-20 bg-slate-950">
@@ -110,16 +150,20 @@ export default function Home() {
       {/* Tech Stack Section */}
       <section className="py-20 border-y border-white/5 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-slate-500 font-mono text-sm uppercase tracking-widest mb-12">{t('Tehnologiile noastre principale', 'Our Core Technology Stack', 'Unser Technologie-Stack', 'Vår teknologistack')}</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {techStack.map((tech) => (
-              <div key={tech.name} className="flex flex-col items-center space-y-3 group grayscale hover:grayscale-0 transition-all">
-                <div className={cn("p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:border-brand/50 transition-colors", tech.color)}>
-                  {tech.icon}
+          <div className="flex items-end justify-between gap-6 mb-10">
+            <div><p className="text-slate-500 font-mono text-sm uppercase tracking-widest mb-2">{t('Tehnologiile noastre principale', 'Our Core Technology Stack', 'Unser Technologie-Stack', 'Vår teknologistack')}</p><p className="text-sm text-slate-600">Frontend · Backend · AI · REST APIs · Databases · Cloud · Web3</p></div>
+          </div>
+          <div className="relative">
+            <div ref={stackCarousel} className="flex gap-4 overflow-x-auto px-1 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {[...techStack, ...techStack, ...techStack].map((tech, index) => (
+                <div key={`${tech.name}-${index}`} aria-hidden={index >= techStack.length ? true : undefined} className="shrink-0 w-36 sm:w-40 h-36 rounded-2xl bg-white/[.035] border border-white/10 flex flex-col items-center justify-center gap-4 group hover:border-brand/40 hover:bg-white/[.06] transition">
+                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-slate-950 border border-white/10 group-hover:scale-105 transition"><img src={tech.logo} alt="" loading="lazy" className={`h-7 w-7 object-contain ${tech.invert ? 'brightness-0 invert' : ''}`}/></div>
+                  <span className="text-slate-400 text-sm font-semibold group-hover:text-white transition-colors">{tech.name}</span>
                 </div>
-                <span className="text-slate-400 text-sm font-medium group-hover:text-white transition-colors">{tech.name}</span>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button onClick={()=>moveStack(-1)} aria-label={t('Tehnologia anterioară','Previous technology','Vorherige Technologie','Forrige teknologi')} className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-slate-950/90 text-white shadow-xl hover:bg-brand transition"><ArrowLeft className="h-4 w-4"/></button>
+            <button onClick={()=>moveStack(1)} aria-label={t('Tehnologia următoare','Next technology','Nächste Technologie','Neste teknologi')} className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-slate-950/90 text-white shadow-xl hover:bg-brand transition"><ArrowRight className="h-4 w-4"/></button>
           </div>
         </div>
       </section>
@@ -208,7 +252,7 @@ export default function Home() {
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                      className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                     />
                   ) : (
                     <span className="text-slate-200 text-xl md:text-2xl tracking-wider font-black text-center group-hover:scale-110 transition-transform duration-500">

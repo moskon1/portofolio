@@ -15,7 +15,6 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="NodeStack" className="h-10 w-10 object-contain" />
               <span className="text-2xl font-bold text-white tracking-tight">Node<span className="text-brand">Stack</span></span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">

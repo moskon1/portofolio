@@ -52,12 +52,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md text-white border-b border-amber-500/20 shadow-xl">
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
         {/* Brand / Logo */}
-        <div className="flex items-center">
-          <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-white block">
-            {settings.propertyName}
-          </span>
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/10">
+            <Building className="w-4 h-4" />
+          </div>
+          <div className="min-w-0">
+            <span className="font-serif text-base sm:text-xl font-bold tracking-tight text-white block truncate">
+              {settings.propertyName}
+            </span>
+            <span className="block lg:hidden text-[10px] text-slate-400 truncate">{settings.cityRegion}</span>
+          </div>
         </div>
 
         {/* Desktop Navigation Links */}
@@ -74,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Action Buttons Right */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           {/* Quick Phone Call Link */}
           <a
             href={`tel:${settings.displayPhone}`}
@@ -94,38 +100,54 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </div>
 
-        {/* Mobile Menu Trigger */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden text-slate-300 hover:text-white p-2 rounded-lg bg-slate-800 border border-slate-700"
-          aria-label="Toggle navigation menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2 shrink-0">
+          <button
+            onClick={onOpenQuickBooking}
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 active:scale-95 transition"
+            aria-label={isRO ? 'Rezervare pe WhatsApp' : 'Book on WhatsApp'}
+          >
+            <MessageSquare className="w-4 h-4 fill-white" />
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="w-10 h-10 flex items-center justify-center text-slate-200 rounded-xl bg-slate-800 border border-slate-700 active:scale-95 transition"
+            aria-label={isRO ? 'Deschide meniul' : 'Toggle navigation menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 animate-in slide-in-from-top duration-200">
-          <div className="space-y-1">
+        <div className="lg:hidden bg-slate-900/98 backdrop-blur-xl border-t border-slate-800 px-3 sm:px-6 pt-3 pb-5 space-y-4 shadow-2xl animate-in slide-in-from-top duration-200">
+          <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link)}
-                className="w-full text-left px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 transition"
+                className="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-200 bg-slate-800/60 border border-slate-700/70 hover:border-amber-500/40 hover:text-amber-300 transition"
               >
                 {link.label}
               </button>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-slate-800 space-y-2">
+          <div className="pt-4 border-t border-slate-800 grid grid-cols-[0.8fr_1.2fr] gap-2">
+            <a
+              href={`tel:${settings.displayPhone}`}
+              className="flex items-center justify-center gap-2 bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs px-3 py-3 rounded-xl"
+            >
+              <Phone className="w-4 h-4 text-amber-400" />
+              <span>{isRO ? 'Sună' : 'Call'}</span>
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQuickBooking();
               }}
-              className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white font-semibold text-sm py-3 rounded-xl shadow-lg shadow-emerald-600/30"
+              className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white font-semibold text-xs py-3 rounded-xl shadow-lg shadow-emerald-600/30"
             >
               <MessageSquare className="w-4 h-4 fill-white" />
               <span>{isRO ? 'Rezervare Rapidă WhatsApp' : 'Quick WhatsApp Booking'}</span>

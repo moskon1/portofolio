@@ -20,7 +20,7 @@ const portfolioPreview = [
     link: "/demos/hospitality",
   },
     {
-    title: "ProArt Chi",
+    title: "ProArt Studio",
     category: "Recording Studio Website",
     image: "https://proartstudio.ro/about-800.webp",
     

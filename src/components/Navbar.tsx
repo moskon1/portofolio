@@ -17,8 +17,8 @@ export default function Navbar() {
   const serviceLinks = [
     { name: localize(locale,{ro:'Website-uri de prezentare',en:'Business Websites',de:'Unternehmenswebsites',no:'Bedriftsnettsider'}), href:'/services/websites', icon: Globe2 },
     { name: localize(locale,{ro:'Website-uri Hospitality',en:'Hospitality Websites',de:'Hospitality-Websites',no:'Nettsider for reiseliv'}), href:'/services/hospitality', icon: Hotel },
-    { name: localize(locale,{ro:'Optimizare SEO',en:'SEO Optimization',de:'SEO-Optimierung',no:'SEO-optimalisering'}), href:'/services/seo', icon: Search },
     { name: localize(locale,{ro:'Aplicații Web',en:'Web Applications',de:'Webanwendungen',no:'Webapplikasjoner'}), href:'/services/web-applications', icon: Code2 },
+     { name: localize(locale,{ro:'Optimizare SEO',en:'SEO Optimization',de:'SEO-Optimierung',no:'SEO-optimalisering'}), href:'/services/seo', icon: Search },
   ];
   const getStarted = localize(locale, { ro: 'Începe un proiect', en: 'Get Started', de: 'Projekt starten', no: 'Start et prosjekt' });
 

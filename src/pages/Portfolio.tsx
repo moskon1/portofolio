@@ -126,12 +126,12 @@ export default function Portfolio() {
                 transition={{ delay: idx * 0.1 }}
                 className="glass rounded-3xl overflow-hidden hover:border-brand/50 transition-all group"
               >
-                <div className="aspect-video overflow-hidden relative bg-slate-900/50 flex items-center justify-center">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`${t('Vizitează', 'Visit', 'Besuchen', 'Besøk')} ${project.title}`} className="aspect-video overflow-hidden relative bg-slate-900/50 flex items-center justify-center">
                   {project.image ? (
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                      className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                       referrerPolicy="no-referrer"
                     />
                   ) : (
@@ -142,7 +142,7 @@ export default function Portfolio() {
                   <div className="absolute top-4 left-4 bg-slate-950/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-brand uppercase tracking-wider border border-white/10">
                     {project.category}
                   </div>
-                </div>
+                </a>
                 <div className="p-8 lg:p-10">
                   <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
                   <p className="text-slate-400 mb-6 leading-relaxed">
@@ -175,7 +175,7 @@ export default function Portfolio() {
                       className="flex items-center space-x-2 text-brand font-bold hover:text-brand-dark transition-colors"
                     >
                       <ExternalLink className="h-5 w-5" />
-                      <span>{t('Demo live', 'Live Demo', 'Live-Demo', 'Live-demo')}</span>
+                      <span>{t('Vizitează', 'Visit', 'Besuchen', 'Besøk')}</span>
                     </a>
                     <button className="flex items-center space-x-2 text-slate-500 font-bold hover:text-slate-300 transition-colors">
                       <Github className="h-5 w-5" />

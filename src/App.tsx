@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import ServiceDetail from './pages/ServiceDetail';
 import { I18nProvider, useLocale } from './lib/i18n';
 
 const TourismDemo = lazy(() => import('./tourism-theme/src/App'));
@@ -87,7 +87,11 @@ function AppShell() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/services" element={<Navigate to="/services/websites" replace />} />
+            <Route path="/services/websites" element={<ServiceDetail serviceKey="websites" />} />
+            <Route path="/services/hospitality" element={<ServiceDetail serviceKey="hospitality" />} />
+            <Route path="/services/seo" element={<ServiceDetail serviceKey="seo" />} />
+            <Route path="/services/web-applications" element={<ServiceDetail serviceKey="web-applications" />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
             <Route

@@ -1,8 +1,10 @@
 import { motion } from 'motion/react';
-import { ArrowRight, CheckCircle2, Cpu, Code2, Database, Layout, MessageCircle, ShieldCheck, Globe } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown, Cpu, Code2, Layout, MessageCircle, ShieldCheck } from 'lucide-react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
 import { localize, useLocale } from '@/src/lib/i18n';
+import { ServiceShowcaseVisual } from './ServiceDetail';
 
 const techStack = [
   { name: 'Rust', icon: <Cpu className="h-6 w-6" />, color: 'text-orange-500' },
@@ -60,6 +62,8 @@ export default function Home() {
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
   const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
+  const servicesCarousel = useRef<HTMLDivElement>(null);
+  const moveServices = (direction: -1 | 1) => servicesCarousel.current?.scrollBy({ left: direction * servicesCarousel.current.clientWidth * 0.82, behavior: 'smooth' });
 
   return (
     <div className="pt-20 bg-slate-950">
@@ -121,56 +125,57 @@ export default function Home() {
       </section>
 
       {/* Services Landing Section */}
-      <section className="py-24 relative">
+      <section className="py-24 lg:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-5xl font-bold mb-6">{t('Ce', 'What We', 'Was wir', 'Hva vi')} <span className="text-brand">{t('Construim', 'Build', 'entwickeln', 'bygger')}</span>.</h2>
-              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                {t('Dezvoltăm sisteme performante și aplicații descentralizate, axate pe viteză, securitate și scalabilitate.', 'We engineer high-throughput systems and decentralized applications with a focus on performance, security, and scalability.', 'Wir entwickeln leistungsstarke Systeme und dezentrale Anwendungen mit Fokus auf Performance, Sicherheit und Skalierbarkeit.', 'Vi utvikler høytytende systemer og desentraliserte applikasjoner med fokus på ytelse, sikkerhet og skalerbarhet.')}
-              </p>
-              <ul className="space-y-4 mb-10">
-                {[
-                  t('Aplicații web full-stack', 'Full-Stack Web Applications', 'Full-Stack-Webanwendungen', 'Fullstack-nettapplikasjoner'),
-                  t('Sisteme backend bazate pe AI', 'AI-Powered Backend Systems', 'KI-gestützte Backend-Systeme', 'KI-drevne backendsystemer'),
-                  t('Sisteme descentralizate (Rust/Solidity)', 'Decentralized Systems (Rust/Solidity)', 'Dezentrale Systeme (Rust/Solidity)', 'Desentraliserte systemer (Rust/Solidity)'),
-                  t('Infrastructură cloud', 'Cloud Infrastructure', 'Cloud-Infrastruktur', 'Skyinfrastruktur'),
-                ].map((item) => (
-                  <li key={item} className="flex items-center space-x-3 text-slate-300">
-                    <CheckCircle2 className="h-5 w-5 text-brand" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/services" className="text-brand font-bold flex items-center hover:underline">
-                {t('Vezi toate serviciile', 'View all services', 'Alle Leistungen', 'Se alle tjenester')} <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+          <div className="max-w-3xl mb-14">
+            <div className="max-w-3xl">
+              <span className="text-brand font-mono text-sm uppercase tracking-[.2em]">{t('Serviciile noastre','Our services','Unsere Leistungen','Våre tjenester')}</span>
+              <h2 className="text-4xl lg:text-6xl font-bold mt-4 mb-5">{t('Ce putem construi pentru tine.','What we can build for you.','Was wir für Sie entwickeln können.','Hva vi kan bygge for deg.')}</h2>
+              <p className="text-lg text-slate-400">{t('De la prezență online și vizibilitate în Google până la platforme digitale complexe.','From online presence and Google visibility to complex digital platforms.','Von Online-Präsenz und Google-Sichtbarkeit bis zu komplexen digitalen Plattformen.','Fra digital tilstedeværelse og Google-synlighet til komplekse digitale plattformer.')}</p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="glass p-6 rounded-2xl">
-                  <ShieldCheck className="h-8 w-8 text-brand mb-4" />
-                  <h3 className="font-bold mb-2">Web3</h3>
-                  <p className="text-xs text-slate-500">Rust, Anchor, Solana</p>
-                </div>
-                <div className="glass p-6 rounded-2xl">
-                  <Database className="h-8 w-8 text-accent mb-4" />
-                  <h3 className="font-bold mb-2">Backend</h3>
-                  <p className="text-xs text-slate-500">APIs, AI Integration</p>
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="glass p-6 rounded-2xl">
-                  <Globe className="h-8 w-8 text-purple-400 mb-4" />
-                  <h3 className="font-bold mb-2">Growth</h3>
-                  <p className="text-xs text-slate-500">SEO, Analytics</p>
-                </div>
-                <div className="glass p-6 rounded-2xl">
-                  <Code2 className="h-8 w-8 text-green-400 mb-4" />
-                  <h3 className="font-bold mb-2">DevOps</h3>
-                  <p className="text-xs text-slate-500">Cloud, CI/CD</p>
-                </div>
-              </div>
+          </div>
+          <div className="relative">
+          <div ref={servicesCarousel} className="flex gap-5 sm:gap-7 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-5 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {[
+              { title:t('Website-uri de prezentare','Business Websites','Unternehmenswebsites','Bedriftsnettsider'), desc:t('Website-uri rapide și convingătoare care transformă vizitatorii în clienți.','Fast, persuasive websites that turn visitors into clients.','Schnelle, überzeugende Websites, die Besucher in Kunden verwandeln.','Raske, overbevisende nettsider som gjør besøkende til kunder.'), href:'/services/websites', visual:'website' },
+              { title:t('Website-uri Hospitality','Hospitality Websites','Hospitality-Websites','Nettsider for reiseliv'), desc:t('Experiențe premium pentru hoteluri și vile, create pentru rezervări directe.','Premium hotel and villa experiences designed for direct bookings.','Premium-Erlebnisse für Hotels und Villen, entwickelt für Direktbuchungen.','Førsteklasses opplevelser for hotell og villa, bygget for direktebestilling.'), href:'/services/hospitality', visual:'hotel' },
+              { title:t('Optimizare SEO','SEO Optimization','SEO-Optimierung','SEO-optimalisering'), desc:t('Fundație tehnică, conținut și SEO local pentru vizibilitate măsurabilă.','Technical foundations, content and local SEO for measurable visibility.','Technik, Inhalte und lokale SEO für messbare Sichtbarkeit.','Teknisk grunnlag, innhold og lokal SEO for målbar synlighet.'), href:'/services/seo', visual:'seo' },
+              { title:t('Aplicații Web','Web Applications','Webanwendungen','Webapplikasjoner'), desc:t('Platforme, automatizări și produse custom construite în jurul afacerii tale.','Platforms, automation and custom products built around your business.','Plattformen, Automatisierungen und individuelle Produkte für Ihr Unternehmen.','Plattformer, automatisering og skreddersydde produkter for virksomheten din.'), href:'/services/web-applications', visual:'app' },
+            ].map((service,i)=><motion.article key={service.href} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.07}} className="group glass rounded-[2rem] overflow-hidden hover:border-brand/40 transition shrink-0 snap-start w-[88vw] sm:w-[72vw] lg:w-[calc(50%-0.875rem)]"><div className="bg-slate-950 border-b border-white/5"><ServiceShowcaseVisual type={service.visual}/></div><div className="p-7 sm:p-8"><h3 className="text-2xl mb-3">{service.title}</h3><p className="text-slate-400 leading-relaxed mb-6 min-h-14">{service.desc}</p><Link to={service.href} className="inline-flex items-center text-brand font-bold">{t('Descoperă serviciul','Explore service','Leistung entdecken','Utforsk tjenesten')}<ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition"/></Link></div></motion.article>)}
+          </div>
+          <button onClick={()=>moveServices(-1)} aria-label={t('Serviciul anterior','Previous service','Vorherige Leistung','Forrige tjeneste')} className="absolute left-1 sm:-left-6 top-1/2 -translate-y-1/2 z-30 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-slate-950/90 backdrop-blur text-white shadow-xl hover:bg-brand hover:border-brand transition"><ArrowLeft className="h-5 w-5"/></button>
+          <button onClick={()=>moveServices(1)} aria-label={t('Serviciul următor','Next service','Nächste Leistung','Neste tjeneste')} className="absolute right-1 sm:-right-6 top-1/2 -translate-y-1/2 z-30 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-slate-950/90 backdrop-blur text-white shadow-xl hover:bg-brand hover:border-brand transition"><ArrowRight className="h-5 w-5"/></button>
+          </div>
+          <p className="mt-3 text-xs text-slate-600 md:hidden">{t('Glisează pentru mai multe servicii','Swipe for more services','Wischen für weitere Leistungen','Sveip for flere tjenester')} →</p>
+        </div>
+      </section>
+
+      {/* Process & FAQ */}
+      <section className="py-24 lg:py-32 border-y border-white/5 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-brand font-mono text-sm uppercase tracking-[.2em]">{t('Cum lucrăm','How we work','So arbeiten wir','Slik jobber vi')}</span>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4 mb-5">{t('De la idee la lansare.','From idea to launch.','Von der Idee bis zum Start.','Fra idé til lansering.')}</h2>
+            <p className="text-lg text-slate-400">{t('Un proces simplu și transparent, cu pași clari și comunicare directă.','A simple, transparent process with clear steps and direct communication.','Ein einfacher, transparenter Prozess mit klaren Schritten und direkter Kommunikation.','En enkel og transparent prosess med tydelige steg og direkte kommunikasjon.')}</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-3xl overflow-hidden mb-24">
+            {[
+              {title:t('Descoperire','Discovery','Analyse','Kartlegging'),desc:t('Înțelegem afacerea, publicul și obiectivele tale.','We understand your business, audience and goals.','Wir verstehen Ihr Unternehmen, Ihre Zielgruppe und Ihre Ziele.','Vi forstår virksomheten, målgruppen og målene dine.')},
+              {title:t('Design','Design','Design','Design'),desc:t('Definim structura, experiența și direcția vizuală.','We define structure, experience and visual direction.','Wir definieren Struktur, Erlebnis und visuelle Richtung.','Vi definerer struktur, opplevelse og visuell retning.')},
+              {title:t('Dezvoltare','Development','Entwicklung','Utvikling'),desc:t('Construim, integrăm și testăm pe toate dispozitivele.','We build, integrate and test across devices.','Wir entwickeln, integrieren und testen auf allen Geräten.','Vi bygger, integrerer og tester på alle enheter.')},
+              {title:t('Lansare','Launch','Veröffentlichung','Lansering'),desc:t('Publicăm, măsurăm rezultatele și îmbunătățim.','We publish, measure results and improve.','Wir veröffentlichen, messen Ergebnisse und optimieren.','Vi publiserer, måler resultater og forbedrer.')},
+            ].map((step,i)=><motion.article key={step.title} initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.08}} className="bg-slate-950 p-7 lg:p-9 min-h-56 group"><div className="flex items-center justify-between"><span className="font-mono text-brand text-sm">0{i+1}</span><span className="h-px w-10 bg-white/10 group-hover:bg-brand transition"/></div><h3 className="text-xl mt-10 mb-3">{step.title}</h3><p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p></motion.article>)}
+          </div>
+
+          <div className="grid lg:grid-cols-[.75fr_1.25fr] gap-12 lg:gap-20 items-start">
+            <div className="lg:sticky lg:top-32"><span className="text-brand font-mono text-sm uppercase tracking-[.2em]">FAQ</span><h2 className="text-4xl lg:text-5xl font-bold mt-4 mb-5">{t('Întrebări frecvente.','Common questions.','Häufige Fragen.','Vanlige spørsmål.')}</h2><p className="text-slate-400 leading-relaxed">{t('Răspunsuri rapide despre costuri, termene și colaborarea cu NodeStack.','Quick answers about costs, timelines and working with NodeStack.','Kurze Antworten zu Kosten, Zeitrahmen und der Zusammenarbeit mit NodeStack.','Raske svar om kostnader, tidslinjer og samarbeid med NodeStack.')}</p></div>
+            <div className="space-y-3">
+              {[
+                {q:t('Cât durează realizarea unui website?','How long does a website take?','Wie lange dauert eine Website?','Hvor lang tid tar en nettside?'),a:t('Un website de prezentare simplu durează, de regulă, între 1 și 3 săptămâni. Proiectele cu integrări sau conținut complex necesită mai mult timp.','A simple presentation website usually takes 1–3 weeks. Projects with integrations or complex content require more time.','Eine einfache Unternehmenswebsite dauert in der Regel 1–3 Wochen. Projekte mit Integrationen oder komplexen Inhalten benötigen mehr Zeit.','En enkel presentasjonsnettside tar vanligvis 1–3 uker. Prosjekter med integrasjoner eller komplekst innhold krever mer tid.')},
+                {q:t('Domeniul și găzduirea sunt incluse?','Are domain and hosting included?','Sind Domain und Hosting inklusive?','Er domene og hosting inkludert?'),a:t('Da. Pachetul Esențial include domeniul pentru primul an, Cloudflare, SSL, securitate și găzduire administrată.','Yes. The Essential package includes the first-year domain, Cloudflare, SSL, security and managed hosting.','Ja. Das Basispaket enthält die Domain im ersten Jahr, Cloudflare, SSL, Sicherheit und verwaltetes Hosting.','Ja. Basispakken inkluderer domene første år, Cloudflare, SSL, sikkerhet og administrert hosting.')},
+                {q:t('SEO este inclus în website?','Is SEO included with the website?','Ist SEO in der Website enthalten?','Er SEO inkludert med nettsiden?'),a:t('Toate website-urile includ fundația SEO tehnică și on-page. Pentru cercetare avansată, conținut și creștere continuă oferim serviciul SEO dedicat.','Every website includes technical and basic on-page SEO. For advanced research, content and continuous growth, we offer a dedicated SEO service.','Jede Website enthält technische und grundlegende On-Page-SEO. Für erweiterte Recherche, Inhalte und kontinuierliches Wachstum bieten wir einen eigenen SEO-Service.','Alle nettsider inkluderer teknisk og grunnleggende on-page SEO. For avansert analyse, innhold og kontinuerlig vekst tilbyr vi en egen SEO-tjeneste.')},
+                {q:t('Putem continua colaborarea după lansare?','Can we continue working together after launch?','Können wir nach dem Start weiter zusammenarbeiten?','Kan vi fortsette samarbeidet etter lansering?'),a:t('Da. Oferim mentenanță, monitorizare, actualizări, optimizare SEO și dezvoltarea de funcționalități noi.','Yes. We provide maintenance, monitoring, updates, SEO optimization and development of new functionality.','Ja. Wir bieten Wartung, Monitoring, Updates, SEO-Optimierung und die Entwicklung neuer Funktionen.','Ja. Vi tilbyr vedlikehold, overvåking, oppdateringer, SEO-optimalisering og utvikling av ny funksjonalitet.')},
+              ].map((item,i)=><details key={item.q} className="group rounded-2xl border border-white/10 bg-slate-950/70 open:border-brand/30 transition"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 text-white font-semibold [&::-webkit-details-marker]:hidden"><span><span className="font-mono text-xs text-slate-600 mr-4">0{i+1}</span>{item.q}</span><ChevronDown className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-180 group-open:text-brand"/></summary><div className="px-6 pb-6 pl-14 text-sm leading-relaxed text-slate-400">{item.a}</div></details>)}
             </div>
           </div>
         </div>

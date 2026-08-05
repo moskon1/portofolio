@@ -27,7 +27,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-6">{t('Linkuri rapide', 'Quick Links', 'Schnellzugriff', 'Hurtiglenker')}</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</Link></li>
+              <li><Link to="/services/websites" className="hover:text-brand transition-colors">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</Link></li>
               <li><Link to="/portfolio" className="hover:text-brand transition-colors">{t('Portofoliu', 'Portfolio', 'Portfolio', 'Portefølje')}</Link></li>
               <li><Link to="/contact" className="hover:text-brand transition-colors">{t('Contact', 'Contact', 'Kontakt', 'Kontakt')}</Link></li>
             </ul>
@@ -37,10 +37,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-6">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Dezvoltare web', 'Web Development', 'Webentwicklung', 'Webutvikling')}</Link></li>
-              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Aplicații mobile', 'Mobile Apps', 'Mobile Apps', 'Mobilapper')}</Link></li>
-              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Design UI/UX', 'UI/UX Design', 'UI/UX-Design', 'UI/UX-design')}</Link></li>
-              <li><Link to="/services" className="hover:text-brand transition-colors">{t('Mentenanță', 'Maintenance', 'Wartung', 'Vedlikehold')}</Link></li>
+              <li><Link to="/services/websites" className="hover:text-brand transition-colors">{t('Website-uri', 'Business Websites', 'Websites', 'Nettsider')}</Link></li>
+              <li><Link to="/services/hospitality" className="hover:text-brand transition-colors">Hospitality</Link></li>
+              <li><Link to="/services/seo" className="hover:text-brand transition-colors">SEO</Link></li>
+              <li><Link to="/services/web-applications" className="hover:text-brand transition-colors">{t('Aplicații Web', 'Web Applications', 'Webanwendungen', 'Webapplikasjoner')}</Link></li>
             </ul>
           </div>
 

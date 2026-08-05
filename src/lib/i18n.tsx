@@ -5,6 +5,8 @@ export type Locale = 'ro' | 'en' | 'de' | 'no';
 const supportedLocales: Locale[] = ['ro', 'en', 'de', 'no'];
 
 function detectLocale(): Locale {
+  const urlLocale = new URLSearchParams(window.location.search).get('lang')?.toLowerCase();
+  if (urlLocale && supportedLocales.includes(urlLocale as Locale)) return urlLocale as Locale;
   const saved = localStorage.getItem('nodestack-locale')?.toLowerCase();
   if (saved && supportedLocales.includes(saved as Locale)) return saved as Locale;
 
@@ -29,6 +31,9 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const setLocale = (nextLocale: Locale) => {
     localStorage.setItem('nodestack-locale', nextLocale);
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', nextLocale);
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
     setLocaleState(nextLocale);
   };
 

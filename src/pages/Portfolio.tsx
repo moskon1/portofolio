@@ -2,6 +2,24 @@ import { motion } from 'motion/react';
 import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
+    {
+    title: "Hospitality Booking Demo",
+    category: "Hotel & Villa Website",
+    image: "/hospitality.jpg",
+    description: "A customizable hospitality website for hotels, villas, and resorts, featuring accommodation filters, galleries, reviews, room details, and direct WhatsApp booking.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "WhatsApp"],
+    outcome: "A reusable client-ready demo that can be branded and configured for individual hospitality businesses.",
+    link: "/demos/hospitality"
+  },
+    {
+    title: "ProArt Studio",
+    category: "Recording Studio Website",
+    image: "https://proartstudio.ro/logo.webp",
+    description: "A modern presentation website designed to highlight services and projects with a polished look.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    outcome: "Shipped a responsive and performant website with clear content hierarchy.",
+    link: "https://proartstudio.ro/"
+  },
   {
     title: "4Chad",
     category: "Solana Launchpad & Trading",
@@ -32,30 +50,22 @@ const projects = [
   {
     title: "Jah Order Sound System",
     category: "Web Application",
-    logoText: "JAH ORDER",
+    image: "https://jah-order.vercel.app/story.jpg",
     description: "A production web app focused on a clean ordering flow and straightforward user experience.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     outcome: "Delivered a fast and reliable experience optimized for everyday usage.",
     link: "https://jah-order.vercel.app/"
-  },
-  {
-    title: "ProArt Studio",
-    category: "Portfolio Website",
-    logoText: "PROART STUDIO",
-    description: "A modern presentation website designed to highlight services and projects with a polished look.",
-    tech: ["React", "TypeScript", "Tailwind CSS"],
-    outcome: "Shipped a responsive and performant website with clear content hierarchy.",
-    link: "https://proart-chi.vercel.app/"
-  },
-  {
-    title: "Royal Dice",
-    category: "Gaming Website",
-    logoText: "ROYAL DICE",
-    description: "An interactive website with a game-oriented visual style and conversion-focused layout.",
-    tech: ["React", "TypeScript", "Tailwind CSS"],
-    outcome: "Launched a stable and engaging web presence with smooth navigation.",
-    link: "https://royal-dice.vercel.app/"
   }
+  // {
+  //   title: "Royal Dice",
+  //   category: "Gaming Website",
+  //   logoText: "ROYAL DICE",
+  //   description: "An interactive website with a game-oriented visual style and conversion-focused layout.",
+  //   tech: ["React", "TypeScript", "Tailwind CSS"],
+  //   outcome: "Launched a stable and engaging web presence with smooth navigation.",
+  //   link: "https://royal-dice.vercel.app/"
+  // }
+
 ];
 
 export default function Portfolio() {
@@ -96,17 +106,17 @@ export default function Portfolio() {
                 transition={{ delay: idx * 0.1 }}
                 className="glass rounded-3xl overflow-hidden hover:border-brand/50 transition-all group"
               >
-                <div className="aspect-video overflow-hidden relative bg-slate-900/50 flex items-center justify-center p-12">
+                <div className="aspect-video overflow-hidden relative bg-slate-900/50 flex items-center justify-center">
                   {project.image ? (
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-20 h-20 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+                      className={`${project.title === 'ProArt Studio' ? 'w-[38%] h-[38%] object-contain translate-y-3' : ['4Chad', 'SpinSaga'].includes(project.title) ? 'w-[58%] h-[58%] object-contain translate-y-3' : ['ChadBet', 'Jah Order Sound System'].includes(project.title) ? 'w-[68%] h-[68%] object-contain translate-y-2' : 'w-full h-full object-cover'} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
                       referrerPolicy="no-referrer"
                     />
                   ) : (
-                    <span className="text-slate-200 text-xl md:text-2xl font-black tracking-wider group-hover:scale-110 transition-transform duration-500">
-                      {project.logoText || project.title}
+                    <span className={`${project.title === 'ProArt Studio' ? 'translate-y-5 text-[10px] md:text-xs tracking-[0.16em] max-w-24 text-center' : project.title === 'Jah Order Sound System' ? 'text-base md:text-lg tracking-wider' : 'text-xl md:text-2xl tracking-wider'} text-slate-200 font-black group-hover:scale-110 transition-transform duration-500`}>
+                      {project.title || project.title}
                     </span>
                   )}
                   <div className="absolute top-4 left-4 bg-slate-950/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-brand uppercase tracking-wider border border-white/10">

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
 const navLinks = [
@@ -20,8 +20,8 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-brand" />
-              <span className="text-2xl font-bold text-white tracking-tight font-mono">moskon1<span className="text-brand">.</span></span>
+              <img src="/logo.png" alt="NodeStack" className="h-10 w-10 object-contain" />
+              <span className="text-2xl font-bold text-white tracking-tight">Node<span className="text-brand">Stack</span></span>
             </Link>
           </div>
 

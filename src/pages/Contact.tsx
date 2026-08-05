@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useForm } from 'react-hook-form';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from 'lucide-react';
+import { MessageCircle, Send, MessageSquare } from 'lucide-react';
 
 type FormData = {
   name: string;
@@ -10,11 +10,13 @@ type FormData = {
 };
 
 export default function Contact() {
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
+  const whatsappLabel = import.meta.env.VITE_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
     console.log(data);
-    alert("Thank you for your message! I'll get back to you soon.");
+    alert("Thank you for your message! We'll get back to you soon.");
   };
 
   return (
@@ -52,11 +54,11 @@ export default function Contact() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                      <Mail className="h-6 w-6 text-brand" />
+                      <MessageCircle className="h-6 w-6 text-brand" />
                     </div>
                     <div>
-                      <p className="font-bold text-white">Email</p>
-                      <p className="text-slate-400 text-sm">catalin.taras@gmail.com</p>
+                      <p className="font-bold text-white">WhatsApp</p>
+                      <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="text-slate-400 text-sm hover:text-brand transition-colors">{whatsappLabel}</a>
                     </div>
                   </div>
                 </div>

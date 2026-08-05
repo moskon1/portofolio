@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Code2, Github, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
+
+const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
+const whatsappLabel = import.meta.env.VITE_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
 
 export default function Footer() {
   return (
@@ -9,17 +12,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-brand" />
-              <span className="text-2xl font-bold text-white tracking-tight">moskon1</span>
+              <img src="/logo.png" alt="NodeStack" className="h-10 w-10 object-contain" />
+              <span className="text-2xl font-bold text-white tracking-tight">Node<span className="text-brand">Stack</span></span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Engineering high-performance decentralized systems, scalable backends, and AI integrations.
+              A digital engineering agency building high-performance products, scalable backends, and Web3 systems.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://github.com/moskon1" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors"><Github className="h-5 w-5" /></a>
-              <a href="#" className="hover:text-brand transition-colors"><Twitter className="h-5 w-5" /></a>
-              <a href="#" className="hover:text-brand transition-colors"><Linkedin className="h-5 w-5" /></a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -48,8 +46,10 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-6">Contact</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-brand shrink-0" />
-                <span>hello@moskon1.dev</span>
+                <MessageCircle className="h-5 w-5 text-brand shrink-0" />
+                <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">
+                  {whatsappLabel}
+                </a>
               </li>
             </ul>
           </div>
@@ -57,7 +57,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-xs">
-            © {new Date().getFullYear()} moskon1. All rights reserved.
+            © {new Date().getFullYear()} NodeStack. All rights reserved.
           </p>
           <div className="flex space-x-6 text-xs">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

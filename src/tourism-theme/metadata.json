@@ -1,0 +1,6 @@
+{
+  "name": "Hotel Steaua de Mare",
+  "description": "Appealing and modern mobile-responsive template for Hotel Steaua de Mare featuring direct WhatsApp booking integration, property galleries, virtual tours, and interactive room reservation builder.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

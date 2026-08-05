@@ -111,7 +111,7 @@ export default function Home() {
       <section className="relative overflow-hidden py-24 lg:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.14),transparent_42%),radial-gradient(circle_at_25%_40%,rgba(59,130,246,0.12),transparent_40%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-5xl mx-auto text-center">
+          <div className="grid lg:grid-cols-[1.02fr_.98fr] gap-14 lg:gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,15 +119,15 @@ export default function Home() {
             >
               <div className="inline-flex items-center space-x-2 bg-brand/10 border border-brand/20 px-4 py-1.5 rounded-full text-brand text-sm font-mono mb-8">
                 <span className="h-2 w-2 rounded-full bg-accent" />
-                <span>{t('Agenție de produse digitale', 'Digital product agency', 'Agentur für digitale Produkte', 'Digital produktbyrå')}</span>
+                <span>{t('Agenție de produse digitale', 'Digital products agency', 'Agentur für digitale Produkte', 'Digital produktbyrå')}</span>
               </div>
-              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-8">
+              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.02] tracking-tight mb-8">
                 {t('Construim produse care', 'We build products that', 'Wir entwickeln Produkte, die', 'Vi bygger produkter som')} <span className="text-gradient">{t('dezvoltă afaceri.', 'move businesses forward.', 'Unternehmen voranbringen.', 'driver bedrifter fremover.')}</span>
               </h1>
-              <p className="text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg lg:text-xl text-slate-400 mb-10 max-w-2xl leading-relaxed">
                 {t('NodeStack proiectează platforme full-stack, sisteme backend scalabile, produse Web3 și experiențe bazate pe AI.', 'NodeStack designs and engineers full-stack platforms, scalable backends, Web3 products, and AI-powered experiences.', 'NodeStack konzipiert Full-Stack-Plattformen, skalierbare Backends, Web3-Produkte und KI-gestützte Erlebnisse.', 'NodeStack utvikler fullstack-plattformer, skalerbare backender, Web3-produkter og KI-drevne opplevelser.')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center bg-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand/25 group"
@@ -142,6 +142,13 @@ export default function Home() {
                   {t('Vezi proiectele', 'View Projects', 'Projekte ansehen', 'Se prosjekter')}
                 </Link>
               </div>
+            </motion.div>
+            <motion.div initial={{opacity:0,x:35}} animate={{opacity:1,x:0}} transition={{duration:.7,delay:.12}} className="relative lg:pl-5">
+              <div className="absolute -inset-10 bg-gradient-to-br from-brand/20 via-cyan-500/5 to-transparent rounded-full blur-3xl"/>
+              <Link to="/demos/hospitality" className="relative block rounded-[1.75rem] border border-white/15 bg-slate-900 p-2.5 shadow-2xl shadow-black/40 rotate-1 hover:rotate-0 transition duration-500 group">
+                <div className="h-8 rounded-t-[1.15rem] bg-slate-950 border-b border-white/10 flex items-center gap-1.5 px-4"><i className="h-2 w-2 rounded-full bg-red-400/60"/><i className="h-2 w-2 rounded-full bg-amber-400/60"/><i className="h-2 w-2 rounded-full bg-emerald-400/60"/><span className="ml-3 text-[9px] text-slate-600">nodestack.pro/demos/hospitality</span></div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-b-[1.15rem]"><img src="/hospitality.jpg" alt="NodeStack hospitality website shown in a browser" className="h-full w-full object-cover group-hover:scale-[1.02] transition duration-700"/><div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent"/><span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-slate-950/80 backdrop-blur px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white">Hospitality Demo</span></div>
+              </Link>
             </motion.div>
           </div>
         </div>

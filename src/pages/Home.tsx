@@ -25,17 +25,18 @@ const portfolioPreview = [
     image: "https://proartstudio.ro/logo.webp",
     
   },
-  {
-    title: "4Chad",
-    category: "Solana Launchpad",
-    image: "https://4chad.xyz/4chad.webp",
-  },
-  {
+    {
     title: "Fusemon",
     category: "Solana Trading Card Game",
     image: "https://www.fusemon.fun/assets/logo-B4c934aD.png",
     link: "https://www.fusemon.fun/",
   },
+  {
+    title: "4Chad",
+    category: "Solana Launchpad",
+    image: "https://4chad.xyz/4chad.webp",
+  },
+
   {
     title: "SpinSaga",
     category: "Solana Gamified Utility",

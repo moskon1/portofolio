@@ -20,6 +20,15 @@ const projects = [
     outcome: "Shipped a responsive and performant website with clear content hierarchy.",
     link: "https://proartstudio.ro/"
   },
+    {
+    title: "Fusemon",
+    category: "Solana Trading Card Game",
+    image: "https://www.fusemon.fun/assets/logo-B4c934aD.png",
+    description: "A competitive blockchain trading card game with collectible cards, booster packs, marketplace trading, spectator betting, and live PvP battles powered by Solana.",
+    tech: ["React", "TypeScript", "Solana", "Web3"],
+    outcome: "Built a connected game economy spanning card collection, deck building, marketplace activity, and competitive token-powered battles.",
+    link: "https://www.fusemon.fun/"
+  },
   {
     title: "4Chad",
     category: "Solana Launchpad & Trading",
@@ -29,15 +38,7 @@ const projects = [
     outcome: "Successfully launched 100+ tokens with a seamless trading experience and high community engagement.",
     link: "https://4chad.xyz"
   },
-  {
-    title: "Fusemon",
-    category: "Solana Trading Card Game",
-    image: "https://www.fusemon.fun/assets/logo-B4c934aD.png",
-    description: "A competitive blockchain trading card game with collectible cards, booster packs, marketplace trading, spectator betting, and live PvP battles powered by Solana.",
-    tech: ["React", "TypeScript", "Solana", "Web3"],
-    outcome: "Built a connected game economy spanning card collection, deck building, marketplace activity, and competitive token-powered battles.",
-    link: "https://www.fusemon.fun/"
-  },
+
   {
     title: "SpinSaga",
     category: "Solana Gamified Utility",

@@ -1,12 +1,13 @@
 import type { Locale } from '@/src/lib/i18n';
 
 export type DemoLocalizedText = Record<Locale, string>;
+export type DemoContentText = string | DemoLocalizedText;
 export type DemoSource = 'turistinfo' | 'description' | 'groq-rewritten' | 'groq-mock' | 'manual';
 
 export interface GeneratedRoom {
   id: string;
-  title: DemoLocalizedText;
-  description: DemoLocalizedText;
+  title: DemoContentText;
+  description: DemoContentText;
   images: string[];
   priceRON: number;
   capacityAdults: number;
@@ -26,8 +27,8 @@ export interface GeneratedReview {
 }
 
 export interface GeneratedAttraction {
-  title: DemoLocalizedText;
-  description: DemoLocalizedText;
+  title: DemoContentText;
+  description: DemoContentText;
   distance: string;
   image: string;
   source: DemoSource;
@@ -50,9 +51,9 @@ export interface GeneratedHospitalityDemo {
     startingPriceRON: number;
     rating: number;
     reviewCount: number;
-    heroTitle: DemoLocalizedText;
-    shortDescription: DemoLocalizedText;
-    fullDescription: DemoLocalizedText;
+    heroTitle: DemoContentText;
+    shortDescription: DemoContentText;
+    fullDescription: DemoContentText;
   };
   images: string[];
   facilities: string[];

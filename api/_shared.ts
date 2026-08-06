@@ -33,15 +33,19 @@ export function htmlToText(html:string) {
 }
 
 export function extractImageUrls(html:string, base:URL) {
-  const found=new Set<string>();
+  const propertyImages=new Set<string>();
+  const fallbackImages=new Set<string>();
   const attributes=/(?:src|data-src|data-original|href)=["']([^"']+)["']/gi;
   for(const match of html.matchAll(attributes)) {
     try {
       const url=new URL(match[1].replace(/&amp;/g,'&'),base);
-      if(/(^|\.)turistinfo\.ro$/i.test(url.hostname) && /\.(?:jpe?g|png|webp|avif)(?:$|\?)/i.test(url.href)) found.add(url.href);
+      if(!/(^|\.)turistinfo\.ro$/i.test(url.hostname) || !/\.(?:jpe?g|png|webp|avif)(?:$|\?)/i.test(url.href)) continue;
+      if(/(?:favicon|apple-touch-icon|logo|sprite|icon-|\/icons?\/)/i.test(url.pathname)) continue;
+      if(/\/images\/cazare\//i.test(url.pathname)) propertyImages.add(url.href);
+      else fallbackImages.add(url.href);
     } catch { /* ignore malformed source attributes */ }
   }
-  return [...found].slice(0,80);
+  return [...propertyImages,...fallbackImages].slice(0,80);
 }
 
 export function findReviewsUrl(html:string,base:URL) {

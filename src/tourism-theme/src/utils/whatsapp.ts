@@ -27,7 +27,6 @@ export function formatWhatsAppMessage(params: FormatWhatsAppParams): string {
     checkOut,
     adults,
     kids,
-    selectedAddOns,
     totalEstimate,
     nightsCount,
     guestName,
@@ -62,10 +61,6 @@ Thank you!`;
         ? `$${totalEstimate.eur}`
         : `€${totalEstimate.eur}`;
 
-  const addOnsText = selectedAddOns.length > 0
-    ? selectedAddOns.map(a => `   • ${a.name}`).join('\n')
-    : (isRO ? '   • Fără opțiuni suplimentare' : '   • None selected');
-
   if (isRO) {
     return `🏨 *SOLICITARE REZERVARE - ${settings.propertyName.toUpperCase()}*
 ----------------------------------
@@ -77,8 +72,6 @@ Thank you!`;
 🌙 *Număr nopți:* ${nightsCount > 0 ? nightsCount : 1}
 👥 *Oaspeți:* ${adults} Adulți${kids > 0 ? `, ${kids} Copii` : ''}
 
-✨ *Servicii suplimentare:*
-${addOnsText}
 
 💰 *Estimare Totală:* ~${priceFormatted}
 
@@ -101,8 +94,6 @@ Vă mulțumesc!`;
 🌙 *Duration:* ${nightsCount > 0 ? nightsCount : 1} night(s)
 👥 *Guests:* ${adults} Adults${kids > 0 ? `, ${kids} Children` : ''}
 
-✨ *Selected Add-ons:*
-${addOnsText}
 
 💰 *Estimated Total:* ~${priceFormatted}
 

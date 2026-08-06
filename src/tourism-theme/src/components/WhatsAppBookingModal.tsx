@@ -4,19 +4,15 @@ import {
   MessageSquare, 
   Calendar, 
   Users, 
-  Sparkles, 
   Plus, 
   Minus, 
-  Check, 
   Copy, 
   ExternalLink,
-  ShieldCheck,
   Building,
   BedDouble,
   Info
 } from 'lucide-react';
-import { Room, BookingAddOn, TemplateSettings, BookingState } from '../types';
-import { BOOKING_ADDONS } from '../data/mockData';
+import { Room, TemplateSettings } from '../types';
 import { openWhatsAppBooking, formatWhatsAppMessage } from '../utils/whatsapp';
 
 interface WhatsAppBookingModalProps {
@@ -58,7 +54,6 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
   const [checkOut, setCheckOut] = useState(defaultOut);
   const [adults, setAdults] = useState(initialAdults);
   const [kids, setKids] = useState(initialKids);
-  const [selectedAddOnIds, setSelectedAddOnIds] = useState<string[]>(['breakfast']);
   const [guestName, setGuestName] = useState('');
   const [guestPhone, setGuestPhone] = useState('');
   const [specialRequests, setSpecialRequests] = useState('');
@@ -87,47 +82,13 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
   const calculateTotal = () => {
     if (!selectedRoom) return { eur: 0, ron: 0 };
 
-    let roomPriceEUR = selectedRoom.priceEUR * nights;
-    let roomPriceRON = selectedRoom.priceRON * nights;
-
-    const chosenAddOns = BOOKING_ADDONS.filter(a => selectedAddOnIds.includes(a.id));
-
-    let addOnsEUR = 0;
-    let addOnsRON = 0;
-
-    chosenAddOns.forEach(addOn => {
-      let eur = addOn.priceEUR;
-      let ron = addOn.priceRON;
-
-      if (addOn.perGuest) {
-        eur *= (adults + kids);
-        ron *= (adults + kids);
-      }
-
-      if (addOn.perNight) {
-        eur *= nights;
-        ron *= nights;
-      }
-
-      addOnsEUR += eur;
-      addOnsRON += ron;
-    });
-
     return {
-      eur: Math.round(roomPriceEUR + addOnsEUR),
-      ron: Math.round(roomPriceRON + addOnsRON),
+      eur: Math.round(selectedRoom.priceEUR * nights),
+      ron: Math.round(selectedRoom.priceRON * nights),
     };
   };
 
   const total = calculateTotal();
-
-  const activeAddOns = BOOKING_ADDONS.filter(a => selectedAddOnIds.includes(a.id));
-
-  const toggleAddOn = (id: string) => {
-    setSelectedAddOnIds(prev =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    );
-  };
 
   // Preview Message
   const messagePreview = formatWhatsAppMessage({
@@ -137,7 +98,7 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
     checkOut,
     adults,
     kids,
-    selectedAddOns: activeAddOns,
+    selectedAddOns: [],
     totalEstimate: total,
     nightsCount: nights,
     guestName,
@@ -153,7 +114,7 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
       checkOut,
       adults,
       kids,
-      selectedAddOns: activeAddOns,
+      selectedAddOns: [],
       totalEstimate: total,
       nightsCount: nights,
       guestName,
@@ -312,48 +273,10 @@ export const WhatsAppBookingModal: React.FC<WhatsAppBookingModalProps> = ({
             </div>
           </div>
 
-          {/* Step 3: Add-on Experiences */}
+          {/* Step 3: Contact Info & Message */}
           <div className="space-y-2">
             <label className="text-xs font-semibold text-amber-400 uppercase tracking-wider block">
-              3. {isRO ? 'Servicii Suplimentare (Opțional)' : 'Optional Add-on Experiences'}
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {BOOKING_ADDONS.map((addOn) => {
-                const isSelected = selectedAddOnIds.includes(addOn.id);
-                const priceText = settings.currency === 'RON' ? `+${addOn.priceRON} RON` : settings.currency === 'NOK' ? `+${Math.round(addOn.priceEUR * 12)} NOK` : `+€${addOn.priceEUR}`;
-                return (
-                  <button
-                    key={addOn.id}
-                    type="button"
-                    onClick={() => toggleAddOn(addOn.id)}
-                    className={`text-left p-3 rounded-xl border transition-all flex items-start justify-between gap-2 ${
-                      isSelected
-                        ? 'bg-amber-500/15 border-amber-500 text-white'
-                        : 'bg-slate-800/40 border-slate-800 text-slate-400 hover:bg-slate-800'
-                    }`}
-                  >
-                    <div>
-                      <h5 className="text-xs font-semibold text-slate-200">{addOn.name}</h5>
-                      <p className="text-[10px] text-slate-400 line-clamp-1">{addOn.description}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <span className="text-xs font-bold text-amber-400 block">{priceText}</span>
-                      <span className={`w-4 h-4 rounded-full border flex items-center justify-center ml-auto mt-1 ${
-                        isSelected ? 'bg-amber-500 border-amber-400 text-slate-950' : 'border-slate-600'
-                      }`}>
-                        {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Step 4: Contact Info & Message */}
-          <div className="space-y-2">
-            <label className="text-xs font-semibold text-amber-400 uppercase tracking-wider block">
-              4. {isRO ? 'Date Oaspete & Cerințe Speciale' : 'Guest Name & Special Requests'}
+              3. {isRO ? 'Date Oaspete & Cerințe Speciale' : 'Guest Name & Special Requests'}
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <input

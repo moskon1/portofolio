@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "slug": "camping-nirvama-vama-veche",
+  "sourceUrl": "https://www.turistinfo.ro/vama_veche/cazare-vama_veche/camping_nirvama-c114257.html",
+  "generatedAt": "2026-08-06T18:33:02.583Z",
+  "status": "published",
+  "property": {
+    "name": "Camping NirVama Vama Veche",
+    "type": "Camping",
+    "address": "Vama Veche, str. DN 39, nr. 43, România",
+    "cityRegion": "Vama Veche, Constanța",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 120,
+    "rating": 0,
+    "reviewCount": 2,
+    "heroTitle": "Camping NirVama",
+    "shortDescription": "Camping cu cort și lux în Vama Veche, la 120 RON/noapte",
+    "fullDescription": "Camping NirVama oferă corturi și spații luxoase în Vama Veche, cu facilități complete, acces la grădină și curte, și servicii de recepție non-stop."
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/960399.jpg",
+    "https://www.turistinfo.ro/images/cazare/941876.jpg",
+    "https://www.turistinfo.ro/images/cazare/953180.jpg",
+    "https://www.turistinfo.ro/images/cazare/953195.jpg",
+    "https://www.turistinfo.ro/images/cazare/960389.jpg",
+    "https://www.turistinfo.ro/images/cazare/960390.jpg",
+    "https://www.turistinfo.ro/images/cazare/960398.jpg",
+    "https://www.turistinfo.ro/images/cazare/941871.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375364.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375375.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375376.jpg",
+    "https://www.turistinfo.ro/images/cazare/866725.jpg",
+    "https://www.turistinfo.ro/images/cazare/953185.jpg",
+    "https://www.turistinfo.ro/images/cazare/953187.jpg",
+    "https://www.turistinfo.ro/images/cazare/953188.jpg",
+    "https://www.turistinfo.ro/images/cazare/953193.jpg",
+    "https://www.turistinfo.ro/images/cazare/953189.jpg",
+    "https://www.turistinfo.ro/images/cazare/960397.jpg",
+    "https://www.turistinfo.ro/images/cazare/960400.jpg",
+    "https://www.turistinfo.ro/images/cazare/953191.jpg",
+    "https://www.turistinfo.ro/images/cazare/953192.jpg",
+    "https://www.turistinfo.ro/images/cazare/953190.jpg",
+    "https://www.turistinfo.ro/images/cazare/1360807.jpg",
+    "https://www.turistinfo.ro/images/cazare/1360808.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375374.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375377.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375378.jpg",
+    "https://v3.turistinfo.ro/images/camere/453687.jpg",
+    "https://v3.turistinfo.ro/images/camere/453692.jpg",
+    "https://v3.turistinfo.ro/images/camere/453689.jpg",
+    "https://v3.turistinfo.ro/images/camere/453690.jpg",
+    "https://v3.turistinfo.ro/images/camere/453691.jpg",
+    "https://v3.turistinfo.ro/images/camere/458463.jpg",
+    "https://v3.turistinfo.ro/images/camere/453693.jpg",
+    "https://v3.turistinfo.ro/images/camere/453694.jpg",
+    "https://v3.turistinfo.ro/images/camere/453695.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/960399.jpg",
+  "facilities": [
+    "coș de gunoi",
+    "lenjerie de pat",
+    "masă",
+    "pernă hipoalergică",
+    "plasă țânțari",
+    "priză lângă pat",
+    "ventilator",
+    "prosoape"
+  ],
+  "rooms": [
+    {
+      "id": "cort",
+      "title": "Cort",
+      "description": "Cort 16 m², baie comună, vedere spre grădină",
+      "priceRON": 120,
+      "capacityAdults": 2,
+      "capacityKids": 1,
+      "sizeSqm": 16,
+      "amenities": [
+        "coș de gunoi",
+        "lenjerie de pat",
+        "masă",
+        "pernă hipoalergică",
+        "plasă țânțari",
+        "priză lângă pat",
+        "ventilator",
+        "prosoape"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/953195.jpg",
+        "https://www.turistinfo.ro/images/cazare/941871.jpg",
+        "https://www.turistinfo.ro/images/cazare/866725.jpg",
+        "https://www.turistinfo.ro/images/cazare/1375376.jpg",
+        "https://www.turistinfo.ro/images/cazare/1375364.jpg",
+        "https://www.turistinfo.ro/images/cazare/1375375.jpg"
+      ]
+    },
+    {
+      "id": "luxe",
+      "title": "Luxe",
+      "description": "Spațiu 25 m², baie comună, vedere spre grădină",
+      "priceRON": 120,
+      "capacityAdults": 2,
+      "capacityKids": 1,
+      "sizeSqm": 25,
+      "amenities": [
+        "coș de gunoi",
+        "lenjerie de pat",
+        "masă",
+        "pardoseală cu mochetă",
+        "pernă hipoalergică",
+        "plasă țânțari",
+        "priză lângă pat",
+        "ventilator",
+        "prosoape"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/953195.jpg",
+        "https://www.turistinfo.ro/images/cazare/1375378.jpg",
+        "https://v3.turistinfo.ro/images/camere/453687.jpg",
+        "https://v3.turistinfo.ro/images/camere/453689.jpg",
+        "https://v3.turistinfo.ro/images/camere/453690.jpg",
+        "https://v3.turistinfo.ro/images/camere/453691.jpg",
+        "https://v3.turistinfo.ro/images/camere/458463.jpg",
+        "https://v3.turistinfo.ro/images/camere/453693.jpg"
+      ]
+    }
+  ],
+  "attractions": [],
+  "reviews": [
+    {
+      "author": "Elena & Andrei M.",
+      "location": "București, România",
+      "date": "Iulie 2026",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Locul arată foarte bine. Este foarte curat, este o gazda foarte primitoare. Am fost tratați foarte bine. Recomand 100% acest loc. Vom reveni ...",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Marcus Vance",
+      "location": "München, Germania",
+      "date": "Iunie 2026",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Un loc superb, arata exact ca in poze. Totul este foarte curat, iar personalul este primitor. Noi ne-am simțit ca acasă si, cu siguranță ...",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    }
+  ],
+  "provenance": {
+    "property": "groq-mock",
+    "facilities": "groq-mock",
+    "rooms": "groq-mock",
+    "attractions": "groq-mock",
+    "reviews": "turistinfo"
+  }
+}

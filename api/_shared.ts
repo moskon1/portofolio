@@ -45,7 +45,7 @@ export function extractImageUrls(html:string, base:URL) {
       else fallbackImages.add(url.href);
     } catch { /* ignore malformed source attributes */ }
   }
-  return [...propertyImages,...fallbackImages].slice(0,80);
+  return [...propertyImages,...fallbackImages];
 }
 
 export function findReviewsUrl(html:string,base:URL) {

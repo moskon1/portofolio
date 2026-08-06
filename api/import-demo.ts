@@ -56,7 +56,7 @@ export default async function handler(req:ApiRequest,res:ApiResponse) {
     const {sourceUrl}=await body<{sourceUrl:string}>(req); const source=validateSource(sourceUrl);
     const listingResponse=await fetch(source,{headers:{'User-Agent':'Mozilla/5.0 NodeStackDemoImporter/1.0'}});
     if(!listingResponse.ok) throw new Error(`TuristInfo returned ${listingResponse.status}.`);
-    const listingHtml=await listingResponse.text(); const images=extractImageUrls(listingHtml,source).slice(0,16);
+    const listingHtml=await listingResponse.text(); const images=extractImageUrls(listingHtml,source);
     const fullListingText=htmlToText(listingHtml); const extractedLocation=extractPropertyLocation(listingHtml,fullListingText);
     const reviewsUrl=findReviewsUrl(listingHtml,source);
     let reviewsText='';

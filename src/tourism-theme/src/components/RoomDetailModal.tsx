@@ -6,7 +6,6 @@ import {
   Users, 
   Maximize2, 
   BedDouble, 
-  Eye, 
   CheckCircle2, 
   Compass, 
   Layers, 
@@ -149,13 +148,6 @@ export const RoomDetailModal: React.FC<RoomDetailModalProps> = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <Eye className="w-4 h-4 text-amber-400 shrink-0" />
-              <div>
-                <span className="text-[10px] text-slate-400 uppercase block">{isRO ? 'Vedere' : 'View'}</span>
-                <span className="text-xs font-bold text-white">{room.viewType}</span>
-              </div>
-            </div>
           </div>
 
           {/* Tab Navigation */}

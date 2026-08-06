@@ -3,7 +3,6 @@ import {
   Users, 
   Maximize2, 
   BedDouble, 
-  Eye, 
   Star, 
   MessageSquare, 
   ChevronLeft, 
@@ -116,14 +115,10 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
         
         <div className="space-y-2">
-          {/* Location & View */}
-          <div className="flex items-center justify-between text-[11px] text-slate-400">
+          {/* Location */}
+          <div className="flex items-center text-[11px] text-slate-400">
             <span className="font-medium text-amber-400/90 truncate max-w-[60%]">
               {room.location}
-            </span>
-            <span className="flex items-center gap-1 text-slate-300">
-              <Eye className="w-3 h-3 text-sky-400" />
-              {room.viewType}
             </span>
           </div>
 

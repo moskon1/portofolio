@@ -44,11 +44,11 @@ export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospit
     propertyType: 'villa' as const, category: 'villa' as const, tagline: demoText(room.description,'ro'),
     location: generatedDemo.property.cityRegion, priceEUR: Math.round(room.priceRON/5), priceRON: room.priceRON,
     capacityAdults: room.capacityAdults, capacityKids: room.capacityKids, sizeSqm: room.sizeSqm,
-    bedType: 'Cazare confortabilÄƒ', viewType: 'Vedere panoramicÄƒ', images: room.images.length?room.images:generatedDemo.images,
+    bedType: 'Cazare confortabilÄƒ', viewType: '', images: room.images.length?room.images:generatedDemo.images,
     heroImage: generatedDemo.heroImage||room.images[0]||generatedDemo.images[0]||'', description: demoText(room.description,'ro'),
     longDescription: demoText(room.description,'ro'), amenities: room.amenities, featured: index===0,
-    rating: generatedDemo.property.rating > 5 ? generatedDemo.property.rating/2 : generatedDemo.property.rating,
-    reviewsCount: generatedDemo.property.reviewCount,
+    rating: [4.95,4.85,4.9][index%3],
+    reviewsCount: [142,98,86][index%3],
   })) : getLocalizedRooms(locale), [generatedDemo,locale]);
   const [selectedCategory, setSelectedCategory] = useState<PropertyCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -231,7 +231,7 @@ export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospit
         <ReviewsSection
           settings={settings}
           onOpenQuickBooking={() => setBookingModal({ isOpen: true })}
-          reviews={generatedDemo?.reviews.map((item,index)=>({id:`review-${index}`,author:item.author,location:item.location,rating:item.rating>5?Math.round(item.rating/2):Math.round(item.rating),date:item.date,roomTitle:'',comment:item.comment,avatar:`https://ui-avatars.com/api/?name=${encodeURIComponent(item.author)}&background=ecfdf5&color=047857`}))}
+          reviews={generatedDemo?.reviews.map((item,index)=>({id:`review-${index}`,author:item.author,location:item.location,rating:item.rating>5?Math.round(item.rating/2):Math.round(item.rating),date:item.date,roomTitle:'',comment:item.comment,avatar:item.avatar||`https://ui-avatars.com/api/?name=${encodeURIComponent(item.author)}&background=ecfdf5&color=047857`}))}
           rating={generatedDemo?.property.rating}
           reviewCount={generatedDemo?.property.reviewCount}
         />

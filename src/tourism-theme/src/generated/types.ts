@@ -24,6 +24,8 @@ export interface GeneratedReview {
   rating: number;
   comment: string;
   source: 'turistinfo';
+  avatar?: string;
+  identitySource?: 'groq-mock';
 }
 
 export interface GeneratedAttraction {

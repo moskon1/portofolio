@@ -33,6 +33,21 @@ function compactSource(text:string,limit:number) {
   return `${text.slice(0,beginning)}\n[...source shortened for Groq token limit...]\n${text.slice(-ending)}`;
 }
 
+function plainValue(value:unknown) {
+  if(typeof value==='string'||typeof value==='number')return String(value);
+  if(value&&typeof value==='object'){
+    const localized=value as Record<string,unknown>;
+    const selected=localized.ro??localized.en??localized.de??localized.no;
+    if(typeof selected==='string'||typeof selected==='number')return String(selected);
+  }
+  return '';
+}
+
+function numberValue(value:unknown) {
+  const parsed=Number(plainValue(value));
+  return Number.isFinite(parsed)?parsed:0;
+}
+
 export default async function handler(req:ApiRequest,res:ApiResponse) {
   if(req.method!=='POST') return send(res,405,{error:'Method not allowed'});
   if(!authorized(req)) return send(res,401,{error:'Invalid admin secret'});
@@ -53,7 +68,9 @@ export default async function handler(req:ApiRequest,res:ApiResponse) {
     const groq=await groqResponse.json() as {choices?:{message?:{content?:string}}[]};
     const generated=JSON.parse(groq.choices?.[0]?.message?.content||'{}');
     const imageAt=(index:number)=>images.length?images[index%images.length]:'';
-    const demo={schemaVersion:1,slug:slugify(generated.slug||generated.property?.name||'hospitality-demo'),sourceUrl:source.href,generatedAt:new Date().toISOString(),status:'draft',property:generated.property,images,facilities:generated.facilities||[],rooms:(generated.rooms||[]).map((room:any,index:number)=>({...room,images:[imageAt(index+1),imageAt(index+4)].filter(Boolean)})),attractions:(generated.attractions||[]).map((item:any,index:number)=>({...item,image:imageAt(index+7)})),reviews:generated.reviews||[],provenance:generated.provenance||{}};
+    const rawProperty=generated.property||{};
+    const property={...rawProperty,name:plainValue(rawProperty.name),type:plainValue(rawProperty.type),address:plainValue(rawProperty.address),cityRegion:plainValue(rawProperty.cityRegion),phone:plainValue(rawProperty.phone),whatsapp:plainValue(rawProperty.whatsapp),email:plainValue(rawProperty.email),startingPriceRON:numberValue(rawProperty.startingPriceRON),rating:numberValue(rawProperty.rating),reviewCount:numberValue(rawProperty.reviewCount)};
+    const demo={schemaVersion:1,slug:slugify(plainValue(generated.slug)||property.name||'hospitality-demo'),sourceUrl:source.href,generatedAt:new Date().toISOString(),status:'draft',property,images,facilities:generated.facilities||[],rooms:(generated.rooms||[]).map((room:any,index:number)=>({...room,images:[imageAt(index+1),imageAt(index+4)].filter(Boolean)})),attractions:(generated.attractions||[]).map((item:any,index:number)=>({...item,image:imageAt(index+7)})),reviews:generated.reviews||[],provenance:generated.provenance||{}};
     return send(res,200,{demo,reviewsUrl,imageCount:images.length});
   } catch(error) { return send(res,400,{error:error instanceof Error?error.message:'Import failed'}); }
 }

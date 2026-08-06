@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "slug": "a-frame-twin-houses-busteni",
+  "sourceUrl": "https://www.turistinfo.ro/busteni/cazare-busteni/aframe_twin_houses-c126508.html",
+  "generatedAt": "2026-08-06T11:17:06.799Z",
+  "status": "published",
+  "property": {
+    "name": "Twin Houses Bușteni",
+    "type": "casă de vacanță",
+    "address": "Bușteni, str. Crinei, nr. 18, România",
+    "cityRegion": "Bușteni, Prahova",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 500,
+    "rating": 10,
+    "reviewCount": 24,
+    "heroTitle": "A-frame Twin Houses",
+    "shortDescription": "Casă de vacanță cu design A-frame, vedere panoramică spre munții Bucegi și Crucea Caraiman, în inima Buștenilor.",
+    "fullDescription": "Twin Houses Bușteni este o casă de vacanță cu design A-frame, construită recent, cu 50 m², baie proprie, capacitate pentru 2 adulți și 2 copii. Locul oferă vedere panoramică spre munții Bucegi și Crucea Caraiman, iar pe fața casă curge râul Prahova. Facilități moderne includ parcare în curte, foișor ciubăr, Wi‑Fi, living cu pardoseală din lemn masiv, șemineu, TV cu canale prin cablu, minibar, terasă la soare, grătar/barbecue, pomi fructiferi și recepție non‑stop. Securitatea este asigurată prin detector de monoxid de carbon și extinctoare. Fumatul este interzis în interior, dar permis în zone speciale. Prețul de pornire este 500 RON/noapte."
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/1403556.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375012.jpg",
+    "https://www.turistinfo.ro/images/cazare/1334880.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375015.jpg",
+    "https://www.turistinfo.ro/images/cazare/1324889.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300614.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300615.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300618.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300619.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300617.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300620.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300623.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300624.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300626.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300625.jpg",
+    "https://www.turistinfo.ro/images/cazare/1324890.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300628.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300664.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300665.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300666.jpg",
+    "https://www.turistinfo.ro/images/cazare/1426782.jpg",
+    "https://v3.turistinfo.ro/images/camere/431166.jpg",
+    "https://v3.turistinfo.ro/images/camere/431169.jpg",
+    "https://v3.turistinfo.ro/images/camere/431167.jpg",
+    "https://v3.turistinfo.ro/images/camere/431170.jpg",
+    "https://v3.turistinfo.ro/images/camere/431171.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/1403556.jpg",
+  "facilities": [
+    "parcare",
+    "foișor ciubăr",
+    "Wi‑Fi",
+    "curte",
+    "living",
+    "pardoseală lemn masiv",
+    "șemineu",
+    "TV",
+    "barbecue",
+    "grătar",
+    "pomi fructiferi",
+    "terasă",
+    "recepție non‑stop",
+    "securitate",
+    "detector monoxid de carbon",
+    "extinctoare",
+    "fumat interzis"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "A-frame Twin Houses",
+      "description": "50 m², baie proprie, maxim 2 adulți și 2 copii, vedere spre munte",
+      "priceRON": 500,
+      "capacityAdults": 2,
+      "capacityKids": 2,
+      "sizeSqm": 50,
+      "amenities": [
+        "TV",
+        "minibar",
+        "pardoseală lemn masiv",
+        "canale TV"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1403556.jpg",
+        "https://www.turistinfo.ro/images/cazare/1324889.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300617.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300620.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300623.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300624.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300626.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300625.jpg",
+        "https://www.turistinfo.ro/images/cazare/1324890.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300628.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300664.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300665.jpg",
+        "https://www.turistinfo.ro/images/cazare/1300666.jpg",
+        "https://www.turistinfo.ro/images/cazare/1426782.jpg"
+      ]
+    }
+  ],
+  "attractions": [
+    {
+      "title": "Râul Prahova",
+      "description": "Curge pe fața casă, oferind un sentiment de libertate și liniște",
+      "distance": "in apropiere",
+      "source": "turistinfo",
+      "image": "https://www.turistinfo.ro/images/cazare/1403556.jpg"
+    },
+    {
+      "title": "Munții Bucegi",
+      "description": "Vedere panoramică spre munți",
+      "distance": "in apropiere",
+      "source": "turistinfo",
+      "image": "https://www.turistinfo.ro/images/cazare/1375015.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Ramona Zamosteanu",
+      "location": "Berceni",
+      "date": "",
+      "rating": 10,
+      "comment": "Cabana este foarte frumoasă, curată și bine dotată. Locația este liniștită, perfectă pentru relaxare și pentru a petrece timp de calitate...",
+      "source": "turistinfo"
+    },
+    {
+      "author": "Ionita Livia",
+      "location": "Cipru",
+      "date": "",
+      "rating": 10,
+      "comment": "O locație excelentă cu vedere la Crucea, aproape de obiectivele principale, casutele gemene spațioase și călduroase, oricând te poți relaxa facând...",
+      "source": "turistinfo"
+    }
+  ],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "turistinfo",
+    "reviews": "turistinfo"
+  }
+}

@@ -51,6 +51,8 @@ export interface GeneratedHospitalityDemo {
     startingPriceRON: number;
     rating: number;
     reviewCount: number;
+    latitude?: number;
+    longitude?: number;
     heroTitle: DemoContentText;
     shortDescription: DemoContentText;
     fullDescription: DemoContentText;

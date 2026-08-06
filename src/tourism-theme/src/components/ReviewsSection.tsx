@@ -1,19 +1,23 @@
 import React from 'react';
 import { Star, Quote, MessageSquare, CheckCircle2 } from 'lucide-react';
-import { TemplateSettings } from '../types';
+import { GuestReview, TemplateSettings } from '../types';
 import { getLocalizedReviews } from '../data/localizedContent';
 import { localize, useLocale } from '@/src/lib/i18n';
 
 interface ReviewsSectionProps {
   settings: TemplateSettings;
   onOpenQuickBooking: () => void;
+  reviews?: GuestReview[];
+  rating?: number;
+  reviewCount?: number;
 }
 
-export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpenQuickBooking }) => {
+export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpenQuickBooking, reviews: generatedReviews, rating, reviewCount }) => {
   const isRO = settings.language === 'ro';
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
-  const reviews = getLocalizedReviews(locale);
+  const reviews = generatedReviews || getLocalizedReviews(locale);
+  const displayRating = rating ? (rating > 5 ? rating / 2 : rating) : 4.95;
 
   return (
     <section id="reviews" className="py-16 bg-[#FBF9F6] text-[#1A1A1A] border-t border-[#EAE2D8]">
@@ -33,7 +37,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
           {/* Rating Badge */}
           <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-[#EAE2D8] shadow-xs">
             <div className="text-center">
-              <span className="text-3xl font-serif font-bold text-[#1A1A1A] block leading-none">4.95</span>
+              <span className="text-3xl font-serif font-bold text-[#1A1A1A] block leading-none">{displayRating.toFixed(1)}</span>
               <span className="text-[10px] text-slate-500 font-medium">{t('din 5 stele', 'out of 5', 'von 5 Sternen', 'av 5 stjerner')}</span>
             </div>
             <div className="border-l border-[#EAE2D8] pl-3 space-y-1">

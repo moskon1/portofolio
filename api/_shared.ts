@@ -54,3 +54,20 @@ export function findReviewsUrl(html:string,base:URL) {
   }
   return '';
 }
+
+export function extractPropertyLocation(html:string,text:string) {
+  const coordinatePatterns = [
+    /["']?lat(?:itude)?["']?\s*[:=]\s*["']?(-?\d{2}\.\d+)["']?[\s\S]{0,160}?["']?(?:lng|lon|longitude)["']?\s*[:=]\s*["']?(-?\d{2}\.\d+)["']?/i,
+    /["']?(?:lng|lon|longitude)["']?\s*[:=]\s*["']?(-?\d{2}\.\d+)["']?[\s\S]{0,160}?["']?lat(?:itude)?["']?\s*[:=]\s*["']?(-?\d{2}\.\d+)["']?/i,
+    /data-lat=["'](-?\d{2}\.\d+)["'][^>]{0,200}data-(?:lng|lon)=["'](-?\d{2}\.\d+)["']/i,
+    /(?:q=|query=)(-?\d{2}\.\d+)%?2C\s*(-?\d{2}\.\d+)/i,
+  ];
+  let latitude:number|undefined; let longitude:number|undefined;
+  for(let index=0;index<coordinatePatterns.length;index++) {
+    const match=html.match(coordinatePatterns[index]); if(!match)continue;
+    const reversed=index===1; latitude=Number(match[reversed?2:1]); longitude=Number(match[reversed?1:2]); break;
+  }
+  const addressMatch=text.match(/(?:[A-Z]{1,2},\s*)?([\p{L}\s-]{2,40})\s*,\s*((?:str(?:ada)?\.?|bd\.?|bulevardul|calea|aleea)\s+[\p{L}\d\s.'-]{2,60},\s*nr\.?\s*[\w/-]+)/iu);
+  const address=addressMatch ? `${addressMatch[1].trim()}, ${addressMatch[2].trim()}, Rom\u00e2nia` : '';
+  return { address, latitude, longitude };
+}

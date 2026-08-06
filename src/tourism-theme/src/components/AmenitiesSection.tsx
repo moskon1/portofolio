@@ -23,17 +23,19 @@ import { localize, useLocale } from '@/src/lib/i18n';
 interface AmenitiesSectionProps {
   settings: TemplateSettings;
   onOpenQuickBooking: () => void;
+  facilities?: string[];
 }
 
 export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
   settings,
   onOpenQuickBooking,
+  facilities,
 }) => {
   const isRO = settings.language === 'ro';
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
-  const popularFacilities = [
+  const defaultPopularFacilities = [
     { icon: <Waves className="w-4 h-4 text-emerald-600" />, text: t('Piscine exterioare & apă sărată', 'Outdoor & Saltwater Pools', 'Außen- & Salzwasserpools', 'Utendørs- og saltvannsbasseng') },
     { icon: <Sparkles className="w-4 h-4 text-emerald-600" />, text: t('SPA termal & saună', 'Thermal Spa & Saunas', 'Thermal-Spa & Saunen', 'Termisk spa og badstuer') },
     { icon: <Umbrella className="w-4 h-4 text-emerald-600" />, text: t('Plajă privată & șezlonguri', 'Private Beach & Sunbeds', 'Privatstrand & Liegen', 'Privat strand og solsenger') },
@@ -44,7 +46,8 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
     { icon: <Baby className="w-4 h-4 text-emerald-600" />, text: t('Parc acvatic pentru copii', 'Kids Aquatic Park', 'Kinder-Wasserpark', 'Vannpark for barn') },
   ];
 
-  const facilityCategories = [
+  const popularFacilities = facilities?.slice(0,8).map(text=>({icon:<Check className="w-4 h-4 text-emerald-600"/>,text})) || defaultPopularFacilities;
+  const defaultFacilityCategories = [
     {
       title: isRO ? '🏊 Piscine & SPA Termal' : '🏊 Pools & Thermal Spa',
       items: [
@@ -103,7 +106,8 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
       ]
     }
   ];
-  const translatedCategoryTitles = locale === 'de'
+  const facilityCategories = facilities?.length ? Array.from({length:Math.min(3,Math.ceil(facilities.length/6))},(_,index)=>({title:index===0?'FacilitÄƒÈ›i proprietate':index===1?'Confort & servicii':'Alte facilitÄƒÈ›i',items:facilities.slice(index*6,index*6+6)})) : defaultFacilityCategories;
+  const translatedCategoryTitles = facilities ? null : locale === 'de'
     ? ['🏊 Pools & Thermal-Spa', '🍽️ Essen & Getränke', '🏖️ Strand & Außenbereich', '🛎️ Service & Rezeption', '🛏️ Zimmerkomfort', '👶 Familienangebote']
     : locale === 'no'
       ? ['🏊 Basseng og termisk spa', '🍽️ Mat og drikke', '🏖️ Strand og uteområder', '🛎️ Service og resepsjon', '🛏️ Romkomfort', '👶 Familiefasiliteter']

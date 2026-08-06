@@ -82,6 +82,8 @@ export interface TemplateSettings {
   currency: Currency;
   language: Language;
   primaryColorHex: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface LocalAttraction {

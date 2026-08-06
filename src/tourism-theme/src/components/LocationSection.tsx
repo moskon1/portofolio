@@ -1,15 +1,16 @@
 import React from 'react';
 import { MapPin, Navigation, Compass, ExternalLink, MessageSquare, Car } from 'lucide-react';
-import { TemplateSettings } from '../types';
+import { LocalAttraction, TemplateSettings } from '../types';
 import { getLocalizedAttractions } from '../data/localizedContent';
 import { localize, useLocale } from '@/src/lib/i18n';
 
 interface LocationSectionProps {
   settings: TemplateSettings;
   onOpenQuickBooking: () => void;
+  attractions?: LocalAttraction[];
 }
 
-export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOpenQuickBooking }) => {
+export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOpenQuickBooking, attractions: generatedAttractions }) => {
   const isRO = settings.language === 'ro';
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
@@ -27,13 +28,14 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
     : locale === 'no'
       ? ['Gylden sandstrand og promenade med restauranter.', 'Berømt saltsjø med terapeutiske mineralbehandlinger.', 'Familievennlig vannpark og lokale fiskerestauranter.', 'Historisk promenade, marina og restauranter ved sjøen.']
       : null;
-  const attractions = getLocalizedAttractions(locale).map((item, index) => ({
+  const attractions = generatedAttractions || getLocalizedAttractions(locale).map((item, index) => ({
     ...item,
     title: attractionNames?.[index] || item.title,
     description: attractionDescriptions?.[index] || item.description,
   }));
 
-  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(settings.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+  const mapQuery = Number.isFinite(settings.latitude) && Number.isFinite(settings.longitude) ? `${settings.latitude},${settings.longitude}` : settings.address;
+  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <section id="location" className="py-16 bg-[#FBF9F6] text-[#1A1A1A] border-t border-[#EAE2D8]">
@@ -72,7 +74,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
                 </div>
               </div>
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(settings.address)}`}
+                href={`https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full hover:bg-emerald-100 font-bold transition shrink-0"

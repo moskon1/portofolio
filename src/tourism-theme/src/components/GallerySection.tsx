@@ -7,14 +7,15 @@ import { localize, useLocale } from '@/src/lib/i18n';
 
 interface GallerySectionProps {
   settings: TemplateSettings;
+  images?: string[];
 }
 
-export const GallerySection: React.FC<GallerySectionProps> = ({ settings }) => {
+export const GallerySection: React.FC<GallerySectionProps> = ({ settings, images }) => {
   const isRO = settings.language === 'ro';
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
 
-  const galleryItems = [
+  const defaultGalleryItems = [
     {
       id: '1',
       title: t('Vedere panoramică la mare', 'Panoramic Sea View', 'Panorama-Meerblick', 'Panoramautsikt over havet'),
@@ -56,6 +57,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ settings }) => {
       image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
     }
   ];
+  const galleryItems = images?.length ? images.map((image,index)=>({id:String(index+1),title:`${settings.propertyName} · fotografia ${index+1}`,image})) : defaultGalleryItems;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);

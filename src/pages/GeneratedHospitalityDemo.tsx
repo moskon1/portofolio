@@ -1,45 +1,27 @@
-import { useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, MapPin, MessageCircle, Star, Users, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import TourismApp from '@/src/tourism-theme/src/App';
 import type { GeneratedHospitalityDemo } from '@/src/tourism-theme/src/generated/types';
-import { demoText } from '@/src/tourism-theme/src/generated/types';
 
 export default function GeneratedHospitalityDemo() {
   const { slug = '' } = useParams();
-  const [demo, setDemo] = useState<GeneratedHospitalityDemo | null>(null);
-  const [error, setError] = useState('');
-  const [galleryIndex, setGalleryIndex] = useState(0);
-  const [lightbox, setLightbox] = useState(false);
-  const t = (ro:string,..._translations:string[]) => ro;
-  const text = (value:unknown) => demoText(value,'ro');
+  const [demo,setDemo] = useState<GeneratedHospitalityDemo|null>(null);
+  const [error,setError] = useState('');
 
-  useEffect(() => {
+  useEffect(()=>{
     document.querySelector('meta[name="robots"]')?.setAttribute('content','noindex, nofollow, noarchive');
-    if (slug === 'preview') {
-      const value = sessionStorage.getItem('nodestack-demo-preview');
-      if (value) setDemo(JSON.parse(value)); else setError('Preview data is missing.');
+    if(slug==='preview'){
+      const value=sessionStorage.getItem('nodestack-demo-preview');
+      if(value){try{setDemo(JSON.parse(value));}catch{setError('Datele de previzualizare sunt invalide.');}}
+      else setError('Datele de previzualizare lipsesc.');
       return;
     }
-    fetch(`/generated-demos/${encodeURIComponent(slug)}.json`, { cache:'no-store' })
-      .then(response => { if (!response.ok) throw new Error('Demo not found'); return response.json(); })
-      .then(setDemo).catch(error => setError(error.message));
-  }, [slug]);
+    fetch(`/generated-demos/${encodeURIComponent(slug)}.json`,{cache:'no-store'})
+      .then(response=>{if(!response.ok)throw new Error('Demo-ul nu a fost gÄƒsit.');return response.json();})
+      .then(setDemo).catch(error=>setError(error.message));
+  },[slug]);
 
-  const whatsapp = useMemo(() => String(demo?.property.whatsapp || '').replace(/\D/g,'') || '',[demo]);
-  if (error) return <div className="min-h-screen bg-slate-950 text-white grid place-items-center text-center p-6"><div><h1 className="text-3xl mb-3">Demo unavailable</h1><p className="text-slate-400 mb-6">{error}</p><Link to="/" className="text-emerald-400">NodeStack</Link></div></div>;
-  if (!demo) return <div className="min-h-screen bg-slate-950 grid place-items-center"><div className="h-9 w-9 rounded-full border-2 border-emerald-400 border-t-transparent animate-spin"/></div>;
-  const image = demo.images[galleryIndex] || demo.rooms[0]?.images[0];
-
-  return <div className="min-h-screen bg-[#fbf9f6] text-slate-900">
-    <header className="sticky top-0 z-40 bg-slate-950/95 text-white border-b border-white/10"><div className="max-w-7xl mx-auto h-16 px-4 flex items-center justify-between gap-4"><span className="font-serif font-bold truncate">{text(demo.property.name)}</span><a href={`https://wa.me/${whatsapp}`} className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold"><MessageCircle className="h-4 w-4"/><span className="hidden sm:inline">WhatsApp</span></a></div></header>
-    <section className="relative min-h-[76vh] flex items-end overflow-hidden bg-slate-950"><img src={demo.images[0]} alt={text(demo.property.name)} referrerPolicy="no-referrer" className="absolute inset-0 h-full w-full object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/15"/><div className="relative max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-16 pt-28"><p className="text-emerald-300 text-xs uppercase tracking-[.25em] mb-4">{text(demo.property.type)} · {text(demo.property.cityRegion)}</p><h1 className="text-4xl sm:text-6xl lg:text-7xl max-w-4xl font-serif font-black text-white leading-tight">{text(demo.property.heroTitle)}</h1><p className="mt-5 max-w-2xl text-slate-200 text-lg">{text(demo.property.shortDescription)}</p><div className="flex flex-wrap gap-3 mt-8"><a href={`https://wa.me/${whatsapp}`} className="rounded-xl bg-emerald-600 text-white px-6 py-3 font-bold">{t('Solicită disponibilitate','Check availability','Verfügbarkeit anfragen','Sjekk tilgjengelighet')}</a><span className="rounded-xl border border-white/20 bg-black/30 backdrop-blur text-white px-6 py-3 font-bold">{t('de la','from','ab','fra')} {text(demo.property.startingPriceRON)} RON</span></div></div></section>
-    <section className="py-16 bg-white"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_.65fr] gap-12"><div><p className="text-emerald-700 text-xs uppercase tracking-widest mb-3">{t('Despre proprietate','About the property','Über die Unterkunft','Om eiendommen')}</p><h2 className="text-3xl sm:text-4xl font-serif font-bold mb-5">{text(demo.property.name)}</h2><p className="text-slate-600 leading-7 whitespace-pre-line">{text(demo.property.fullDescription)}</p></div><div className="rounded-3xl bg-slate-950 p-7 text-white"><div className="flex items-start gap-3 mb-5"><MapPin className="text-emerald-400 shrink-0"/><div><b>{text(demo.property.cityRegion)}</b><p className="text-sm text-slate-400 mt-1">{text(demo.property.address)}</p></div></div><div className="flex items-center gap-2 text-amber-400"><Star className="h-5 w-5 fill-current"/><b>{text(demo.property.rating)}</b><span className="text-slate-500 text-sm">({text(demo.property.reviewCount)})</span></div></div></div></section>
-    <section className="py-16"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><h2 className="text-3xl sm:text-4xl font-serif font-bold mb-8">{t('Opțiuni de cazare','Accommodation options','Unterkunftsoptionen','Overnattingsalternativer')}</h2><div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{demo.rooms.map(room=><article key={room.id} className="rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm"><img src={room.images[0] || demo.images[0]} alt={text(room.title)} referrerPolicy="no-referrer" className="aspect-[16/10] w-full object-cover"/><div className="p-6"><h3 className="text-xl font-serif font-bold">{text(room.title)}</h3><p className="text-sm text-slate-600 mt-3 line-clamp-3">{text(room.description)}</p><div className="flex gap-4 mt-5 text-xs text-slate-500"><span className="flex gap-1"><Users className="h-4 w-4"/>{text(room.capacityAdults)}+{text(room.capacityKids)}</span>{room.sizeSqm>0&&<span>{text(room.sizeSqm)} m²</span>}</div><div className="flex items-center justify-between mt-6"><b>{t('de la','from','ab','fra')} {text(room.priceRON)} RON</b><a href={`https://wa.me/${whatsapp}`} className="text-emerald-700 font-bold text-sm">WhatsApp</a></div></div></article>)}</div></div></section>
-    <section className="py-16 bg-white"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><h2 className="text-3xl sm:text-4xl font-serif font-bold mb-8">{t('Facilități','Facilities','Ausstattung','Fasiliteter')}</h2><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">{demo.facilities.map((item,index)=><div key={index} className="flex items-center gap-3 rounded-xl border border-slate-200 p-4 text-sm"><Check className="h-4 w-4 text-emerald-600 shrink-0"/>{text(item)}</div>)}</div></div></section>
-    <section className="py-16"><div className="max-w-6xl mx-auto px-4"><div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-slate-900"><img src={image} alt={text(demo.property.name)} referrerPolicy="no-referrer" className="w-full h-full object-cover"/><button onClick={()=>setGalleryIndex((galleryIndex-1+demo.images.length)%demo.images.length)} className="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 grid place-items-center rounded-full bg-black/60 text-white"><ArrowLeft/></button><button onClick={()=>setGalleryIndex((galleryIndex+1)%demo.images.length)} className="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 grid place-items-center rounded-full bg-black/60 text-white"><ArrowRight/></button><button onClick={()=>setLightbox(true)} className="absolute bottom-4 right-4 rounded-full bg-white px-4 py-2 text-xs font-bold">{t('Mărește','Enlarge','Vergrößern','Forstørr')}</button></div></div></section>
-    <section className="py-16 bg-white"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10"><div><h2 className="text-3xl font-serif font-bold mb-6">{t('În apropiere','Nearby','In der Nähe','I nærheten')}</h2><div className="space-y-3">{demo.attractions.map((a,i)=><div key={i} className="rounded-2xl border border-slate-200 p-5"><p className="text-xs text-emerald-700 font-bold mb-2">{text(a.distance)}</p><h3 className="font-bold">{text(a.title)}</h3><p className="text-sm text-slate-600 mt-2">{text(a.description)}</p></div>)}</div></div><iframe title="Map" className="w-full min-h-96 rounded-3xl border" loading="lazy" src={`https://www.google.com/maps?q=${encodeURIComponent(text(demo.property.address))}&output=embed`}/></div></section>
-    <section className="py-16"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><h2 className="text-3xl font-serif font-bold mb-8">{t('Ce spun oaspeții','Guest reviews','Gästebewertungen','Gjesteanmeldelser')}</h2><div className="grid md:grid-cols-3 gap-5">{demo.reviews.slice(0,6).map((r,i)=><article key={i} className="rounded-2xl bg-white border border-slate-200 p-6"><div className="flex text-amber-400 mb-4">{Array.from({length:Math.min(5,Math.round(r.rating/2 || r.rating))}).map((_,j)=><Star key={j} className="h-4 w-4 fill-current"/>)}</div><p className="text-sm text-slate-700 leading-6 line-clamp-6">“{text(r.comment)}”</p><p className="font-bold text-sm mt-5">{text(r.author)}</p><p className="text-xs text-slate-500">{text(r.location)} · {text(r.date)}</p></article>)}</div></div></section>
-    <footer className="bg-slate-950 text-white py-12"><div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between gap-6"><div><b className="font-serif text-xl">{text(demo.property.name)}</b><p className="text-sm text-slate-500 mt-2">{text(demo.property.address)}</p></div><a href={`https://wa.me/${whatsapp}`} className="w-fit rounded-xl bg-emerald-600 px-6 py-3 font-bold">WhatsApp</a></div></footer>
-    {lightbox&&<div className="fixed inset-0 z-50 bg-black/95 grid place-items-center p-5"><button onClick={()=>setLightbox(false)} className="absolute right-5 top-5 text-white"><X/></button><img src={image} alt="" referrerPolicy="no-referrer" className="max-h-[88vh] max-w-full object-contain"/></div>}
-  </div>;
+  if(error)return <div className="min-h-screen bg-slate-950 text-white grid place-items-center text-center p-6"><div><h1 className="text-3xl mb-3">Demo indisponibil</h1><p className="text-slate-400 mb-6">{error}</p><Link to="/" className="text-emerald-400">NodeStack</Link></div></div>;
+  if(!demo)return <div className="min-h-screen bg-slate-950 grid place-items-center"><div className="h-9 w-9 rounded-full border-2 border-amber-400 border-t-transparent animate-spin"/></div>;
+  return <TourismApp generatedDemo={demo}/>;
 }

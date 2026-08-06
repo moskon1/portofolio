@@ -16,15 +16,40 @@ import { MobileStickyBar } from './components/MobileStickyBar';
 import { Footer } from './components/Footer';
 import { BadgePercent, Clock3, Headphones, ShieldCheck } from 'lucide-react';
 import { useLocale } from '@/src/lib/i18n';
+import type { GeneratedHospitalityDemo } from './generated/types';
+import { demoText } from './generated/types';
 
-export default function App() {
+export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospitalityDemo }) {
   const { locale } = useLocale();
-  const settings = {
+  const settings = generatedDemo ? {
+    propertyName: demoText(generatedDemo.property.name,'ro'),
+    propertyTypeLabel: demoText(generatedDemo.property.type,'ro'),
+    whatsappNumber: generatedDemo.property.whatsapp || generatedDemo.property.phone,
+    contactEmail: generatedDemo.property.email,
+    displayPhone: generatedDemo.property.phone,
+    address: generatedDemo.property.address,
+    cityRegion: generatedDemo.property.cityRegion,
+    currency: 'RON' as const,
+    language: 'ro' as const,
+    primaryColorHex: '#C5A059',
+    latitude: generatedDemo.property.latitude,
+    longitude: generatedDemo.property.longitude,
+  } : {
     ...CLIENT_SETTINGS,
     language: locale,
     currency: locale === 'ro' ? 'RON' as const : locale === 'no' ? 'NOK' as const : 'EUR' as const,
   };
-  const rooms = useMemo(() => getLocalizedRooms(locale), [locale]);
+  const rooms = useMemo(() => generatedDemo ? generatedDemo.rooms.map((room,index) => ({
+    id: room.id || `room-${index+1}`, title: demoText(room.title,'ro'), propertyName: generatedDemo.property.name,
+    propertyType: 'villa' as const, category: 'villa' as const, tagline: demoText(room.description,'ro'),
+    location: generatedDemo.property.cityRegion, priceEUR: Math.round(room.priceRON/5), priceRON: room.priceRON,
+    capacityAdults: room.capacityAdults, capacityKids: room.capacityKids, sizeSqm: room.sizeSqm,
+    bedType: 'Cazare confortabilÄƒ', viewType: 'Vedere panoramicÄƒ', images: room.images.length?room.images:generatedDemo.images,
+    heroImage: room.images[0]||generatedDemo.images[0]||'', description: demoText(room.description,'ro'),
+    longDescription: demoText(room.description,'ro'), amenities: room.amenities, featured: index===0,
+    rating: generatedDemo.property.rating > 5 ? generatedDemo.property.rating/2 : generatedDemo.property.rating,
+    reviewsCount: generatedDemo.property.reviewCount,
+  })) : getLocalizedRooms(locale), [generatedDemo,locale]);
   const [selectedCategory, setSelectedCategory] = useState<PropertyCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -114,6 +139,8 @@ export default function App() {
         rooms={rooms}
         onOpenBookingWithParams={handleOpenBookingWithParams}
         onSelectCategory={setSelectedCategory}
+        heroTitle={generatedDemo ? demoText(generatedDemo.property.heroTitle,'ro') : undefined}
+        heroDescription={generatedDemo ? demoText(generatedDemo.property.shortDescription,'ro') : undefined}
       />
 
       {/* Direct-booking trust signals */}
@@ -187,21 +214,26 @@ export default function App() {
         <AmenitiesSection
           settings={settings}
           onOpenQuickBooking={() => setBookingModal({ isOpen: true })}
+          facilities={generatedDemo?.facilities}
         />
 
         {/* Photo Gallery */}
-        <GallerySection settings={settings} />
+        <GallerySection settings={settings} images={generatedDemo?.images} />
 
         {/* Location & Attractions */}
         <LocationSection
           settings={settings}
           onOpenQuickBooking={() => setBookingModal({ isOpen: true })}
+          attractions={generatedDemo?.attractions.map((item,index)=>({id:`attraction-${index}`,title:demoText(item.title,'ro'),category:'AtracÈ›ie localÄƒ',distance:item.distance,description:demoText(item.description,'ro'),image:item.image}))}
         />
 
         {/* Guest Reviews */}
         <ReviewsSection
           settings={settings}
           onOpenQuickBooking={() => setBookingModal({ isOpen: true })}
+          reviews={generatedDemo?.reviews.map((item,index)=>({id:`review-${index}`,author:item.author,location:item.location,rating:item.rating>5?Math.round(item.rating/2):Math.round(item.rating),date:item.date,roomTitle:'',comment:item.comment,avatar:`https://ui-avatars.com/api/?name=${encodeURIComponent(item.author)}&background=ecfdf5&color=047857`}))}
+          rating={generatedDemo?.property.rating}
+          reviewCount={generatedDemo?.property.reviewCount}
         />
       </main>
 

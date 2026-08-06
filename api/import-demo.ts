@@ -1,5 +1,5 @@
 import type { ApiRequest, ApiResponse } from './_shared.js';
-import { authorized, body, extractImageUrls, findReviewsUrl, htmlToText, send, slugify, validateSource } from './_shared.js';
+import { authorized, body, extractImageUrls, extractPropertyLocation, findReviewsUrl, htmlToText, send, slugify, validateSource } from './_shared.js';
 
 const localizedSchema={type:'object',required:['ro','en','de','no'],properties:{ro:{type:'string'},en:{type:'string'},de:{type:'string'},no:{type:'string'}},additionalProperties:false};
 const schema={
@@ -57,10 +57,11 @@ export default async function handler(req:ApiRequest,res:ApiResponse) {
     const listingResponse=await fetch(source,{headers:{'User-Agent':'Mozilla/5.0 NodeStackDemoImporter/1.0'}});
     if(!listingResponse.ok) throw new Error(`TuristInfo returned ${listingResponse.status}.`);
     const listingHtml=await listingResponse.text(); const images=extractImageUrls(listingHtml,source).slice(0,16);
+    const fullListingText=htmlToText(listingHtml); const extractedLocation=extractPropertyLocation(listingHtml,fullListingText);
     const reviewsUrl=findReviewsUrl(listingHtml,source);
     let reviewsText='';
     if(reviewsUrl) { const reviewResponse=await fetch(reviewsUrl,{headers:{'User-Agent':'Mozilla/5.0 NodeStackDemoImporter/1.0'}}); if(reviewResponse.ok) reviewsText=compactSource(htmlToText(await reviewResponse.text()),3000); }
-    const listingText=compactSource(htmlToText(listingHtml),6000);
+    const listingText=compactSource(fullListingText,6000);
     const blueprint=`Required shape: {slug,property:{name,type,address,cityRegion,phone,whatsapp,email,startingPriceRON,rating,reviewCount,heroTitle,shortDescription,fullDescription},facilities:string[],rooms:[{id,title,description,priceRON,capacityAdults,capacityKids,sizeSqm,amenities:string[],source}],attractions:[{title,description,distance,source}],reviews:[{author,location,date,rating,comment,source:"turistinfo"}],provenance:{property,facilities,rooms,attractions,reviews}}. All text must be plain Romanian strings, never language objects. Every provenance/source is one of turistinfo, description, groq-rewritten, groq-mock, manual.`;
     const prompt=`Create a Romanian hospitality sales-demo JSON from this TuristInfo text. ${blueprint} Extract facts first. Write concise Romanian copy only. Mark assumptions groq-mock. Never invent reviews; use at most 4 found in REVIEWS_TEXT. Use the real starting price as the lowest room price. Return exactly one JSON object with no markdown.\n\nSOURCE:${source.href}\nLISTING:${listingText}\nREVIEWS:${reviewsText}`;
     const groqResponse=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{Authorization:`Bearer ${process.env.GROQ_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({model:process.env.GROQ_MODEL||'openai/gpt-oss-20b',messages:[{role:'system',content:'Return only complete valid Romanian JSON matching the requested shape. Keep values concise and use no language objects.'},{role:'user',content:prompt}],temperature:.1,reasoning_effort:'low',max_completion_tokens:3600,response_format:{type:'json_object'}})});
@@ -69,7 +70,7 @@ export default async function handler(req:ApiRequest,res:ApiResponse) {
     const generated=JSON.parse(groq.choices?.[0]?.message?.content||'{}');
     const imageAt=(index:number)=>images.length?images[index%images.length]:'';
     const rawProperty=generated.property||{};
-    const property={...rawProperty,name:plainValue(rawProperty.name),type:plainValue(rawProperty.type),address:plainValue(rawProperty.address),cityRegion:plainValue(rawProperty.cityRegion),phone:plainValue(rawProperty.phone),whatsapp:plainValue(rawProperty.whatsapp),email:plainValue(rawProperty.email),startingPriceRON:numberValue(rawProperty.startingPriceRON),rating:numberValue(rawProperty.rating),reviewCount:numberValue(rawProperty.reviewCount),heroTitle:plainValue(rawProperty.heroTitle),shortDescription:plainValue(rawProperty.shortDescription),fullDescription:plainValue(rawProperty.fullDescription)};
+    const property={...rawProperty,name:plainValue(rawProperty.name),type:plainValue(rawProperty.type),address:extractedLocation.address||plainValue(rawProperty.address),cityRegion:plainValue(rawProperty.cityRegion),phone:plainValue(rawProperty.phone),whatsapp:plainValue(rawProperty.whatsapp),email:plainValue(rawProperty.email),startingPriceRON:numberValue(rawProperty.startingPriceRON),rating:numberValue(rawProperty.rating),reviewCount:numberValue(rawProperty.reviewCount),heroTitle:plainValue(rawProperty.heroTitle),shortDescription:plainValue(rawProperty.shortDescription),fullDescription:plainValue(rawProperty.fullDescription),...(Number.isFinite(extractedLocation.latitude)&&Number.isFinite(extractedLocation.longitude)?{latitude:extractedLocation.latitude,longitude:extractedLocation.longitude}:{})};
     const facilities=(generated.facilities||[]).map(plainValue).filter(Boolean);
     const rooms=(generated.rooms||[]).map((room:any,index:number)=>({...room,title:plainValue(room.title),description:plainValue(room.description),amenities:(room.amenities||[]).map(plainValue).filter(Boolean),images:[imageAt(index+1),imageAt(index+4)].filter(Boolean)}));
     const attractions=(generated.attractions||[]).map((item:any,index:number)=>({...item,title:plainValue(item.title),description:plainValue(item.description),distance:plainValue(item.distance),image:imageAt(index+7)}));

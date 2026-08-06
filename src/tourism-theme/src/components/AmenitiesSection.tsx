@@ -106,7 +106,7 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
       ]
     }
   ];
-  const facilityCategories = facilities?.length ? Array.from({length:Math.min(3,Math.ceil(facilities.length/6))},(_,index)=>({title:index===0?'FacilitÄƒÈ›i proprietate':index===1?'Confort & servicii':'Alte facilitÄƒÈ›i',items:facilities.slice(index*6,index*6+6)})) : defaultFacilityCategories;
+  const facilityCategories = facilities?.length ? Array.from({length:Math.min(3,Math.ceil(facilities.length/6))},(_,index)=>({title:index===0?'Facilit\u0103\u021bi proprietate':index===1?'Confort & servicii':'Alte facilit\u0103\u021bi',items:facilities.slice(index*6,index*6+6)})) : defaultFacilityCategories;
   const translatedCategoryTitles = facilities ? null : locale === 'de'
     ? ['🏊 Pools & Thermal-Spa', '🍽️ Essen & Getränke', '🏖️ Strand & Außenbereich', '🛎️ Service & Rezeption', '🛏️ Zimmerkomfort', '👶 Familienangebote']
     : locale === 'no'

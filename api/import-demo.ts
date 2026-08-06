@@ -11,7 +11,18 @@ const schema={
     rooms:{type:'array',items:{type:'object',additionalProperties:false,required:['id','title','description','imageIndexes','priceRON','capacityAdults','capacityKids','sizeSqm','amenities','source'],properties:{id:{type:'string'},title:localizedSchema,description:localizedSchema,imageIndexes:{type:'array',items:{type:'integer'}},priceRON:{type:'number'},capacityAdults:{type:'integer'},capacityKids:{type:'integer'},sizeSqm:{type:'number'},amenities:{type:'array',items:{type:'string'}},source:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']}}}},
     attractions:{type:'array',items:{type:'object',additionalProperties:false,required:['title','description','distance','imageIndex','source'],properties:{title:localizedSchema,description:localizedSchema,distance:{type:'string'},imageIndex:{type:'integer'},source:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']}}}},
     reviews:{type:'array',items:{type:'object',additionalProperties:false,required:['author','location','date','rating','comment','source'],properties:{author:{type:'string'},location:{type:'string'},date:{type:'string'},rating:{type:'number'},comment:{type:'string'},source:{const:'turistinfo'}}}},
-    provenance:{type:'object',additionalProperties:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']}}
+    provenance:{
+      type:'object',
+      additionalProperties:false,
+      required:['property','facilities','rooms','attractions','reviews'],
+      properties:{
+        property:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']},
+        facilities:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']},
+        rooms:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']},
+        attractions:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']},
+        reviews:{enum:['turistinfo','description','groq-rewritten','groq-mock','manual']}
+      }
+    }
   }
 };
 

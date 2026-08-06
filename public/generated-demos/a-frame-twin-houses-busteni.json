@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "slug": "a-frame-twin-houses-busteni",
+  "sourceUrl": "https://www.turistinfo.ro/busteni/cazare-busteni/aframe_twin_houses-c126508.html",
+  "generatedAt": "2026-08-06T10:34:07.656Z",
+  "status": "published",
+  "property": {
+    "name": "A-frame Twin Houses Bușteni",
+    "type": "caseta",
+    "address": "",
+    "cityRegion": "Bușteni, Prahova",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 500,
+    "rating": 10,
+    "reviewCount": 24,
+    "heroTitle": "Casete A-frame cu vedere panoramică",
+    "shortDescription": "Casete moderne cu design A-frame, situate în inima munților Bucegi, oferind confort și priveliște spectaculoasă.",
+    "fullDescription": "Casetele A-frame Twin Houses sunt construite din lemn masiv, cu pardoseală din lemn și șemineu, oferind un spațiu primitor și elegant. Fiecare casetă dispune de baie proprie, minibar, TV cu canale prin cablu și WiFi gratuit. În curte se găsesc facilități pentru grătar, terasă la soare și pomi fructiferi. Parcare privată în curte și recepție non-stop asigură confortul și siguranța oaspeților. Fumatul este interzis în interior, dar permis în zone speciale. Casetele sunt ideale pentru o vacanță relaxantă în natură, cu acces rapid la traseele montane și la stațiunea Bușteni."
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/1403556.jpg",
+    "https://www.turistinfo.ro/images/cazare/1337856.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375012.jpg",
+    "https://www.turistinfo.ro/images/cazare/1303317.jpg",
+    "https://www.turistinfo.ro/images/cazare/1302807.jpg",
+    "https://www.turistinfo.ro/images/cazare/1334880.jpg",
+    "https://www.turistinfo.ro/images/cazare/1334879.jpg",
+    "https://www.turistinfo.ro/images/cazare/1302806.jpg",
+    "https://www.turistinfo.ro/images/cazare/1375015.jpg",
+    "https://www.turistinfo.ro/images/cazare/1324889.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300614.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300615.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300618.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300619.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300617.jpg",
+    "https://www.turistinfo.ro/images/cazare/1300620.jpg"
+  ],
+  "facilities": [
+    "parcare",
+    "WiFi",
+    "barbecue",
+    "terasă",
+    "șemineu",
+    "TV cu cablu",
+    "minibar",
+    "baie proprie",
+    "recepție non-stop",
+    "parcare privată",
+    "fumat interzis în interior"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Caseta A-frame",
+      "description": "Caseta de 50 m², cu baie proprie, capacitate 2 adulți și 2 copii, vedere spre munte.",
+      "priceRON": 500,
+      "capacityAdults": 2,
+      "capacityKids": 2,
+      "sizeSqm": 50,
+      "amenities": [
+        "baie proprie",
+        "minibar",
+        "TV cu cablu",
+        "WiFi",
+        "șemineu"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1337856.jpg",
+        "https://www.turistinfo.ro/images/cazare/1302807.jpg"
+      ]
+    }
+  ],
+  "attractions": [],
+  "reviews": [
+    {
+      "author": "Ramona Zamosteanu",
+      "location": "Berceni",
+      "date": "2024-07-10",
+      "rating": 10,
+      "comment": "Cabana este foarte frumoasă, curată și bine dotată. Locația este liniștită, perfectă pentru relaxare și pentru a petrece timp de calitate.",
+      "source": "turistinfo"
+    },
+    {
+      "author": "Ionita Livia",
+      "location": "Cipru",
+      "date": "2024-07-08",
+      "rating": 10,
+      "comment": "O locație excelentă cu vedere la Cruce, aproape de obiectivele principale, casetele gemene spațioase și călduroase, oricând te poți relaxa facând...",
+      "source": "turistinfo"
+    },
+    {
+      "author": "Anonim",
+      "location": "București",
+      "date": "2024-07-05",
+      "rating": 10,
+      "comment": "Casutele sunt nou construite, totul curat și cu mult bun gust, cu vedere panoramică spre munții Bucegi și Crucea Caraiman. Recomand cu toată încrederea!",
+      "source": "turistinfo"
+    },
+    {
+      "author": "Anonim",
+      "location": "Prahova",
+      "date": "2024-07-02",
+      "rating": 10,
+      "comment": "Totul este la superlativ!",
+      "source": "turistinfo"
+    }
+  ],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "turistinfo",
+    "reviews": "turistinfo"
+  }
+}

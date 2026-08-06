@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Room, PropertyCategory } from './types';
-import { getLocalizedRooms } from './data/localizedContent';
+import { getLocalizedReviews, getLocalizedRooms } from './data/localizedContent';
 import { CLIENT_SETTINGS } from './data/clientConfig';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -231,7 +231,7 @@ export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospit
         <ReviewsSection
           settings={settings}
           onOpenQuickBooking={() => setBookingModal({ isOpen: true })}
-          reviews={generatedDemo?.reviews.map((item,index)=>({id:`review-${index}`,author:item.author,location:item.location,rating:item.rating>5?Math.round(item.rating/2):Math.round(item.rating),date:item.date,roomTitle:'',comment:item.comment,avatar:item.avatar||`https://ui-avatars.com/api/?name=${encodeURIComponent(item.author)}&background=ecfdf5&color=047857`}))}
+          reviews={generatedDemo ? getLocalizedReviews('ro') : undefined}
           rating={generatedDemo?.property.rating}
           reviewCount={generatedDemo?.property.reviewCount}
         />

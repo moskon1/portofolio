@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { 
   Calendar, 
   Users, 
-  Sparkles, 
   MessageSquare, 
-  CheckCircle2, 
   Building2, 
   MapPin,
   ChevronRight
@@ -77,13 +75,6 @@ export const Hero: React.FC<HeroProps> = ({
         
         {/* Subtitle Badge */}
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>
-              {heroTitle ? `${settings.propertyTypeLabel} · ${settings.cityRegion}` : t('Resort la Mare • Plajă & SPA Termal', 'Seaside Resort • Beachfront & Thermal Spa', 'Küstenresort • Strandlage & Thermal-Spa', 'Kystresort • Strand og termisk spa')}
-            </span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white tracking-tight leading-[1.15]">{heroTitle || <>
             {t('Eleganță la Malul Mării & ', 'Beachfront Luxury & ', 'Luxus am Meer & ', 'Luksus ved stranden & ')}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">{t('Refugiu de Lux', 'Thermal Wellness', 'Thermal-Wellness', 'termisk velvære')}</span>
@@ -93,21 +84,6 @@ export const Hero: React.FC<HeroProps> = ({
             {t('Descoperă cazările moderne cu vedere panoramică la Marea Neagră, bucătărie gourmet, SPA termal cu apă sărată și rezervări directe instant pe WhatsApp.', 'Discover modern suites with 180° Black Sea views, fine dining, saltwater hydrotherapy spa, and instant WhatsApp reservations.', 'Entdecken Sie moderne Suiten mit Panoramablick, gehobener Küche, Thermal-Spa und direkter Reservierung über WhatsApp.', 'Oppdag moderne suiter med panoramautsikt, gourmetmat, termisk spa og direkte bestilling via WhatsApp.')}
           </>}</p>
 
-          {/* Key Feature Highlights */}
-          <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              {t('Răspuns rapid pe WhatsApp (<5 min)', 'Fast WhatsApp Confirmation (<5 min)', 'Schnelle WhatsApp-Antwort (<5 Min.)', 'Raskt WhatsApp-svar (<5 min)')}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              {t('Rezervare directă fără comision', 'Direct Booking - Zero Fees', 'Direktbuchung ohne Provision', 'Direktebestilling uten provisjon')}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              {t('Plajă privată & șezlonguri', 'Private Beach & Sunbeds', 'Privatstrand & Liegen', 'Privat strand og solsenger')}
-            </span>
-          </div>
         </div>
       </div>
 

@@ -45,7 +45,7 @@ export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospit
     location: generatedDemo.property.cityRegion, priceEUR: Math.round(room.priceRON/5), priceRON: room.priceRON,
     capacityAdults: room.capacityAdults, capacityKids: room.capacityKids, sizeSqm: room.sizeSqm,
     bedType: 'Cazare confortabilÄƒ', viewType: 'Vedere panoramicÄƒ', images: room.images.length?room.images:generatedDemo.images,
-    heroImage: room.images[0]||generatedDemo.images[0]||'', description: demoText(room.description,'ro'),
+    heroImage: generatedDemo.heroImage||room.images[0]||generatedDemo.images[0]||'', description: demoText(room.description,'ro'),
     longDescription: demoText(room.description,'ro'), amenities: room.amenities, featured: index===0,
     rating: generatedDemo.property.rating > 5 ? generatedDemo.property.rating/2 : generatedDemo.property.rating,
     reviewsCount: generatedDemo.property.reviewCount,

@@ -58,6 +58,7 @@ export interface GeneratedHospitalityDemo {
     fullDescription: DemoContentText;
   };
   images: string[];
+  heroImage?: string;
   facilities: string[];
   rooms: GeneratedRoom[];
   attractions: GeneratedAttraction[];

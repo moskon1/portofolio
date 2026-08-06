@@ -62,4 +62,10 @@ export interface GeneratedHospitalityDemo {
   provenance: Record<string, DemoSource>;
 }
 
-export const demoText = (value: DemoLocalizedText, locale: Locale) => value[locale] || value.ro || value.en;
+export const demoText = (value: unknown, locale: Locale): string => {
+  if (typeof value === 'string' || typeof value === 'number') return String(value);
+  if (!value || typeof value !== 'object') return '';
+  const localized = value as Partial<Record<Locale, unknown>>;
+  const selected = localized[locale] ?? localized.ro ?? localized.en;
+  return typeof selected === 'string' || typeof selected === 'number' ? String(selected) : '';
+};

@@ -8,10 +8,7 @@ import {
   MessageSquare, 
   ChevronLeft, 
   ChevronRight, 
-  Sparkles, 
   Check, 
-  Building2, 
-  Home,
   Waves
 } from 'lucide-react';
 import { Room, TemplateSettings } from '../types';
@@ -55,8 +52,6 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
         ? `$${room.priceEUR}`
         : `€${room.priceEUR}`;
 
-  const isVilla = room.propertyType === 'villa';
-
   return (
     <div className="group bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500/40 shadow-xl hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300 flex flex-col overflow-hidden">
       
@@ -75,17 +70,19 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
 
         {/* Carousel Navigation Arrows */}
         {images.length > 1 && (
-          <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 z-20 flex items-center justify-between opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
             <button
+              type="button"
               onClick={handlePrevImage}
-              className="p-1.5 rounded-full bg-slate-950/70 text-white hover:bg-amber-500 hover:text-slate-950 transition"
+              className="p-2.5 md:p-1.5 rounded-full bg-slate-950/80 text-white hover:bg-amber-500 hover:text-slate-950 active:scale-95 transition"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
+              type="button"
               onClick={handleNextImage}
-              className="p-1.5 rounded-full bg-slate-950/70 text-white hover:bg-amber-500 hover:text-slate-950 transition"
+              className="p-2.5 md:p-1.5 rounded-full bg-slate-950/80 text-white hover:bg-amber-500 hover:text-slate-950 active:scale-95 transition"
               aria-label="Next image"
             >
               <ChevronRight className="w-4 h-4" />
@@ -106,23 +103,6 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
             ))}
           </div>
         )}
-
-        {/* Top Property Badge */}
-        <div className="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 z-10">
-          <span className={`flex items-center gap-1 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full backdrop-blur-md shadow-md ${
-            isVilla ? 'bg-amber-500 text-slate-950 font-black' : 'bg-sky-600 text-white'
-          }`}>
-            {isVilla ? <Home className="w-3 h-3" /> : <Building2 className="w-3 h-3" />}
-            <span>{room.propertyName}</span>
-          </span>
-
-          {room.isPopular && (
-            <span className="hidden sm:flex items-center gap-1 text-[10px] font-bold uppercase px-2 py-1 rounded-full bg-rose-600 text-white shadow-md">
-              <Sparkles className="w-3 h-3" />
-              <span>{t('Recomandat', 'Popular', 'Beliebt', 'Populært')}</span>
-            </span>
-          )}
-        </div>
 
         {/* Top Right Rating Badge */}
         <div className="absolute top-3 right-3 z-10 flex items-center gap-1 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-500/30">

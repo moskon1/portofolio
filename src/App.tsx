@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import ServiceDetail from './pages/ServiceDetail';
+import GeneratedHospitalityDemo from './pages/GeneratedHospitalityDemo';
+import HospitalityAdmin from './pages/HospitalityAdmin';
 import { I18nProvider, localize, type Locale, useLocale } from './lib/i18n';
 
 const TourismDemo = lazy(() => import('./tourism-theme/src/App'));
@@ -107,6 +109,7 @@ function SeoManager() {
     });
     ensureLink('alternate', 'x-default').href = `https://www.nodestack.pro${pagePath}?lang=en`;
     setMeta('meta[name="description"]', 'content', description);
+    setMeta('meta[name="robots"]', 'content', pathname.startsWith('/demo/') || pathname.startsWith('/admin/') ? 'noindex, nofollow, noarchive' : 'index, follow, max-image-preview:large');
     setMeta('meta[property="og:title"]', 'content', title);
     setMeta('meta[property="og:description"]', 'content', description);
     setMeta('meta[property="og:url"]', 'content', canonicalUrl);
@@ -141,7 +144,7 @@ function SeoManager() {
 
 function AppShell() {
   const { pathname } = useLocation();
-  const isStandaloneDemo = pathname.startsWith('/demos/');
+  const isStandaloneDemo = pathname.startsWith('/demos/') || pathname.startsWith('/demo/') || pathname.startsWith('/admin/');
 
   return (
     <>
@@ -160,6 +163,8 @@ function AppShell() {
             <Route path="/services/web-applications" element={<ServiceDetail serviceKey="web-applications" />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/hospitality" element={<HospitalityAdmin />} />
+            <Route path="/demo/:slug" element={<GeneratedHospitalityDemo />} />
             <Route
               path="/demos/hospitality"
               element={

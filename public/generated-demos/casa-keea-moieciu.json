@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "slug": "casa-keea-moieciu",
+  "sourceUrl": "https://www.turistinfo.ro/moieciu/cazare-moieciu/casa_keea-c105759.html",
+  "generatedAt": "2026-08-07T14:50:31.022Z",
+  "status": "published",
+  "property": {
+    "name": "Casa Keea Moieciu",
+    "type": "pensiune",
+    "address": "sat Cheia, str. Principală, nr. 103, România",
+    "cityRegion": "Moieciu, Brașov",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 190,
+    "rating": 4.5,
+    "reviewCount": 190,
+    "heroTitle": "Casa de vacanță în inima munților",
+    "shortDescription": "Casa Keea Moieciu, o pensiune rustică cu vedere spre munte",
+    "fullDescription": "Casa Keea Moieciu este o pensiune de familie situată în inima munților din Moieciu, Brașov. Oferă camere spațioase, baie proprie, vedere panoramică spre munte și grădină, plus facilități moderne precum TV prin cablu și satelit, parchet melaminat și lenjerie de pat hipoalergică."
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/1137559.jpg",
+    "https://www.turistinfo.ro/images/cazare/1137560.jpg",
+    "https://www.turistinfo.ro/images/cazare/1115528.jpg",
+    "https://www.turistinfo.ro/images/cazare/1137562.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329932.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329933.jpg",
+    "https://www.turistinfo.ro/images/cazare/1115529.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329934.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329935.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329936.jpg",
+    "https://www.turistinfo.ro/images/cazare/1360668.jpg",
+    "https://www.turistinfo.ro/images/cazare/1360669.jpg",
+    "https://www.turistinfo.ro/images/cazare/1360670.jpg",
+    "https://www.turistinfo.ro/images/cazare/1115526.jpg",
+    "https://www.turistinfo.ro/images/cazare/1122652.jpg",
+    "https://www.turistinfo.ro/images/cazare/1115523.jpg",
+    "https://www.turistinfo.ro/images/cazare/1207577.jpg",
+    "https://www.turistinfo.ro/images/cazare/1207579.jpg",
+    "https://www.turistinfo.ro/images/cazare/1207574.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329937.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329939.jpg",
+    "https://www.turistinfo.ro/images/cazare/1329938.jpg",
+    "https://v3.turistinfo.ro/images/camere/399900.jpg",
+    "https://v3.turistinfo.ro/images/camere/441444.jpg",
+    "https://v3.turistinfo.ro/images/camere/441445.jpg",
+    "https://v3.turistinfo.ro/images/camere/330783.jpg",
+    "https://v3.turistinfo.ro/images/camere/441446.jpg",
+    "https://v3.turistinfo.ro/images/camere/441447.jpg",
+    "https://v3.turistinfo.ro/images/camere/399902.jpg",
+    "https://v3.turistinfo.ro/images/camere/441448.jpg",
+    "https://v3.turistinfo.ro/images/camere/441449.jpg",
+    "https://v3.turistinfo.ro/images/camere/399904.jpg",
+    "https://v3.turistinfo.ro/images/camere/441450.jpg",
+    "https://v3.turistinfo.ro/images/camere/441451.jpg",
+    "https://v3.turistinfo.ro/images/camere/441452.jpg",
+    "https://v3.turistinfo.ro/images/camere/441453.jpg",
+    "https://v3.turistinfo.ro/images/camere/441454.jpg",
+    "https://v3.turistinfo.ro/images/camere/381785.jpg",
+    "https://v3.turistinfo.ro/images/camere/381786.jpg",
+    "https://v3.turistinfo.ro/images/camere/428421.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/1137559.jpg",
+  "facilities": [
+    "balcon",
+    "TV prin cablu",
+    "TV prin satelit",
+    "coș de gunoi",
+    "dulap",
+    "izolare fonică",
+    "lenjerie de pat",
+    "masă",
+    "pardoseală cu parchet melaminat",
+    "perne fără puf",
+    "perne hipoalergice"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Camera dublă superioară",
+      "description": "16 m2, baie proprie, vedere spre grădină/munte",
+      "priceRON": 190,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 16,
+      "amenities": [
+        "balcon",
+        "TV prin cablu",
+        "TV prin satelit",
+        "coș de gunoi",
+        "dulap",
+        "izolare fonică",
+        "lenjerie de pat",
+        "masă",
+        "pardoseală cu parchet melaminat",
+        "perne fără puf",
+        "perne hipoalergice"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://v3.turistinfo.ro/images/camere/441444.jpg",
+        "https://v3.turistinfo.ro/images/camere/441445.jpg",
+        "https://v3.turistinfo.ro/images/camere/330783.jpg",
+        "https://v3.turistinfo.ro/images/camere/441446.jpg",
+        "https://v3.turistinfo.ro/images/camere/441447.jpg",
+        "https://v3.turistinfo.ro/images/camere/399902.jpg",
+        "https://v3.turistinfo.ro/images/camere/441448.jpg",
+        "https://v3.turistinfo.ro/images/camere/441449.jpg",
+        "https://v3.turistinfo.ro/images/camere/399904.jpg",
+        "https://v3.turistinfo.ro/images/camere/441450.jpg",
+        "https://v3.turistinfo.ro/images/camere/441451.jpg",
+        "https://v3.turistinfo.ro/images/camere/441452.jpg",
+        "https://v3.turistinfo.ro/images/camere/441453.jpg",
+        "https://v3.turistinfo.ro/images/camere/441454.jpg",
+        "https://v3.turistinfo.ro/images/camere/381785.jpg"
+      ]
+    }
+  ],
+  "attractions": [
+    {
+      "title": "Cheile Grădiștei",
+      "description": "Vedere panoramică spre muntele Bucegi",
+      "distance": "În apropiere",
+      "source": "manual",
+      "image": "https://www.turistinfo.ro/images/cazare/1329934.jpg"
+    },
+    {
+      "title": "Castelul Bran",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1115528.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Peștera Dâmbovicioara",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1137562.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Parcul Național Piatra Craiului",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1329932.jpg",
+      "source": "manual"
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Elena & Andrei M.",
+      "location": "București, România",
+      "date": "Iulie 2026",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "gușel din Brasov Curățenia este impecabilă, camerele sunt spațioase și confortabile, iar bucătăria este complet utilată. Curtea mare, foișorul, grătarul ...",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Marcus Vance",
+      "location": "München, Germania",
+      "date": "Iunie 2026",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Am fost cazați la acesta pensiune pentru două zile, când am terminat sejurul multe persoane au spus ca și-ar fi dorit să stea mai mult.",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Cristina & Radu D.",
+      "location": "Cluj-Napoca, România",
+      "date": "August 2026",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "gușel din Brasov Curățenia este impecabilă, camerele sunt spațioase și confortabile, iar bucătăria este complet utilată. Curtea mare, foișorul, grătarul ...",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    }
+  ],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "groq-mock",
+    "reviews": "turistinfo"
+  }
+}

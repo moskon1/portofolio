@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "slug": "vila-emily",
+  "sourceUrl": "https://www.turistinfo.ro/busteni/cazare-busteni/vila_emily-c13134.html",
+  "generatedAt": "2026-08-07T11:53:59.213Z",
+  "status": "published",
+  "property": {
+    "name": "Vila Emily",
+    "type": "Vila",
+    "address": "Bușteni, str. Ciocărliei, nr. 21, România",
+    "cityRegion": "Bușteni, Prahova",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 150,
+    "rating": 0,
+    "reviewCount": 150,
+    "heroTitle": "Vila Emily",
+    "shortDescription": "Vila cu 2 camere, baie proprie, WiFi, vedere spre munte",
+    "fullDescription": "Vila Emily este o locuință de 2 camere, cu baie proprie, WiFi, TV, balcon și vedere spre munte. Spațiul include o curte cu terasă, zona de barbecuit și o sală de mese pentru 25 de persoane. Bucătăria este echipată cu aragaz pentru prepararea de minuturi. Ideală pentru o vacanță liniștită în natură."
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/828558.jpg",
+    "https://www.turistinfo.ro/images/cazare/828559.jpg",
+    "https://www.turistinfo.ro/images/cazare/828560.jpg",
+    "https://www.turistinfo.ro/images/cazare/862937.jpg",
+    "https://www.turistinfo.ro/images/cazare/828562.jpg",
+    "https://www.turistinfo.ro/images/cazare/862935.jpg",
+    "https://www.turistinfo.ro/images/cazare/862936.jpg",
+    "https://www.turistinfo.ro/images/cazare/828561.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397837.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397838.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397839.jpg",
+    "https://www.turistinfo.ro/images/cazare/634823.jpg",
+    "https://www.turistinfo.ro/images/cazare/634826.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397846.jpg",
+    "https://www.turistinfo.ro/images/cazare/634830.jpg",
+    "https://www.turistinfo.ro/images/cazare/634831.jpg",
+    "https://www.turistinfo.ro/images/cazare/634835.jpg",
+    "https://www.turistinfo.ro/images/cazare/634834.jpg",
+    "https://www.turistinfo.ro/images/cazare/634837.jpg",
+    "https://www.turistinfo.ro/images/cazare/634838.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397845.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397841.jpg",
+    "https://www.turistinfo.ro/images/cazare/634840.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397842.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397843.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397844.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397847.jpg",
+    "https://www.turistinfo.ro/images/cazare/1397848.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/828558.jpg",
+  "facilities": [
+    "WiFi",
+    "TV",
+    "Baie proprie",
+    "Balcon",
+    "Canale TV",
+    "Frigider",
+    "Lenjerie de pat"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Cameră matrimonială",
+      "description": "20 m2, baie proprie, vedere spre munte",
+      "priceRON": 150,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 20,
+      "amenities": [
+        "Baie proprie",
+        "Balcon",
+        "Canale TV",
+        "Frigider",
+        "Lenjerie de pat"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/634823.jpg",
+        "https://www.turistinfo.ro/images/cazare/634826.jpg",
+        "https://www.turistinfo.ro/images/cazare/1397846.jpg",
+        "https://www.turistinfo.ro/images/cazare/634830.jpg",
+        "https://www.turistinfo.ro/images/cazare/634831.jpg",
+        "https://www.turistinfo.ro/images/cazare/634835.jpg",
+        "https://www.turistinfo.ro/images/cazare/634834.jpg",
+        "https://www.turistinfo.ro/images/cazare/634837.jpg",
+        "https://www.turistinfo.ro/images/cazare/634838.jpg"
+      ]
+    }
+  ],
+  "attractions": [
+    {
+      "title": "Castelul Cantacuzino",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/828561.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Cascada Urlătoarea",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/862935.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Crucea Eroilor de pe Caraiman",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1397837.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Mănăstirea Caraiman",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/862937.jpg",
+      "source": "manual"
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Elena & Andrei M.",
+      "location": "București, România",
+      "date": "Iulie 2026",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Gazda amabilă, dacă ai nevoie de ceva trebuie doar să ceri și primești. Curat și confortabil, liniște și o priveliște superba!",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Marcus Vance",
+      "location": "München, Germania",
+      "date": "Iunie 2026",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Liniște, curățenie, un peisaj superb și o gazdă primitoare, discretă, loc ideal pentru odihnă și recreere.",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    }
+  ],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "turistinfo",
+    "reviews": "turistinfo"
+  }
+}

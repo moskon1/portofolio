@@ -7,7 +7,7 @@
   "property": {
     "name": "Casa Cristian",
     "type": "casă de vacanță",
-    "address": "",
+    "address": "Bulevardul Ferdinand 17A, 222222 Sinaia, România",
     "cityRegion": "Sinaia",
     "phone": "",
     "whatsapp": "",
@@ -15,6 +15,7 @@
     "startingPriceRON": 1500,
     "rating": 0,
     "reviewCount": 0,
+    "googleMapsUrl": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x40b31740c07a2677:0x64677beed3b56aeb?sa=X&ved=1t:8290&ictx=111",
     "heroTitle": "Casa Cristian – relaxare în Sinaia",
     "shortDescription": "Casă de vacanță cu vedere spre munte",
     "fullDescription": "Casa Cristian oferă un spațiu confortabil cu vedere panoramică la munte, amenajată cu living, șemineu, TV, curte și terasă. Parcare privată și WiFi gratuit asigură un sejur fără griji."

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Quote, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Star, Quote, CheckCircle2, ExternalLink } from 'lucide-react';
 import { GuestReview, TemplateSettings } from '../types';
 import { getLocalizedReviews } from '../data/localizedContent';
 import { localize, useLocale } from '@/src/lib/i18n';
@@ -10,14 +10,18 @@ interface ReviewsSectionProps {
   reviews?: GuestReview[];
   rating?: number;
   reviewCount?: number;
+  googleRating?: number;
+  googleReviewCount?: number;
+  googleMapsUrl?: string;
 }
 
-export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpenQuickBooking, reviews: generatedReviews, rating, reviewCount }) => {
-  const isRO = settings.language === 'ro';
+export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ reviews: generatedReviews, rating, reviewCount, googleRating, googleReviewCount, googleMapsUrl }) => {
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
   const reviews = generatedReviews || getLocalizedReviews(locale);
   const displayRating = rating ? (rating > 5 ? rating / 2 : rating) : 4.95;
+  const badgeRating = googleRating ?? displayRating;
+  const badgeCount = googleRating ? googleReviewCount : reviewCount;
 
   return (
     <section id="reviews" className="py-16 bg-[#FBF9F6] text-[#1A1A1A] border-t border-[#EAE2D8]">
@@ -37,7 +41,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
           {/* Rating Badge */}
           <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-[#EAE2D8] shadow-xs">
             <div className="text-center">
-              <span className="text-3xl font-serif font-bold text-[#1A1A1A] block leading-none">{displayRating.toFixed(1)}</span>
+              <span className="text-3xl font-serif font-bold text-[#1A1A1A] block leading-none">{badgeRating.toFixed(1)}</span>
               <span className="text-[10px] text-slate-500 font-medium">{t('din 5 stele', 'out of 5', 'von 5 Sternen', 'av 5 stjerner')}</span>
             </div>
             <div className="border-l border-[#EAE2D8] pl-3 space-y-1">
@@ -46,9 +50,16 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ settings, onOpen
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="text-xs text-slate-700 font-medium block">
-                {t('Peste 300 de recenzii verificate', '300+ Verified Guest Reviews', 'Über 300 verifizierte Bewertungen', 'Over 300 verifiserte anmeldelser')}
-              </span>
+              {googleRating ? (
+                <a href={googleMapsUrl || '#'} target={googleMapsUrl ? '_blank' : undefined} rel="noreferrer" className={`text-xs font-semibold text-slate-700 flex items-center gap-1 ${googleMapsUrl ? 'hover:text-blue-600' : 'pointer-events-none'}`}>
+                  <span>Google{badgeCount ? ` · ${badgeCount} ${t('recenzii', 'reviews', 'Bewertungen', 'anmeldelser')}` : ''}</span>
+                  {googleMapsUrl && <ExternalLink className="h-3 w-3" />}
+                </a>
+              ) : (
+                <span className="text-xs text-slate-700 font-medium block">
+                  {badgeCount ? `${badgeCount} ${t('recenzii', 'reviews', 'Bewertungen', 'anmeldelser')}` : t('Recenzii oaspeți', 'Guest reviews', 'Gästebewertungen', 'Gjesteanmeldelser')}
+                </span>
+              )}
             </div>
           </div>
         </div>

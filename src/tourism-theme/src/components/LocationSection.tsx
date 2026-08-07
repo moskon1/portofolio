@@ -34,8 +34,11 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
     description: attractionDescriptions?.[index] || item.description,
   }));
 
-  const mapQuery = Number.isFinite(settings.latitude) && Number.isFinite(settings.longitude) ? `${settings.latitude},${settings.longitude}` : settings.address;
+  const mapQuery = Number.isFinite(settings.latitude) && Number.isFinite(settings.longitude)
+    ? `${settings.latitude},${settings.longitude}`
+    : `${settings.propertyName}, ${settings.address}`;
   const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+  const googleMapsUrl = settings.googleMapsUrl || `https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`;
 
   return (
     <section id="location" className="py-16 bg-[#FBF9F6] text-[#1A1A1A] border-t border-[#EAE2D8]">
@@ -74,7 +77,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({ settings, onOp
                 </div>
               </div>
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`}
+                href={googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full hover:bg-emerald-100 font-bold transition shrink-0"

@@ -34,6 +34,7 @@ export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospit
     primaryColorHex: '#C5A059',
     latitude: generatedDemo.property.latitude,
     longitude: generatedDemo.property.longitude,
+    googleMapsUrl: generatedDemo.property.googleMapsUrl,
   } : {
     ...CLIENT_SETTINGS,
     language: locale,
@@ -234,6 +235,9 @@ export default function App({ generatedDemo }: { generatedDemo?: GeneratedHospit
           reviews={generatedDemo ? getLocalizedReviews('ro') : undefined}
           rating={generatedDemo?.property.rating}
           reviewCount={generatedDemo?.property.reviewCount}
+          googleRating={generatedDemo?.property.googleRating}
+          googleReviewCount={generatedDemo?.property.googleReviewCount}
+          googleMapsUrl={generatedDemo?.property.googleMapsUrl}
         />
       </main>
 

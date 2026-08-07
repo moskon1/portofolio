@@ -84,6 +84,7 @@ export interface TemplateSettings {
   primaryColorHex: string;
   latitude?: number;
   longitude?: number;
+  googleMapsUrl?: string;
 }
 
 export interface LocalAttraction {

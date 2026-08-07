@@ -53,6 +53,9 @@ export interface GeneratedHospitalityDemo {
     startingPriceRON: number;
     rating: number;
     reviewCount: number;
+    googleRating?: number;
+    googleReviewCount?: number;
+    googleMapsUrl?: string;
     latitude?: number;
     longitude?: number;
     heroTitle: DemoContentText;

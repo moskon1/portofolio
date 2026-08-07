@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "slug": "casa-de-pe-ulita-bran",
+  "sourceUrl": "https://www.turistinfo.ro/bran/cazare-bran/casa_de_pe_ulita-c123851.html",
+  "generatedAt": "2026-08-07T12:17:30.921Z",
+  "status": "published",
+  "property": {
+    "name": "Casa de pe Uliță",
+    "type": "casă de vacanță",
+    "address": "sat Șimon, str. Podul Obănceștilor, nr. 8, România",
+    "cityRegion": "Bran, Brașov",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 1000,
+    "rating": 5,
+    "reviewCount": 39,
+    "heroTitle": "Casa de pe Uliță",
+    "shortDescription": "O casă rustică cu vedere spre munte, ideală pentru familii și cu facilități moderne.",
+    "fullDescription": "Casa de pe Uliță este o locuință de 100 m², cu două camere duble și două camere triple, fiecare cu baie proprie. Locul oferă o atmosferă caldă și primitoare, cu parchet melaminat, șemineu, TV și bucătărie complet utilată. În curte se află un spațiu pentru barbeque, mobilier de grădină și pomi fructiferi. Fumatul este interzis în toate spațiile comune și private. Casa este situată în apropiere de muntele Rucăr-Bran, oferind priveliști spectaculoase și aer curat."
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/1402652.jpg",
+    "https://www.turistinfo.ro/images/cazare/1402653.jpg",
+    "https://www.turistinfo.ro/images/cazare/1362189.jpg",
+    "https://www.turistinfo.ro/images/cazare/1343360.jpg",
+    "https://www.turistinfo.ro/images/cazare/1299270.jpg",
+    "https://www.turistinfo.ro/images/cazare/1257559.jpg",
+    "https://www.turistinfo.ro/images/cazare/1257153.jpg",
+    "https://www.turistinfo.ro/images/cazare/1289531.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176669.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176666.jpg",
+    "https://www.turistinfo.ro/images/cazare/1257157.jpg",
+    "https://www.turistinfo.ro/images/cazare/1257158.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176649.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176673.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176678.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176672.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176679.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176674.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176677.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176675.jpg",
+    "https://www.turistinfo.ro/images/cazare/1176676.jpg",
+    "https://v3.turistinfo.ro/images/camere/397998.jpg",
+    "https://v3.turistinfo.ro/images/camere/397999.jpg",
+    "https://v3.turistinfo.ro/images/camere/398000.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/1176666.jpg",
+  "facilities": [
+    "camere de familie",
+    "camere pentru nefumători",
+    "piscină",
+    "curte",
+    "living",
+    "fier de călcat",
+    "parchet melaminat",
+    "șemineu",
+    "TV",
+    "bucătărie cu aragaz, cuptor, micro, expresor, cafea",
+    "masă",
+    "scaun pentru copii",
+    "barbeque",
+    "grătar",
+    "mobilier de grădină",
+    "pomi fructiferi",
+    "parcare în curte",
+    "fumat interzis"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Camera 1",
+      "description": "Camera dublă cu baie proprie",
+      "priceRON": 1000,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 25,
+      "amenities": [
+        "parchet melaminat",
+        "șemineu",
+        "TV",
+        "bucătărie complet utilată"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1176673.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176678.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176672.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176679.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176674.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Camera 2",
+      "description": "Camera dublă cu baie proprie",
+      "priceRON": 1000,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 25,
+      "amenities": [
+        "parchet melaminat",
+        "șemineu",
+        "TV",
+        "bucătărie complet utilată"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1362189.jpg",
+        "https://www.turistinfo.ro/images/cazare/1257559.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176677.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176675.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Camera 3",
+      "description": "Camera triplă cu baie proprie",
+      "priceRON": 1000,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 30,
+      "amenities": [
+        "parchet melaminat",
+        "șemineu",
+        "TV",
+        "bucătărie complet utilată"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1343360.jpg",
+        "https://www.turistinfo.ro/images/cazare/1257153.jpg",
+        "https://www.turistinfo.ro/images/cazare/1176676.jpg",
+        "https://v3.turistinfo.ro/images/camere/397998.jpg",
+        "https://v3.turistinfo.ro/images/camere/397999.jpg",
+        "https://v3.turistinfo.ro/images/camere/398000.jpg"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Camera 4",
+      "description": "Camera triplă cu baie proprie",
+      "priceRON": 1000,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 30,
+      "amenities": [
+        "parchet melaminat",
+        "șemineu",
+        "TV",
+        "bucătărie complet utilată"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://v3.turistinfo.ro/images/camere/397998.jpg",
+        "https://v3.turistinfo.ro/images/camere/397999.jpg",
+        "https://v3.turistinfo.ro/images/camere/398000.jpg"
+      ]
+    }
+  ],
+  "attractions": [
+    {
+      "title": "Castelul Bran",
+      "description": "Vedere panoramică spre munte",
+      "distance": "În apropiere",
+      "source": "manual",
+      "image": "https://www.turistinfo.ro/images/cazare/1289531.jpg"
+    },
+    {
+      "title": "Muzeul Satului Brănean",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1343360.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Castelul Groazei",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1176669.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Rezervația de urși „Libearty” din Zărnești",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1257559.jpg",
+      "source": "manual"
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Elena & Andrei M.",
+      "location": "București, România",
+      "date": "Iulie 2026",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "O locație deosebită, care ne-a cucerit de la primul pas! Totul este amenajat cu atenție la detalii, într-o atmosferă caldă și primitoare.",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Marcus Vance",
+      "location": "München, Germania",
+      "date": "Iunie 2026",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "O locație minunată, perfecta pentru relaxare, aer curat, liniște, dar si pentru o petrecere intima.",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Cristina & Radu D.",
+      "location": "Cluj-Napoca, România",
+      "date": "August 2026",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "O locație ideala pentru familii cu copii!!!! O sa revenim!",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    }
+  ],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "groq-mock",
+    "reviews": "turistinfo"
+  }
+}

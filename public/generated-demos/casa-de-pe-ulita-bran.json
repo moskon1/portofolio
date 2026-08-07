@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "slug": "casa-de-pe-ulita-bran",
   "sourceUrl": "https://www.turistinfo.ro/bran/cazare-bran/casa_de_pe_ulita-c123851.html",
-  "generatedAt": "2026-08-07T12:17:30.921Z",
+  "generatedAt": "2026-08-07T12:18:46.644Z",
   "status": "published",
   "property": {
     "name": "Casa de pe Uliță",
@@ -106,8 +106,6 @@
       ],
       "source": "groq-mock",
       "images": [
-        "https://www.turistinfo.ro/images/cazare/1362189.jpg",
-        "https://www.turistinfo.ro/images/cazare/1257559.jpg",
         "https://www.turistinfo.ro/images/cazare/1176677.jpg",
         "https://www.turistinfo.ro/images/cazare/1176675.jpg"
       ]
@@ -128,8 +126,6 @@
       ],
       "source": "groq-mock",
       "images": [
-        "https://www.turistinfo.ro/images/cazare/1343360.jpg",
-        "https://www.turistinfo.ro/images/cazare/1257153.jpg",
         "https://www.turistinfo.ro/images/cazare/1176676.jpg",
         "https://v3.turistinfo.ro/images/camere/397998.jpg",
         "https://v3.turistinfo.ro/images/camere/397999.jpg",

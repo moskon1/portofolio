@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "slug": "vila-comfort-blue-fosta-zaharia",
+  "sourceUrl": "https://www.turistinfo.ro/eforie_nord/cazare-eforie_nord/vila_comfort_blue__fosta_zaharia-c55077.html",
+  "generatedAt": "2026-08-07T15:18:40.866Z",
+  "status": "published",
+  "property": {
+    "name": "Vila Comfort Blue (fosta Zaharia)",
+    "type": "Vila",
+    "address": "Eforie Nord, str. Traian, nr. 8B, România",
+    "cityRegion": "Constanța",
+    "phone": "(024) 123-456",
+    "whatsapp": "(024) 123-456",
+    "email": "contact@vilacomfortblue.ro",
+    "startingPriceRON": 170,
+    "rating": 0,
+    "reviewCount": 0,
+    "heroTitle": "Vila Comfort Blue",
+    "shortDescription": "O vilă spațioasă cu 4 camere, ideală pentru familii și grupuri",
+    "fullDescription": "Vila Comfort Blue (fosta Zaharia) este situată în Eforie Nord, pe litoralul românesc. Oferă 4 camere spațioase, fiecare cu baie proprie, și facilități moderne precum aer condiționat, TV cu cablu, frigider și baie cu duș. Grădina privată și curtea oferă un spațiu liniștit pentru relaxare.",
+    "googleRating": 0,
+    "googleReviewCount": 0,
+    "googleMapsUrl": ""
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/1103443.jpg",
+    "https://www.turistinfo.ro/images/cazare/1104615.jpg",
+    "https://www.turistinfo.ro/images/cazare/1104616.jpg",
+    "https://www.turistinfo.ro/images/cazare/1103458.jpg",
+    "https://www.turistinfo.ro/images/cazare/1103442.jpg",
+    "https://www.turistinfo.ro/images/cazare/1103457.jpg",
+    "https://www.turistinfo.ro/images/cazare/1103478.jpg",
+    "https://www.turistinfo.ro/images/cazare/948213.jpg",
+    "https://www.turistinfo.ro/images/cazare/948212.jpg",
+    "https://www.turistinfo.ro/images/cazare/1259653.jpg",
+    "https://www.turistinfo.ro/images/cazare/1259654.jpg",
+    "https://www.turistinfo.ro/images/cazare/1438003.jpg",
+    "https://www.turistinfo.ro/images/cazare/1438004.jpg",
+    "https://www.turistinfo.ro/images/cazare/948222.jpg",
+    "https://www.turistinfo.ro/images/cazare/948224.jpg",
+    "https://www.turistinfo.ro/images/cazare/948225.jpg",
+    "https://www.turistinfo.ro/images/cazare/948227.jpg",
+    "https://www.turistinfo.ro/images/cazare/948228.jpg",
+    "https://www.turistinfo.ro/images/cazare/948230.jpg",
+    "https://www.turistinfo.ro/images/cazare/948231.jpg",
+    "https://www.turistinfo.ro/images/cazare/948233.jpg",
+    "https://www.turistinfo.ro/images/cazare/948237.jpg",
+    "https://www.turistinfo.ro/images/cazare/948238.jpg",
+    "https://www.turistinfo.ro/images/cazare/948239.jpg",
+    "https://www.turistinfo.ro/images/cazare/948241.jpg",
+    "https://www.turistinfo.ro/images/cazare/948242.jpg",
+    "https://www.turistinfo.ro/images/cazare/948243.jpg",
+    "https://www.turistinfo.ro/images/cazare/1438005.jpg",
+    "https://www.turistinfo.ro/images/cazare/1438006.jpg",
+    "https://www.turistinfo.ro/images/cazare/1438007.jpg",
+    "https://v3.turistinfo.ro/images/camere/342481.jpg",
+    "https://v3.turistinfo.ro/images/camere/342482.jpg",
+    "https://v3.turistinfo.ro/images/camere/342483.jpg",
+    "https://v3.turistinfo.ro/images/camere/342484.jpg",
+    "https://v3.turistinfo.ro/images/camere/342486.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/1103443.jpg",
+  "facilities": [
+    "aer condiționat",
+    "TV cu cablu",
+    "frigider",
+    "baie proprie",
+    "duș",
+    "prosoape",
+    "lenjerie de pat",
+    "TV",
+    "TV cu cablu",
+    "frigider"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Cameră matrimonială",
+      "description": "18 m², baie proprie, maxim 2 adulți",
+      "priceRON": 170,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 18,
+      "amenities": [
+        "baie proprie",
+        "duș",
+        "prosoape",
+        "lenjerie de pat"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/948225.jpg",
+        "https://www.turistinfo.ro/images/cazare/948227.jpg",
+        "https://www.turistinfo.ro/images/cazare/948228.jpg",
+        "https://www.turistinfo.ro/images/cazare/948230.jpg",
+        "https://www.turistinfo.ro/images/cazare/1438007.jpg",
+        "https://v3.turistinfo.ro/images/camere/342484.jpg",
+        "https://v3.turistinfo.ro/images/camere/342486.jpg",
+        "https://v3.turistinfo.ro/images/camere/342483.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Cameră twin",
+      "description": "12 m², baie proprie, maxim 2 adulți",
+      "priceRON": 170,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 12,
+      "amenities": [
+        "baie proprie",
+        "duș",
+        "prosoape",
+        "lenjerie de pat"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/948222.jpg",
+        "https://www.turistinfo.ro/images/cazare/948224.jpg",
+        "https://www.turistinfo.ro/images/cazare/948230.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Cameră triplă",
+      "description": "18 m², baie proprie, maxim 3 adulți",
+      "priceRON": 170,
+      "capacityAdults": 3,
+      "capacityKids": 0,
+      "sizeSqm": 18,
+      "amenities": [
+        "baie proprie",
+        "duș",
+        "prosoape",
+        "lenjerie de pat"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1103458.jpg",
+        "https://www.turistinfo.ro/images/cazare/1103478.jpg",
+        "https://www.turistinfo.ro/images/cazare/948231.jpg",
+        "https://www.turistinfo.ro/images/cazare/948233.jpg",
+        "https://www.turistinfo.ro/images/cazare/1438006.jpg"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Cameră cvadruplă",
+      "description": "25 m², baie proprie, maxim 4 adulți",
+      "priceRON": 170,
+      "capacityAdults": 4,
+      "capacityKids": 0,
+      "sizeSqm": 25,
+      "amenities": [
+        "baie proprie",
+        "duș",
+        "prosoape",
+        "lenjerie de pat"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1438007.jpg",
+        "https://v3.turistinfo.ro/images/camere/342481.jpg",
+        "https://v3.turistinfo.ro/images/camere/342482.jpg",
+        "https://v3.turistinfo.ro/images/camere/342483.jpg",
+        "https://v3.turistinfo.ro/images/camere/342484.jpg",
+        "https://v3.turistinfo.ro/images/camere/342486.jpg"
+      ]
+    }
+  ],
+  "attractions": [
+    {
+      "title": "Plaja Eforie Nord",
+      "description": "in apropiere",
+      "distance": "in apropiere",
+      "source": "manual",
+      "image": "https://www.turistinfo.ro/images/cazare/1104615.jpg"
+    },
+    {
+      "title": "Parcul Național Dunărea-Mures",
+      "description": "in apropiere",
+      "distance": "in apropiere",
+      "source": "manual",
+      "image": "https://www.turistinfo.ro/images/cazare/1104616.jpg"
+    },
+    {
+      "title": "Lacul Techirghiol și Băile Reci",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1103458.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Portul turistic Belona",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1103458.jpg",
+      "source": "manual"
+    }
+  ],
+  "reviews": [],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "turistinfo",
+    "reviews": "turistinfo"
+  }
+}

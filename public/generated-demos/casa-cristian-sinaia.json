@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "slug": "casa-cristian-sinaia",
   "sourceUrl": "https://www.turistinfo.ro/sinaia/cazare-sinaia/casa_cristian-c99618.html",
-  "generatedAt": "2026-08-07T14:45:18.567Z",
+  "generatedAt": "2026-08-07T14:46:11.272Z",
   "status": "published",
   "property": {
     "name": "Casa Cristian",
@@ -142,7 +142,6 @@
       ],
       "source": "groq-mock",
       "images": [
-        "https://www.turistinfo.ro/images/cazare/518817.jpg",
         "https://www.turistinfo.ro/images/cazare/635722.jpg",
         "https://www.turistinfo.ro/images/cazare/1218400.jpg",
         "https://www.turistinfo.ro/images/cazare/1218401.jpg",

@@ -130,27 +130,6 @@
         "https://v3.turistinfo.ro/images/camere/397999.jpg",
         "https://v3.turistinfo.ro/images/camere/398000.jpg"
       ]
-    },
-    {
-      "id": "4",
-      "title": "Camera 4",
-      "description": "Camera triplă cu baie proprie",
-      "priceRON": 1000,
-      "capacityAdults": 2,
-      "capacityKids": 0,
-      "sizeSqm": 30,
-      "amenities": [
-        "parchet melaminat",
-        "șemineu",
-        "TV",
-        "bucătărie complet utilată"
-      ],
-      "source": "groq-mock",
-      "images": [
-        "https://v3.turistinfo.ro/images/camere/397998.jpg",
-        "https://v3.turistinfo.ro/images/camere/397999.jpg",
-        "https://v3.turistinfo.ro/images/camere/398000.jpg"
-      ]
     }
   ],
   "attractions": [

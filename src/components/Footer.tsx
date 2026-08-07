@@ -66,6 +66,15 @@ export default function Footer() {
             <a href="#" className="hover:text-white transition-colors">{t('Termeni și condiții', 'Terms of Service', 'Nutzungsbedingungen', 'Vilkår')}</a>
           </div>
         </div>
+        <div className="mt-5 flex flex-wrap items-center justify-center md:justify-end gap-x-4 gap-y-2 text-[10px] leading-4 text-slate-500">
+          <a href="https://anpc.ro/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">
+            ANPC - Protecția consumatorilor
+          </a>
+          <span className="hidden sm:inline text-slate-700" aria-hidden="true">·</span>
+          <a href="https://anpc.ro/sal/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">
+            Soluționarea alternativă a litigiilor (SAL)
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "slug": "vila-tudor-vladimirescu",
+  "sourceUrl": "https://www.turistinfo.ro/eforie_sud/cazare-eforie_sud/vila_tudor_vladimirescu-c77340.html",
+  "generatedAt": "2026-08-08T12:55:51.127Z",
+  "status": "published",
+  "property": {
+    "name": "Vila Tudor Vladimirescu",
+    "type": "Vila",
+    "address": "Eforie Sud, str. Tudor Vladimirescu, nr. 4A, România",
+    "cityRegion": "Eforie Sud, Constanța",
+    "phone": "",
+    "whatsapp": "",
+    "email": "",
+    "startingPriceRON": 200,
+    "rating": 0,
+    "reviewCount": 2,
+    "heroTitle": "Vila Tudor Vladimirescu",
+    "shortDescription": "Vila cu vedere la mare, 200 RON/noapte",
+    "fullDescription": "Vila Tudor Vladimirescu este situată pe faleza din Eforie Sud, la 3-5 minute de malul Mării Negre. Construcția a fost finalizată în 2008. Fiecare cameră este dotată cu televizor, aer condiționat, mini-frigider, balcon, internet și baie proprie. Casa oferă parcare, foișor și Wi‑Fi gratuit.",
+    "googleRating": 0,
+    "googleReviewCount": 0,
+    "googleMapsUrl": ""
+  },
+  "images": [
+    "https://www.turistinfo.ro/images/cazare/1155441.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155422.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155421.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155435.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155440.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155442.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155420.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155445.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155425.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155429.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155437.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155434.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155430.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155432.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155438.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155436.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155428.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155426.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155427.jpg",
+    "https://www.turistinfo.ro/images/cazare/1155444.jpg"
+  ],
+  "heroImage": "https://www.turistinfo.ro/images/cazare/1155441.jpg",
+  "facilities": [
+    "parcare",
+    "foișor",
+    "Wi‑Fi"
+  ],
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Cameră matrimonială",
+      "description": "20 m², baie proprie, vedere la mare",
+      "priceRON": 200,
+      "capacityAdults": 2,
+      "capacityKids": 0,
+      "sizeSqm": 20,
+      "amenities": [
+        "TV",
+        "AC",
+        "Internet wireless",
+        "Mini-frigider",
+        "Balcon",
+        "Baie proprie"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1155420.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155445.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155429.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155437.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155434.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155430.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155432.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155438.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155436.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155428.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155426.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Cameră triplă",
+      "description": "24 m², baie proprie, vedere spre grădină",
+      "priceRON": 200,
+      "capacityAdults": 3,
+      "capacityKids": 0,
+      "sizeSqm": 24,
+      "amenities": [
+        "TV",
+        "AC",
+        "Internet wireless",
+        "Mini-frigider",
+        "Balcon",
+        "Baie proprie"
+      ],
+      "source": "groq-mock",
+      "images": [
+        "https://www.turistinfo.ro/images/cazare/1155442.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155428.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155426.jpg",
+        "https://www.turistinfo.ro/images/cazare/1155427.jpg"
+      ]
+    }
+  ],
+  "attractions": [
+    {
+      "title": "Plaja Eforie Sud și faleza",
+      "description": "Plajă cu nisip fin",
+      "distance": "in apropiere",
+      "source": "manual",
+      "image": "https://www.turistinfo.ro/images/cazare/1155441.jpg"
+    },
+    {
+      "title": "Lacul Techirghiol",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1155422.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Băile Reci cu nămol sapropelic",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1155421.jpg",
+      "source": "manual"
+    },
+    {
+      "title": "Parcul Ioan Movilă",
+      "description": "",
+      "distance": "În apropiere",
+      "image": "https://www.turistinfo.ro/images/cazare/1155435.jpg",
+      "source": "manual"
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Elena & Andrei M.",
+      "location": "București, România",
+      "date": "Iulie 2026",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Am avut parte de condiții de cazare foarte bune. Camerele mari, foarte curate, dotate cu tv, aer condiționat, frigider, balcon.",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    },
+    {
+      "author": "Marcus Vance",
+      "location": "München, Germania",
+      "date": "Iunie 2026",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "comment": "Doamna este draguta, amabila, discreta. Camerele mari, cu balcon, curate. Frigider si tv in camera + aer conditionat. Prosoape si lenjerii impecabile.",
+      "source": "turistinfo",
+      "identitySource": "groq-mock"
+    }
+  ],
+  "provenance": {
+    "property": "turistinfo",
+    "facilities": "turistinfo",
+    "rooms": "groq-mock",
+    "attractions": "turistinfo",
+    "reviews": "turistinfo"
+  }
+}

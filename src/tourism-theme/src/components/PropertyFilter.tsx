@@ -27,7 +27,7 @@ export const PropertyFilter: React.FC<PropertyFilterProps> = ({
             {t('Cazare exclusivistă', 'Exclusive Accommodation', 'Exklusive Unterkunft', 'Eksklusiv overnatting')}
           </span>
           <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
-            {t('Camere, suite & apartamente de lux', 'Luxury Hotel Suites & Family Duplexes', 'Luxuszimmer, Suiten & Familienapartments', 'Luksusrom, suiter og familieleiligheter')}
+            {t('Camere', 'Rooms', 'Zimmer', 'Rom')}
           </h2>
         </div>
         <p className="text-slate-600 text-xs sm:text-sm max-w-md">

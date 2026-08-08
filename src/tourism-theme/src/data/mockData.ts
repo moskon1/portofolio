@@ -186,7 +186,7 @@ export const MOCK_REVIEWS: GuestReview[] = [
     rating: 5,
     date: "Iulie 2026",
     roomTitle: "Panoramic Grand Ocean Suite",
-    comment: "Condiții absolut excepționale! Priveliștea la mare direct din pat este superbă, iar rezervarea prin WhatsApp a fost ultra rapidă. SPA-ul cu apă sărată este raiul pe pământ!",
+    comment: "Condiții absolut excepționale! Priveliștea la mare direct din pat este superbă, iar rezervarea prin WhatsApp a fost ultra rapidă. Ne-am bucurat de fiecare moment!",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
   },
   {
@@ -196,7 +196,7 @@ export const MOCK_REVIEWS: GuestReview[] = [
     rating: 5,
     date: "Iunie 2026",
     roomTitle: "Deluxe Beachfront Double Room",
-    comment: "We stayed for a week at Steaua de Mare. The direct beach access, saltwater spa, and seafood restaurant were magnificent. Fast and professional WhatsApp communication!",
+    comment: "We stayed for a week at Steaua de Mare. The direct beach access and accommodation were magnificent. Fast and professional WhatsApp communication!",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
   },
   {
@@ -206,7 +206,7 @@ export const MOCK_REVIEWS: GuestReview[] = [
     rating: 5,
     date: "August 2026",
     roomTitle: "Grand Family Sea-Front Duplex",
-    comment: "Ideal pentru familii cu copii! Plaja este la câțiva pași, mâncarea la restaurant foarte bună, iar personalul extrem de amabil. Ne întoarcem cu drag în fiecare vară!",
+    comment: "Ideal pentru familii cu copii! Plaja este la câțiva pași, iar personalul extrem de amabil. Ne întoarcem cu drag în fiecare vară!",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
   }
 ];

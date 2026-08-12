@@ -32,6 +32,12 @@ const techStack: { name: string; logo: string; invert?: boolean }[] = [
 ];
 
 const portfolioPreview = [
+  {
+    title: "RoVista",
+    category: "Romania Travel Guide",
+    image: "/rovista-preview.png",
+    link: "https://rovista.ro/",
+  },
     {
     title: "Hospitality Demo",
     category: "Hotel & Villa Website",

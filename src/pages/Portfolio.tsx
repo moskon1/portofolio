@@ -57,6 +57,15 @@ const projects = [
     tech: ["React", "TypeScript", "Tailwind CSS"],
     outcome: "Delivered a fast and reliable experience optimized for everyday usage.",
     link: "https://jah-order.vercel.app/"
+  },
+  {
+    title: "RoVista",
+    category: "Romania Travel Guide",
+    image: "/rovista-preview.png",
+    description: "An independent bilingual travel guide for discovering Romania through curated attractions, regions, practical context, and saved places.",
+    tech: ["React", "TypeScript", "PWA", "Responsive Design"],
+    outcome: "Delivered a fast, installable and mobile-friendly discovery experience with clear regional navigation and multilingual content.",
+    link: "https://rovista.ro/"
   }
   // {
   //   title: "Royal Dice",
@@ -80,6 +89,7 @@ export default function Portfolio() {
     t('Platformă descentralizată de lansare și tranzacționare a tokenurilor Solana.', projects[3].description, 'Dezentrale Plattform zum Starten und Handeln von Solana-Token.', 'Desentralisert plattform for lansering og handel av Solana-tokens.'),
     t('Experiență gamificată pe Solana care oferă utilitate colecțiilor NFT.', projects[4].description, 'Gamifiziertes Solana-Erlebnis mit Nutzen für NFT-Sammlungen.', 'Spillbasert Solana-opplevelse som gir nytte til NFT-samlinger.'),
     t('Aplicație web de producție cu un flux simplu și o experiență intuitivă.', projects[5].description, 'Produktionsreife Webanwendung mit klarem Ablauf und intuitiver Bedienung.', 'Produksjonsklar webapplikasjon med enkel flyt og intuitiv brukeropplevelse.'),
+    t('Ghid de calatorie independent pentru descoperirea Romaniei prin atractii atent selectate, regiuni, context practic si locuri salvate.', projects[6].description, 'Unabhangiger zweisprachiger Reisefuhrer zur Entdeckung Rumaniens mit ausgewahlten Sehenswurdigkeiten, Regionen und praktischen Informationen.', 'Uavhengig tospraklig reiseguide for a oppdage Romania gjennom utvalgte attraksjoner, regioner og praktisk informasjon.'),
   ];
   const outcomes = [
     t('Un demo reutilizabil, pregătit pentru personalizarea fiecărui client.', projects[0].outcome, 'Eine wiederverwendbare, kundenspezifisch anpassbare Demo.', 'En gjenbrukbar demo som kan tilpasses hver kunde.'),
@@ -88,6 +98,7 @@ export default function Portfolio() {
     t('Experiență rapidă de lansare și tranzacționare pentru comunitatea Solana.', projects[3].outcome, 'Schnelles Launch- und Handelserlebnis für die Solana-Community.', 'Rask lanserings- og handelsopplevelse for Solana-miljøet.'),
     t('Integrare cu numeroase colecții NFT și retenție crescută.', projects[4].outcome, 'Integration zahlreicher NFT-Sammlungen mit hoher Nutzerbindung.', 'Integrasjon med mange NFT-samlinger og høy brukerbevaring.'),
     t('Experiență stabilă, rapidă și optimizată pentru utilizarea zilnică.', projects[5].outcome, 'Stabiles, schnelles Erlebnis für den täglichen Einsatz.', 'Stabil og rask opplevelse optimalisert for daglig bruk.'),
+    t('Experienta rapida, instalabila si optimizata pentru mobil, cu navigare clara pe regiuni si continut multilingv.', projects[6].outcome, 'Schnelles, installierbares und mobilfreundliches Erlebnis mit klarer regionaler Navigation und mehrsprachigen Inhalten.', 'Rask, installerbar og mobilvennlig opplevelse med tydelig regional navigasjon og flerspraklig innhold.'),
   ];
   return (
     <div className="pt-20 bg-slate-950">

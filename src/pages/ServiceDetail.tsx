@@ -265,6 +265,8 @@ export default function ServiceDetail({ serviceKey }: { serviceKey: ServiceKey }
 
     <BrandStrip serviceKey={serviceKey} label={localize(locale,{ro:'Platforme și tehnologii pe care le putem integra',en:'Platforms and technology we can integrate',de:'Plattformen und Technologien, die wir integrieren',no:'Plattformer og teknologi vi kan integrere'})}/>
 
+    {serviceKey === 'hospitality' && <HospitalityPackages locale={locale}/>} 
+
     <section className="py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
         <div className="lg:sticky lg:top-32">
@@ -281,7 +283,6 @@ export default function ServiceDetail({ serviceKey }: { serviceKey: ServiceKey }
     </section>
 
     {serviceKey === 'websites' && <WebsitePackages locale={locale}/>} 
-    {serviceKey === 'hospitality' && <HospitalityPackages locale={locale}/>} 
     {(serviceKey === 'websites' || serviceKey === 'seo' || serviceKey === 'web-applications') && <ServicePortfolio serviceKey={serviceKey} locale={locale}/>} 
 
     <section className="py-24 bg-slate-900/40 border-y border-white/5">

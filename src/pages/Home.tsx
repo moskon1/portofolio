@@ -1,6 +1,6 @@
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { localize, useLocale } from '@/src/lib/i18n';
 import { ServiceShowcaseVisual } from './ServiceDetail';
@@ -80,12 +80,20 @@ const portfolioPreview = [
 
 ];
 
+const heroShowcaseProjects = [
+  { title: 'RoVista', image: '/rovista-preview.png', url: 'rovista.ro' },
+  { title: 'Hospitality Demo', image: '/hospitality.jpg', url: 'nodestack.pro/demos/hospitality' },
+  { title: 'ProArt Studio', image: 'https://proartstudio.ro/about-800.webp', url: 'proartstudio.ro' },
+];
+
 export default function Home() {
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
   const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
   const stackCarousel = useRef<HTMLDivElement>(null);
   const servicesCarousel = useRef<HTMLDivElement>(null);
+  const [heroProjectIndex, setHeroProjectIndex] = useState(0);
+  const heroProject = heroShowcaseProjects[heroProjectIndex];
   const moveStack = (direction: -1 | 1) => {
     const carousel = stackCarousel.current;
     if (!carousel) return;
@@ -108,6 +116,13 @@ export default function Home() {
       if (carousel.scrollLeft >= setWidth * 2) carousel.scrollLeft -= setWidth;
       if (carousel.scrollLeft <= 0) carousel.scrollLeft += setWidth;
     }, 30);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setHeroProjectIndex((current) => (current + 1) % heroShowcaseProjects.length);
+    }, 4500);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -152,8 +167,15 @@ export default function Home() {
             <motion.div initial={{opacity:0,x:35}} animate={{opacity:1,x:0}} transition={{duration:.7,delay:.12}} className="relative lg:pl-5">
               <div className="absolute -inset-10 bg-gradient-to-br from-brand/20 via-cyan-500/5 to-transparent rounded-full blur-3xl"/>
               <Link to="/portfolio" className="relative block rounded-[1.75rem] border border-white/15 bg-slate-900 p-2.5 shadow-2xl shadow-black/40 rotate-1 hover:rotate-0 transition duration-500 group">
-                <div className="h-8 rounded-t-[1.15rem] bg-slate-950 border-b border-white/10 flex items-center gap-1.5 px-4"><i className="h-2 w-2 rounded-full bg-red-400/60"/><i className="h-2 w-2 rounded-full bg-amber-400/60"/><i className="h-2 w-2 rounded-full bg-emerald-400/60"/><span className="ml-3 text-[9px] text-slate-600">nodestack.pro/demos/hospitality</span></div>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-b-[1.15rem]"><img src="/hospitality.jpg" alt="NodeStack hospitality website shown in a browser" className="h-full w-full object-cover group-hover:scale-[1.02] transition duration-700"/><div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent"/><span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-slate-950/80 backdrop-blur px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white">Hospitality Demo</span></div>
+                <div className="h-8 rounded-t-[1.15rem] bg-slate-950 border-b border-white/10 flex items-center gap-1.5 px-4"><i className="h-2 w-2 rounded-full bg-red-400/60"/><i className="h-2 w-2 rounded-full bg-amber-400/60"/><i className="h-2 w-2 rounded-full bg-emerald-400/60"/><span className="ml-3 text-[9px] text-slate-600">{heroProject.url}</span></div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-b-[1.15rem]">
+                  <AnimatePresence mode="wait">
+                    <motion.img key={heroProject.title} src={heroProject.image} alt={`${heroProject.title} website shown in a browser`} referrerPolicy="no-referrer" initial={{opacity:0,scale:1.03}} animate={{opacity:1,scale:1}} exit={{opacity:0,scale:.98}} transition={{duration:.55}} className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.02]"/>
+                  </AnimatePresence>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent"/>
+                  <span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-slate-950/80 backdrop-blur px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white">{heroProject.title}</span>
+                  <div className="absolute bottom-5 right-4 flex gap-1.5" aria-hidden="true">{heroShowcaseProjects.map((project, index) => <span key={project.title} className={`h-1.5 rounded-full transition-all ${index === heroProjectIndex ? 'w-5 bg-white' : 'w-1.5 bg-white/45'}`}/>)}</div>
+                </div>
               </Link>
             </motion.div>
           </div>

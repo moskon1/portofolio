@@ -128,7 +128,9 @@ export default function Portfolio() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
-            {projects.map((project, idx) => (
+            {[6, 0, 1, 2, 3, 4, 5].map((idx) => {
+              const project = projects[idx];
+              return (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -195,7 +197,8 @@ export default function Portfolio() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

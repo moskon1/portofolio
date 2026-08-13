@@ -1,3 +1,5 @@
+'use client';
+
 import { Languages } from 'lucide-react';
 import { localeOptions, useLocale } from '@/src/lib/i18n';
 

@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { MessageCircle } from 'lucide-react';
 import { localize, useLocale } from '@/src/lib/i18n';
 
-const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
-const whatsappLabel = import.meta.env.VITE_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '40700000000';
+const whatsappLabel = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
 
 export default function Footer() {
   const { locale } = useLocale();
@@ -14,7 +16,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-white tracking-tight">Node<span className="text-brand">Stack</span></span>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
@@ -26,9 +28,9 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-6">{t('Linkuri rapide', 'Quick Links', 'Schnellzugriff', 'Hurtiglenker')}</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services/websites" className="hover:text-brand transition-colors">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</Link></li>
-              <li><Link to="/portfolio" className="hover:text-brand transition-colors">{t('Portofoliu', 'Portfolio', 'Portfolio', 'Portefølje')}</Link></li>
-              <li><Link to="/contact" className="hover:text-brand transition-colors">{t('Contact', 'Contact', 'Kontakt', 'Kontakt')}</Link></li>
+              <li><Link href="/services/websites" className="hover:text-brand transition-colors">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</Link></li>
+              <li><Link href="/portfolio" className="hover:text-brand transition-colors">{t('Portofoliu', 'Portfolio', 'Portfolio', 'Portefølje')}</Link></li>
+              <li><Link href="/contact" className="hover:text-brand transition-colors">{t('Contact', 'Contact', 'Kontakt', 'Kontakt')}</Link></li>
             </ul>
           </div>
 
@@ -36,10 +38,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-6">{t('Servicii', 'Services', 'Leistungen', 'Tjenester')}</h3>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/services/websites" className="hover:text-brand transition-colors">{t('Website-uri', 'Business Websites', 'Websites', 'Nettsider')}</Link></li>
-              <li><Link to="/services/hospitality" className="hover:text-brand transition-colors">Hospitality</Link></li>
-              <li><Link to="/services/seo" className="hover:text-brand transition-colors">SEO</Link></li>
-              <li><Link to="/services/web-applications" className="hover:text-brand transition-colors">{t('Aplicații Web', 'Web Applications', 'Webanwendungen', 'Webapplikasjoner')}</Link></li>
+              <li><Link href="/services/websites" className="hover:text-brand transition-colors">{t('Website-uri', 'Business Websites', 'Websites', 'Nettsider')}</Link></li>
+              <li><Link href="/services/hospitality" className="hover:text-brand transition-colors">Hospitality</Link></li>
+              <li><Link href="/services/seo" className="hover:text-brand transition-colors">SEO</Link></li>
+              <li><Link href="/services/web-applications" className="hover:text-brand transition-colors">{t('Aplicații Web', 'Web Applications', 'Webanwendungen', 'Webapplikasjoner')}</Link></li>
             </ul>
           </div>
 

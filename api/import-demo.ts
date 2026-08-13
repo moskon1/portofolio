@@ -1,5 +1,5 @@
-import type { ApiRequest, ApiResponse } from './_shared.js';
-import { authorized, body, extractImageUrls, extractPropertyLocation, findReviewsUrl, htmlToText, send, slugify, validateSource } from './_shared.js';
+import type { ApiRequest, ApiResponse } from './_shared';
+import { authorized, body, extractImageUrls, extractPropertyLocation, findReviewsUrl, htmlToText, send, slugify, validateSource } from './_shared';
 
 const localizedSchema={type:'object',required:['ro','en','de','no'],properties:{ro:{type:'string'},en:{type:'string'},de:{type:'string'},no:{type:'string'}},additionalProperties:false};
 const schema={

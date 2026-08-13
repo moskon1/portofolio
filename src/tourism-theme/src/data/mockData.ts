@@ -1,6 +1,8 @@
 import { Room, BookingAddOn, GuestReview, TemplateSettings, LocalAttraction } from '../types';
 
-import heroResortImg from '../assets/images/hero_resort_ocean_1785928560085.jpg';
+import heroResortAsset from '../assets/images/hero_resort_ocean_1785928560085.jpg';
+
+const heroResortImg = typeof heroResortAsset === 'string' ? heroResortAsset : heroResortAsset.src;
 
 export const DEFAULT_SETTINGS: TemplateSettings = {
   propertyName: "Hotel Steaua de Mare",

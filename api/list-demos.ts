@@ -1,5 +1,5 @@
-import type { ApiRequest, ApiResponse } from './_shared.js';
-import { authorized, send } from './_shared.js';
+import type { ApiRequest, ApiResponse } from './_shared';
+import { authorized, send } from './_shared';
 
 type GitHubFile = { name: string; type: string; download_url: string | null };
 

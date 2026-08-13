@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useMemo } from 'react';
 import { Room, PropertyCategory } from './types';
 import { getLocalizedReviews, getLocalizedRooms } from './data/localizedContent';

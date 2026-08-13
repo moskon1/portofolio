@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Maximize2, X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import { TemplateSettings } from '../types';
 
-import heroResortImg from '../assets/images/hero_resort_ocean_1785928560085.jpg';
+import heroResortAsset from '../assets/images/hero_resort_ocean_1785928560085.jpg';
 import { localize, useLocale } from '@/src/lib/i18n';
+
+const heroResortImg = typeof heroResortAsset === 'string' ? heroResortAsset : heroResortAsset.src;
 
 interface GallerySectionProps {
   settings: TemplateSettings;

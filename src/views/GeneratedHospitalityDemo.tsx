@@ -1,10 +1,11 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import Link from 'next/link';
 import TourismApp from '@/src/tourism-theme/src/App';
 import type { GeneratedHospitalityDemo } from '@/src/tourism-theme/src/generated/types';
 
-export default function GeneratedHospitalityDemo() {
-  const { slug = '' } = useParams();
+export default function GeneratedHospitalityDemo({ slug }: { slug: string }) {
   const [demo,setDemo] = useState<GeneratedHospitalityDemo|null>(null);
   const [error,setError] = useState('');
 
@@ -21,7 +22,7 @@ export default function GeneratedHospitalityDemo() {
       .then(setDemo).catch(error=>setError(error.message));
   },[slug]);
 
-  if(error)return <div className="min-h-screen bg-slate-950 text-white grid place-items-center text-center p-6"><div><h1 className="text-3xl mb-3">Demo indisponibil</h1><p className="text-slate-400 mb-6">{error}</p><Link to="/" className="text-emerald-400">NodeStack</Link></div></div>;
+  if(error)return <div className="min-h-screen bg-slate-950 text-white grid place-items-center text-center p-6"><div><h1 className="text-3xl mb-3">Demo indisponibil</h1><p className="text-slate-400 mb-6">{error}</p><Link href="/" className="text-emerald-400">NodeStack</Link></div></div>;
   if(!demo)return <div className="min-h-screen bg-slate-950 grid place-items-center"><div className="h-9 w-9 rounded-full border-2 border-amber-400 border-t-transparent animate-spin"/></div>;
   return <TourismApp generatedDemo={demo}/>;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { ExternalLink, Github } from 'lucide-react';
 import { localize, useLocale } from '@/src/lib/i18n';

@@ -1,7 +1,9 @@
+'use client';
+
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { localize, useLocale } from '@/src/lib/i18n';
 import { ServiceShowcaseVisual } from './ServiceDetail';
 
@@ -89,7 +91,7 @@ const heroShowcaseProjects = [
 export default function Home() {
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
-  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '40700000000';
   const stackCarousel = useRef<HTMLDivElement>(null);
   const servicesCarousel = useRef<HTMLDivElement>(null);
   const [heroProjectIndex, setHeroProjectIndex] = useState(0);
@@ -150,14 +152,14 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center bg-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand/25 group"
                 >
                   {t('Începe un proiect', 'Start a project', 'Projekt starten', 'Start et prosjekt')}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
-                  to="/portfolio"
+                  href="/portfolio"
                   className="inline-flex items-center justify-center bg-white/5 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all border border-white/10"
                 >
                   {t('Vezi proiectele', 'View Projects', 'Projekte ansehen', 'Se prosjekter')}
@@ -166,7 +168,7 @@ export default function Home() {
             </motion.div>
             <motion.div initial={{opacity:0,x:35}} animate={{opacity:1,x:0}} transition={{duration:.7,delay:.12}} className="relative lg:pl-5">
               <div className="absolute -inset-10 bg-gradient-to-br from-brand/20 via-cyan-500/5 to-transparent rounded-full blur-3xl"/>
-              <Link to="/portfolio" className="relative block rounded-[1.75rem] border border-white/15 bg-slate-900 p-2.5 shadow-2xl shadow-black/40 rotate-1 hover:rotate-0 transition duration-500 group">
+              <Link href="/portfolio" className="relative block rounded-[1.75rem] border border-white/15 bg-slate-900 p-2.5 shadow-2xl shadow-black/40 rotate-1 hover:rotate-0 transition duration-500 group">
                 <div className="h-8 rounded-t-[1.15rem] bg-slate-950 border-b border-white/10 flex items-center gap-1.5 px-4"><i className="h-2 w-2 rounded-full bg-red-400/60"/><i className="h-2 w-2 rounded-full bg-amber-400/60"/><i className="h-2 w-2 rounded-full bg-emerald-400/60"/><span className="ml-3 text-[9px] text-slate-600">{heroProject.url}</span></div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-b-[1.15rem]">
                   <AnimatePresence mode="wait">
@@ -220,7 +222,7 @@ export default function Home() {
               { title:t('Website-uri Hospitality','Hospitality Websites','Hospitality-Websites','Nettsider for reiseliv'), desc:t('Experiențe premium pentru hoteluri și vile, create pentru rezervări directe.','Premium hotel and villa experiences designed for direct bookings.','Premium-Erlebnisse für Hotels und Villen, entwickelt für Direktbuchungen.','Førsteklasses opplevelser for hotell og villa, bygget for direktebestilling.'), href:'/services/hospitality', visual:'hotel' },
               { title:t('Aplicații Web','Web Applications','Webanwendungen','Webapplikasjoner'), desc:t('Platforme, automatizări și produse custom construite în jurul afacerii tale.','Platforms, automation and custom products built around your business.','Plattformen, Automatisierungen und individuelle Produkte für Ihr Unternehmen.','Plattformer, automatisering og skreddersydde produkter for virksomheten din.'), href:'/services/web-applications', visual:'app' },
               { title:t('Optimizare SEO','SEO Optimization','SEO-Optimierung','SEO-optimalisering'), desc:t('Fundație tehnică, conținut și SEO local pentru vizibilitate măsurabilă.','Technical foundations, content and local SEO for measurable visibility.','Technik, Inhalte und lokale SEO für messbare Sichtbarkeit.','Teknisk grunnlag, innhold og lokal SEO for målbar synlighet.'), href:'/services/seo', visual:'seo' },
-            ].map((service,i)=><motion.article key={service.href} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.07}} className="group glass rounded-[2rem] overflow-hidden hover:border-brand/40 transition shrink-0 snap-start w-[88vw] sm:w-[72vw] lg:w-[calc(50%-0.875rem)]"><div className="bg-slate-950 border-b border-white/5"><ServiceShowcaseVisual type={service.visual} projectHref="/portfolio"/></div><div className="p-7 sm:p-8"><h3 className="text-2xl mb-3">{service.title}</h3><p className="text-slate-400 leading-relaxed mb-6 min-h-14">{service.desc}</p><Link to={service.href} className="inline-flex items-center text-brand font-bold">{t('Descoperă serviciul','Explore service','Leistung entdecken','Utforsk tjenesten')}<ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition"/></Link></div></motion.article>)}
+            ].map((service,i)=><motion.article key={service.href} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.07}} className="group glass rounded-[2rem] overflow-hidden hover:border-brand/40 transition shrink-0 snap-start w-[88vw] sm:w-[72vw] lg:w-[calc(50%-0.875rem)]"><div className="bg-slate-950 border-b border-white/5"><ServiceShowcaseVisual type={service.visual} projectHref="/portfolio"/></div><div className="p-7 sm:p-8"><h3 className="text-2xl mb-3">{service.title}</h3><p className="text-slate-400 leading-relaxed mb-6 min-h-14">{service.desc}</p><Link href={service.href} className="inline-flex items-center text-brand font-bold">{t('Descoperă serviciul','Explore service','Leistung entdecken','Utforsk tjenesten')}<ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition"/></Link></div></motion.article>)}
           </div>
           <button onClick={()=>moveServices(-1)} aria-label={t('Serviciul anterior','Previous service','Vorherige Leistung','Forrige tjeneste')} className="absolute left-1 sm:-left-6 top-1/2 -translate-y-1/2 z-30 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-slate-950/90 backdrop-blur text-white shadow-xl hover:bg-brand hover:border-brand transition"><ArrowLeft className="h-5 w-5"/></button>
           <button onClick={()=>moveServices(1)} aria-label={t('Serviciul următor','Next service','Nächste Leistung','Neste tjeneste')} className="absolute right-1 sm:-right-6 top-1/2 -translate-y-1/2 z-30 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-slate-950/90 backdrop-blur text-white shadow-xl hover:bg-brand hover:border-brand transition"><ArrowRight className="h-5 w-5"/></button>
@@ -268,7 +270,7 @@ export default function Home() {
               <h2 className="text-3xl lg:text-5xl font-bold mb-4">{t('Proiecte', 'Featured', 'Ausgewählte', 'Utvalgte')} <span className="text-brand">{t('Selectate', 'Work', 'Projekte', 'prosjekter')}</span></h2>
               <p className="text-slate-400 max-w-xl">{t('O selecție de produse digitale construite de echipa noastră.', 'A selection of digital products engineered by our team.', 'Eine Auswahl digitaler Produkte, die von unserem Team entwickelt wurden.', 'Et utvalg digitale produkter utviklet av teamet vårt.')}</p>
             </div>
-            <Link to="/portfolio" className="bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-xl font-bold transition-all">
+            <Link href="/portfolio" className="bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-xl font-bold transition-all">
               {t('Vezi portofoliul', 'View All Work', 'Alle Projekte', 'Se alle prosjekter')}
             </Link>
           </div>
@@ -279,7 +281,7 @@ export default function Home() {
                 whileHover={{ y: -10 }}
                 className="group relative rounded-3xl overflow-hidden glass border border-white/5"
               >
-                <Link to="/portfolio" className="absolute inset-0 z-20" aria-label={`Open portfolio: ${project.title}`} />
+                <Link href="/portfolio" className="absolute inset-0 z-20" aria-label={`Open portfolio: ${project.title}`} />
                 <div className="relative aspect-video flex items-center justify-center overflow-hidden bg-slate-900/50">
                   {project.image ? (
                     <img 
@@ -313,7 +315,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/contact"
+              href="/contact"
               className="bg-slate-950 text-white px-10 py-4 rounded-xl font-bold text-xl hover:bg-slate-900 transition-all shadow-2xl"
             >
               {t('Contactează-ne', 'Get In Touch', 'Kontakt aufnehmen', 'Ta kontakt')}

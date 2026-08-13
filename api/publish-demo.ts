@@ -1,5 +1,5 @@
-import type { ApiRequest, ApiResponse } from './_shared.js';
-import { authorized, body, send, slugify } from './_shared.js';
+import type { ApiRequest, ApiResponse } from './_shared';
+import { authorized, body, send, slugify } from './_shared';
 
 export default async function handler(req:ApiRequest,res:ApiResponse) {
   if(req.method!=='POST') return send(res,405,{error:'Method not allowed'});

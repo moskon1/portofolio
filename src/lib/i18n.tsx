@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
 export type Locale = 'ro' | 'en' | 'de' | 'no';
@@ -5,6 +7,7 @@ export type Locale = 'ro' | 'en' | 'de' | 'no';
 const supportedLocales: Locale[] = ['ro', 'en', 'de', 'no'];
 
 function detectLocale(): Locale {
+  if (typeof window === 'undefined') return 'ro';
   const urlLocale = new URLSearchParams(window.location.search).get('lang')?.toLowerCase();
   if (urlLocale && supportedLocales.includes(urlLocale as Locale)) return urlLocale as Locale;
   const saved = localStorage.getItem('nodestack-locale')?.toLowerCase();

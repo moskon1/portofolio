@@ -1,0 +1,31 @@
+# NodeStack
+
+> NodeStack is a digital product and web development agency building modern websites, scalable platforms, Web3 products, AI integrations, and hospitality booking experiences for businesses in Romania and Europe.
+
+Canonical website: https://www.nodestack.pro/
+Primary language: Romanian
+Additional languages: English, German, Norwegian
+
+## Main pages
+
+- [Home](https://www.nodestack.pro/): Company overview, core technologies, services, and featured projects.
+- [Business websites](https://www.nodestack.pro/services/websites): Responsive business websites, domain setup, Cloudflare, SEO, Google Business, analytics, maintenance, and support.
+- [Hospitality websites](https://www.nodestack.pro/services/hospitality): Websites for hotels, villas, and guesthouses with rooms, galleries, amenities, reviews, local attractions, direct WhatsApp booking, payments, and booking-platform integrations.
+- [SEO services](https://www.nodestack.pro/services/seo): Technical and local SEO audits, Core Web Vitals, keyword research, on-page optimization, Google Business, Search Console, indexing, and reporting.
+- [Web applications](https://www.nodestack.pro/services/web-applications): Full-stack platforms, dashboards, automation, AI integrations, REST APIs, authentication, payments, subscriptions, and Web3 systems.
+- [Portfolio](https://www.nodestack.pro/portfolio): Selected NodeStack projects.
+- [Contact](https://www.nodestack.pro/contact): Contact NodeStack about a new project.
+
+## Selected work
+
+- [RoVista](https://rovista.ro/): Independent bilingual travel guide and web application for discovering Romania through curated attractions, regions, practical context, and saved places.
+- [Hospitality Booking Demo](https://www.nodestack.pro/demos/hospitality): Customizable hotel and villa website demo with accommodation details, galleries, reviews, attractions, and direct WhatsApp booking.
+- [ProArt Studio](https://proartstudio.ro/): Responsive presentation website for a recording studio.
+- [Fusemon](https://www.fusemon.fun/): Competitive Solana trading card game with collectible cards, marketplace activity, and PvP battles.
+- [4Chad](https://4chad.xyz/): Solana token launchpad and trading platform.
+- [SpinSaga](https://spinsaga.fun/): Gamified Solana utility product for NFT collections.
+- [Jah Order Sound System](https://jah-order.vercel.app/): Responsive web application focused on a straightforward user flow.
+
+## Crawling
+
+Public pages may be indexed. Administrative and generated preview routes are not intended for indexing. The sitemap is available at https://www.nodestack.pro/sitemap.xml.

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { ExternalLink, Github, ImageIcon, Loader2, LockKeyhole, RefreshCw, Save, Sparkles, Trash2, X } from 'lucide-react';
 import type { GeneratedHospitalityDemo } from '@/src/tourism-theme/src/generated/types';
@@ -13,7 +15,7 @@ const adminText = (value:unknown) => {
 };
 
 export default function HospitalityAdmin() {
-  const [secret,setSecret] = useState(()=>sessionStorage.getItem('nodestack-admin-secret') || '');
+  const [secret,setSecret] = useState(()=>typeof window === 'undefined' ? '' : sessionStorage.getItem('nodestack-admin-secret') || '');
   const [authenticated,setAuthenticated] = useState(false);
   const [sourceUrl,setSourceUrl] = useState('');
   const [demo,setDemo] = useState<GeneratedHospitalityDemo|null>(null);

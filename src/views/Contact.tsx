@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { MessageCircle, Send } from 'lucide-react';
 import { localize, useLocale } from '@/src/lib/i18n';
@@ -5,8 +7,8 @@ import { localize, useLocale } from '@/src/lib/i18n';
 export default function Contact() {
   const { locale } = useLocale();
   const t = (ro: string, en: string, de: string, no: string) => localize(locale, { ro, en, de, no });
-  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '40700000000';
-  const whatsappLabel = import.meta.env.VITE_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '40700000000';
+  const whatsappLabel = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ? `+${whatsappNumber}` : '+40 700 000 000';
   const telegramUsername = 'nodestackpro';
 
   return (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/src/components/LocalizedLink';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Code2, Globe2, Hotel, Menu, Search, X } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
@@ -10,7 +10,8 @@ import { localize, useLocale } from '@/src/lib/i18n';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const rawPathname = usePathname();
+  const pathname = rawPathname.replace(/^\/(?:ro|en|de|no)(?=\/|$)/, '') || '/';
   const { locale } = useLocale();
   const navLinks = [
     { name: localize(locale, { ro: 'Portofoliu', en: 'Portfolio', de: 'Portfolio', no: 'Portefølje' }), href: '/portfolio' },

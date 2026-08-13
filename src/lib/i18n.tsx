@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 export type Locale = 'ro' | 'en' | 'de' | 'no';
 
 const supportedLocales: Locale[] = ['ro', 'en', 'de', 'no'];
+const localeChangeEvent = 'nodestack-locale-change';
 
 function detectLocale(): Locale {
   if (typeof window === 'undefined') return 'ro';
@@ -34,15 +35,23 @@ export function I18nProvider({ children, initialLocale }: { children: ReactNode;
 
   const setLocale = (nextLocale: Locale) => {
     localStorage.setItem('nodestack-locale', nextLocale);
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', nextLocale);
-    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+    document.cookie = `nodestack-locale=${nextLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
     setLocaleState(nextLocale);
+    window.dispatchEvent(new CustomEvent<Locale>(localeChangeEvent, { detail: nextLocale }));
   };
 
   useEffect(() => {
     document.documentElement.lang = locale === 'no' ? 'nb' : locale;
   }, [locale]);
+
+  useEffect(() => {
+    const syncLocale = (event: Event) => {
+      const nextLocale = (event as CustomEvent<Locale>).detail;
+      if (supportedLocales.includes(nextLocale)) setLocaleState(nextLocale);
+    };
+    window.addEventListener(localeChangeEvent, syncLocale);
+    return () => window.removeEventListener(localeChangeEvent, syncLocale);
+  }, []);
 
   const value = useMemo(() => ({ locale, setLocale }), [locale]);
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

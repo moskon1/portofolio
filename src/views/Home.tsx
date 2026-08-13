@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/src/components/LocalizedLink';
 import { localize, useLocale } from '@/src/lib/i18n';
 import { ServiceShowcaseVisual } from './ServiceDetail';
 

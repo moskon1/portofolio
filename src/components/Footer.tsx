@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/src/components/LocalizedLink';
 import { MessageCircle } from 'lucide-react';
 import { localize, useLocale } from '@/src/lib/i18n';
 

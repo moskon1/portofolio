@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ServiceDetail from '@/src/views/ServiceDetail';
-import PageLocale from '../../page-locale';
+import PageLocale from '@/app/page-locale';
 import { localeFrom, pageMetadata, SeoSchema, text, type SeoEntry } from '@/src/lib/seo';
 
 const services: Record<string, SeoEntry> = {
@@ -13,12 +13,12 @@ const services: Record<string, SeoEntry> = {
 
 type ServiceSlug = 'websites' | 'hospitality' | 'seo' | 'web-applications';
 export function generateStaticParams() { return Object.keys(services).map((service) => ({ service })); }
-export async function generateMetadata({ params, searchParams }: { params: Promise<{ service: string }>; searchParams: Promise<{ lang?: string }> }): Promise<Metadata> {
-  const { service } = await params; const entry = services[service];
-  return entry ? pageMetadata(`/services/${service}`, localeFrom((await searchParams).lang), entry) : {};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; service: string }> }): Promise<Metadata> {
+  const { locale: localeParam, service } = await params; const entry = services[service];
+  return entry ? pageMetadata(`/services/${service}`, localeFrom(localeParam), entry) : {};
 }
-export default async function Page({ params, searchParams }: { params: Promise<{ service: string }>; searchParams: Promise<{ lang?: string }> }) {
-  const { service } = await params; if (!(service in services)) notFound();
-  const locale = localeFrom((await searchParams).lang); const seo = services[service];
+export default async function Page({ params }: { params: Promise<{ locale: string; service: string }> }) {
+  const { locale: localeParam, service } = await params; if (!(service in services)) notFound();
+  const locale = localeFrom(localeParam); const seo = services[service];
   return <PageLocale locale={locale}><SeoSchema path={`/services/${service}`} locale={locale} seo={seo}/><ServiceDetail serviceKey={service as ServiceSlug}/></PageLocale>;
 }

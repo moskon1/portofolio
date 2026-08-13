@@ -6,7 +6,7 @@ import {
   Code2, CreditCard, Gauge, Globe2, Hotel, Layers3, Search,
   ShieldCheck, Sparkles, TrendingUp,
 } from 'lucide-react';
-import Link from 'next/link';
+import Link from '@/src/components/LocalizedLink';
 import { localize, useLocale } from '@/src/lib/i18n';
 
 type ServiceKey = 'websites' | 'hospitality' | 'seo' | 'web-applications';

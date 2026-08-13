@@ -10,10 +10,14 @@ export function localeFrom(value?: string): Locale {
   return locales.includes(value as Locale) ? value as Locale : 'ro';
 }
 
+export function localizedPath(path: string, locale: Locale) {
+  return `/${locale}${path === '/' ? '' : path}`;
+}
+
 export function pageMetadata(path: string, locale: Locale, seo: SeoEntry): Metadata {
-  const canonical = `${path || '/'}?lang=${locale}`;
-  const languages = Object.fromEntries(locales.map((item) => [item === 'no' ? 'nb' : item, `${path || '/'}?lang=${item}`]));
-  languages['x-default'] = `${path || '/'}?lang=en`;
+  const canonical = localizedPath(path, locale);
+  const languages = Object.fromEntries(locales.map((item) => [item === 'no' ? 'nb' : item, localizedPath(path, item)]));
+  languages['x-default'] = localizedPath(path, 'en');
   return {
     title: seo.title[locale],
     description: seo.description[locale],
@@ -27,7 +31,7 @@ export function SeoSchema({ path, locale, seo }: { path: string; locale: Locale;
   const type = seo.type === 'service' ? 'Service' : seo.type === 'collection' ? 'CollectionPage' : seo.type === 'contact' ? 'ContactPage' : 'WebPage';
   const data = {
     '@context': 'https://schema.org', '@type': type, name: seo.title[locale], description: seo.description[locale],
-    url: `https://www.nodestack.pro${path || '/'}?lang=${locale}`, inLanguage: locale === 'no' ? 'nb' : locale,
+    url: `https://www.nodestack.pro${localizedPath(path, locale)}`, inLanguage: locale === 'no' ? 'nb' : locale,
     image: `https://www.nodestack.pro${seo.image || '/logo.png'}`,
     ...(seo.type === 'service' ? { provider: { '@type': 'ProfessionalService', name: 'NodeStack', url: 'https://www.nodestack.pro/' }, serviceType: seo.title[locale] } : {}),
   };

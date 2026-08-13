@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import TourismDemo from '@/src/tourism-theme/src/App';
+import PageLocale from '../../page-locale';
+import { localeFrom, pageMetadata, SeoSchema, text } from '@/src/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Demo Website Hotel și Vilă',
-  description: 'Demo modern pentru hoteluri și vile cu camere, galerii, recenzii, atracții și rezervări directe WhatsApp.',
-  alternates: { canonical: '/demos/hospitality' },
-};
-
-export default function Page() { return <TourismDemo />; }
+const seo = { title: text('Demo Website Hotel și Vilă','Hotel & Villa Website Demo','Hotel- & Villenwebsite Demo','Demo for hotell- og villanettside'), description: text('Demo modern pentru hoteluri și vile cu camere, galerii, recenzii, atracții și rezervări directe WhatsApp.','Modern hotel and villa demo with rooms, galleries, reviews, attractions and direct WhatsApp booking.','Moderne Hotel- und Villendemo mit Zimmern, Galerien, Bewertungen, Attraktionen und WhatsApp-Direktbuchung.','Moderne hotell- og villademo med rom, galleri, anmeldelser, attraksjoner og direkte WhatsApp-bestilling.'), type: 'website' as const, image: '/hospitality.jpg' };
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ lang?: string }> }): Promise<Metadata> { return pageMetadata('/demos/hospitality', localeFrom((await searchParams).lang), seo); }
+export default async function Page({ searchParams }: { searchParams: Promise<{ lang?: string }> }) {
+  const locale = localeFrom((await searchParams).lang);
+  return <PageLocale locale={locale}><SeoSchema path="/demos/hospitality" locale={locale} seo={seo}/><TourismDemo /></PageLocale>;
+}

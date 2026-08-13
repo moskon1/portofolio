@@ -1,4 +1,4 @@
-import type { ApiRequest, ApiResponse } from '@/api/_shared';
+import type { ApiRequest, ApiResponse } from '@/src/server/_shared';
 
 type LegacyHandler = (req: ApiRequest, res: ApiResponse) => unknown;
 

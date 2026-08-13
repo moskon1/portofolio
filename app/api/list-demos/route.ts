@@ -1,4 +1,4 @@
-import handler from '@/api/list-demos';
+import handler from '@/src/server/list-demos';
 import { runLegacyHandler } from '../_adapter';
 export const dynamic = 'force-dynamic';
 export const GET = (request: Request) => runLegacyHandler(request, handler);

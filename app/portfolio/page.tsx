@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import Portfolio from '@/src/views/Portfolio';
+import PageLocale from '../page-locale';
+import { localeFrom, pageMetadata, SeoSchema, text } from '@/src/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Portofoliu Web și Aplicații',
-  description: 'Explorează website-uri, platforme Web3, produse digitale și experiențe hospitality construite de NodeStack.',
-  alternates: { canonical: '/portfolio' },
-};
-
-export default function Page() {
-  return <Portfolio />;
+const seo = { title: text('Portofoliu Web și Aplicații','Web & Application Portfolio','Web- & App-Portfolio','Portefølje for web og applikasjoner'), description: text('Explorează website-uri, platforme Web3, produse digitale și experiențe hospitality construite de NodeStack.','Explore websites, Web3 platforms, digital products and hospitality experiences built by NodeStack.','Entdecken Sie Websites, Web3-Plattformen, digitale Produkte und Hospitality-Erlebnisse von NodeStack.','Se nettsider, Web3-plattformer, digitale produkter og reiselivsopplevelser bygget av NodeStack.'), type: 'collection' as const };
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ lang?: string }> }): Promise<Metadata> { return pageMetadata('/portfolio', localeFrom((await searchParams).lang), seo); }
+export default async function Page({ searchParams }: { searchParams: Promise<{ lang?: string }> }) {
+  const locale = localeFrom((await searchParams).lang);
+  return <PageLocale locale={locale}><SeoSchema path="/portfolio" locale={locale} seo={seo}/><Portfolio /></PageLocale>;
 }
